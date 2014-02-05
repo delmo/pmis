@@ -11,10 +11,10 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: #pmis_development
+  database: pmis_development
   pool: 5
-  username: root
-  password: passport
+  username: romel
+  password: lalakero
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -25,8 +25,8 @@ test:
   encoding: utf8
   database: #pmis_test
   pool: 5
-  username: root
-  password: passport
+  username: romel
+  password: lalakero
   socket: /tmp/mysql.sock
 
 production:
@@ -34,6 +34,6 @@ production:
   encoding: utf8
   database: pmis_production
   pool: 5
-  username: root
-  password:
+  username: romel
+  password: lalakero
   socket: /tmp/mysql.sock
