@@ -1,6 +1,5 @@
 Pmis::Application.routes.draw do
 
-  get "docu/index"
  # if no route found, default will look at root
  # root :to => "docu#index"
  root "docu#index"
