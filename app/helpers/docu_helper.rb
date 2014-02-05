@@ -1,0 +1,2 @@
+module DocuHelper
+end
