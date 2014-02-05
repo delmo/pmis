@@ -1,10 +1,17 @@
 Pmis::Application.routes.draw do
+
+ # if no route found, default will look at root
+ # root :to => "demo#index"
+ root "demo#index"
+
  # default route is
  # :controller/:action/:id
  match ':controller(/:action(/:id))', :via => :get
 
  # with format like JSON
- match ':controller(/:action(/:id(.:format)))', :via => :get
+ #  match ':controller(/:action(/:id(.:format)))', :via => :get
+ 
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
