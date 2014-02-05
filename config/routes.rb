@@ -1,8 +1,9 @@
 Pmis::Application.routes.draw do
 
+  get "docu/index"
  # if no route found, default will look at root
- # root :to => "demo#index"
- root "demo#index"
+ # root :to => "docu#index"
+ root "docu#index"
 
  # default route is
  # :controller/:action/:id
