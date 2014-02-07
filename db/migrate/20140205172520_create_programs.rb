@@ -1,5 +1,5 @@
 class CreatePrograms < ActiveRecord::Migration
-  def change
+  def up
     create_table :programs do |t|
       t.integer "user_id"
       t.integer "department_id"
@@ -30,4 +30,7 @@ class CreatePrograms < ActiveRecord::Migration
     add_index("programs", "source_id")
   end
 
+  def down
+   drop_table :programs
+  end
 end
