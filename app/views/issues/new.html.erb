@@ -1,0 +1,16 @@
+<%= @page_title = "New Issue" %>
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="issue new">
+ <h2>Create Issue</h2>
+ 
+ <%= form_for(:issue, :url => {:action => 'create'}) do |f| %>
+
+  <%= render(:partial => "form", :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Create Issue") %>
+  </div>
+
+ <% end %>
+</div>

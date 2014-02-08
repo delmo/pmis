@@ -1,0 +1,33 @@
+<% @page_title = "Cities" %>
+<div class="cities index">
+ <h2>Cities</h2>
+
+ <%= link_to("Add New City", {:action => 'new'}, :class => 'action new') %>
+
+ <div><%= pluralize(@cities.size, 'city') %> found</div>
+ <table class="listing" summary="City list">
+  <tr class="header">
+   <th>Name</th>
+   <th>Address</th>
+   <th>Postcode</th>
+   <th>Telephone</th>
+   <th>Website</th>
+   <th>Email</th>
+  </tr>
+  <% @cities.each do |city| %>
+   <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= city.name %></td>
+    <td><%= city.address %></td>
+    <td><%= city.postcode %></td>
+    <td><%= city.telephone %></td>
+    <td><%= city.website %></td>
+    <td><%= city.email %></td>
+    <td class="actions">
+     <%= link_to("Show", {:action => 'show', :id => city.id}, :class => 'action show') %>
+     <%= link_to("Edit", {:action => 'edit', :id => city.id}, :class => 'action edit') %>
+     <%= link_to("Delete", {:action => 'delete', :id => city.id}, :class => 'action delete') %>
+    </td>
+   </tr>
+  <% end %>
+ </table>
+</div>

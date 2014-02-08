@@ -1,0 +1,46 @@
+<% @page_title = "City" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="cities show">
+ <h2>Show City</h2>
+
+ <table summary="Subject detail view">
+  <tr>
+   <th>Name</th>
+   <td><%= @city.name %></td>
+  </tr>
+  <tr>
+   <th>Address</th>
+   <td><%= @city.address %></td>
+  </tr>
+  <tr>
+   <th>Postcode</th>
+   <td><%= @city.postcode %></td>
+  </tr>
+  <tr>
+   <th>Telephone</th>
+   <td><%= @city.telephone %></td>
+  </tr>
+  <tr>
+   <th>Website</th>
+   <td><%= @city.website %></td>
+  </tr>
+  <tr>
+   <th>Email</th>
+   <td><%= @city.email %></td>
+  </tr>
+  <tr>
+   <th>Vision</th>
+   <td><%= @city.vision %></td>
+  </tr>
+  <tr>
+   <th>Mission</th>
+   <td><%= @city.mission %></td>
+  </tr>
+  <tr>
+   <th>Development Thrust</th>
+   <td><%= @city.development_thrust %></td>
+  </tr>
+ </table>
+</div>
+

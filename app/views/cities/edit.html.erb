@@ -1,0 +1,15 @@
+<% @page_title = "Edit a city" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-list') %>
+
+<div class="cities new">
+ <h2>Edit City</h2>
+
+ <%= form_for(:city, :url => {:action => 'update', :id => @city.id }) do |f| %>
+
+  <%= render(:partial => "form", :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Update City") %>
+  </div>
+ <% end %>
+</div>

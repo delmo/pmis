@@ -1,0 +1,22 @@
+<% @page_title = "Issue" %>
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="issues show">
+ <h2>Show Issue</h2>
+
+ <table summary="Issue detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @issue.title %></td>
+  </tr>
+  <tr>
+   <th>Implication</th>
+   <td><%= @issue.implication %></td>
+  </tr>
+  <tr>
+   <th>Intervention</th>
+   <td><%= @issue.intervention %></td>
+  </tr>
+ </table>
+</div>
+

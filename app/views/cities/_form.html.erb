@@ -1,0 +1,42 @@
+<%= error_messages_for(@city) %>
+
+  <table summary="City form fields">
+   <tr>
+    <th><%= f.label(:name, "Name") %></th>
+    <td><%= f.text_field(:name) %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:address) %></th>
+    <td><%= f.text_field(:address) %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:postcode) %></th>
+    <td><%= f.text_field(:postcode) %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:telephone) %></th>
+    <td><%= f.text_field(:telephone) %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:website) %></th>
+    <td><%= f.text_field(:website) %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:email) %></th>
+    <td><%= f.text_field(:email) %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:vision) %></th>
+    <td><%= f.text_area(:vision, :size => "40x5") %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:mission) %></th>
+    <td><%= f.text_area(:mission, :size => "40x5") %></td>
+   </tr>
+   <tr>
+    <th><%= f.label(:development_thrust) %></th>
+    <td><%= f.text_area(:development_thrust, :size => "40x5") %></td>
+   </tr>
+  </table>
+
+

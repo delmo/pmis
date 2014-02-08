@@ -1,0 +1,29 @@
+<% @page_title = "Issues" %>
+<div class="issues index">
+ <h2>Issues</h2>
+
+ <%= link_to("Add New Issue", {:action => 'new'}, :class => 'action new') %>
+
+ <div><%= pluralize(@issues.size, 'issue') %> found</div>
+ <table class="listing" summary="Issue list">
+  <tr class="header">
+   <th>Department</th>
+   <th>Title</th>
+   <th>Implication</th>
+   <th>Intervention</th>
+  </tr>
+  <% @issues.each do |issue| %>
+   <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= issue.department.name if issue.department %></td>
+    <td><%= issue.title %></td>
+    <td><%= issue.implication %></td>
+    <td><%= issue.intervention %></td>
+    <td class="actions">
+     <%= link_to("Show", {:action => 'show', :id => issue.id}, :class => 'action show') %>
+     <%= link_to("Edit", {:action => 'edit', :id => issue.id}, :class => 'action edit') %>
+     <%= link_to("Delete", {:action => 'delete', :id => issue.id}, :class => 'action delete') %>
+    </td>
+   </tr>
+  <% end %>
+ </table>
+</div>

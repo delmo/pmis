@@ -1,0 +1,22 @@
+<%= error_messages_for(@issue) %>
+
+<table summary="Issue form fields">
+ <tr>
+  <th><%= f.label(:department_id, "Department") %></th>
+  <td><%= f.select(:department_id, @departments.map {|d| [d.name, d.id]}) %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:title) %></th>
+  <td><%= f.text_field(:title) %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:implication) %></th>
+  <td><%= f.text_area(:implication, :size => "40x5") %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:intervention) %></th>
+  <td><%= f.text_area(:intervention, :size => "40x5") %></td>
+ </tr>
+</table>
+
+

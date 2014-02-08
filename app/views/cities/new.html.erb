@@ -1,0 +1,15 @@
+<% @page_title = "Create a city" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-list') %>
+
+<div class="cities new">
+ <h2>Create City</h2>
+
+ <%= form_for(:city, :url => {:action => 'create'}) do |f| %>
+
+  <%= render(:partial => "form", :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Create City") %>
+  </div>
+ <% end %>
+</div>

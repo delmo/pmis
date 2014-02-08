@@ -1,12 +1,17 @@
 Pmis::Application.routes.draw do
 
+  get "issues/index"
+  get "issues/show"
+  get "issues/new"
+  get "issues/edit"
+  get "issues/delete"
  # if no route found, default will look at root
  # root :to => "docu#index"
  root "docu#index"
 
  # default route is
  # :controller/:action/:id
- match ':controller(/:action(/:id))', :via => :get
+ match ':controller(/:action(/:id))', :via => [:get, :post]
 
  # with format like JSON
  #  match ':controller(/:action(/:id(.:format)))', :via => :get

@@ -1,0 +1,17 @@
+<% @page_title = "Delete an issue" %>
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="issues delete">
+ <h2>Delete Issue</h2>
+
+ <%= form_for(:issue, :url => {:action => 'destroy', :id => @issue.id}) do |f| %>
+
+  <p>Are you sure you want to permanently delete this issue?</p>
+
+  <p class="reference-name"><%= @issue.title %></p>
+
+  <div class="form-buttons">
+   <%= submit_tag("Delete Issue") %>
+  </div>
+
+ <% end %>
