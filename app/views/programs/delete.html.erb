@@ -1,0 +1,19 @@
+<%= @page_title = "Delete a program" %>
+
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="program delete">
+ <h2>Delete Program</h2>
+
+ <%= form_for(:program, :url => {:action => 'destroy', :id => @program.id}) do |f| %>
+
+  <p>Are you sure you want to permanently delete this program?</p>
+
+  <p class="reference-name"><%= @program.title %></p>
+
+  <div class="form-buttons">
+   <%= submit_tag("Delete Program") %>
+  </div>
+
+ <% end %>
+</div>

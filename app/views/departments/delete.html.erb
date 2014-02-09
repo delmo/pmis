@@ -2,7 +2,7 @@
 
 <%= link_to("<< Back to list", {:action => 'index'}) %>
 
-<div class="departments delete">
+<div class="department delete">
  <h2>Delete Department</h2>
 
  <%= form_for(:department, :url => {:action => 'destroy', :id => @department.id}) do |f| %>

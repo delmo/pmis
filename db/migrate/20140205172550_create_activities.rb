@@ -4,8 +4,6 @@ class CreateActivities < ActiveRecord::Migration
       t.integer "issue_id"
       t.integer "project_id"
       t.integer "user_id"
-      t.integer "department_id"
-      t.integer "sector_id"
       t.integer "source_id"
       t.string "title"
       t.text "description"
@@ -23,8 +21,6 @@ class CreateActivities < ActiveRecord::Migration
     add_index("activities", "issue_id")
     add_index("activities", "project_id")
     add_index("activities", "user_id")
-    add_index("activities", "department_id")
-    add_index("activities", "sector_id")
     add_index("activities", "source_id")
   end
 

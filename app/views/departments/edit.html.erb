@@ -2,7 +2,7 @@
 
 <%= link_to("<< Back to list", {:action => 'index'}) %>
 
-<div class="department new">
+<div class="department edit">
  <h2>Edit Department</h2>
 
  <%= form_for(:department, :url => {:action => 'update', :id => @department.id}) do |f| %>

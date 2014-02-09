@@ -1,0 +1,44 @@
+<%= @page_title = "Programs" %>
+
+<div class="progras index">
+ <h2>Programs</h2>
+  <%= link_to("Add New Program", {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@programs.size, 'program') %> found</div>
+  <table class="listing" summary="Program list">
+   <tr class="header">
+    <th>Issue</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Performance Indicator</th>
+    <th>Target</th>
+    <th>Amount</th>
+    <th>Start Date</th>
+    <th>Completion Date</th>
+    <th>Rank</th>
+    <th>Visible</th>
+    <th>Permalink</th>
+   </tr>
+
+   <% @programs.each do |program| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+     <td><%= program.issue.title if program.issue %></td>
+     <td><%= program.title %></td>
+     <td><%= program.description %></td>
+     <td><%= program.performance_indicator %></td>
+     <td><%= program.target %></td>
+     <td><%= number_to_currency(program.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+     <td><%= program.start %></td>
+     <td><%= program.completion %></td>
+     <td><%= program.rank %></td>
+     <td><%= program.visible %></td>
+     <td><%= program.permalink %></td>
+     <td class="actions">
+      <%= link_to("Show", {:action => 'show', :id => program.id}, :class => 'action show') %>
+      <%= link_to("Edit", {:action => 'edit', :id => program.id}, :class => 'action edit') %>
+      <%= link_to("Delete", {:action => 'delete', :id => program.id}, :class => 'action delete') %>
+      </td>
+     </tr>
+   <% end %>
+  </table>
+ </div>

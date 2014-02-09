@@ -1,0 +1,19 @@
+<%= @page_title = "Delete an activity" %>
+
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="activity delete">
+ <h2>Delete Activity</h2>
+
+ <%= form_for(:activity, :url => {:action => 'destroy', :id => @activity.id}) do |f| %>
+
+  <p>Are you sure you want to permanently delete this activity?</p>
+
+  <p class="reference-name"><%= @activity.title %></p>
+
+  <div class="form-buttons">
+   <%= submit_tag("Delete Activity") %>
+  </div>
+
+ <% end %>
+</div>

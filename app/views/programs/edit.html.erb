@@ -1,0 +1,17 @@
+<%= @page_title = "Edit Program" %>
+
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="program edit">
+ <h2>Edit Program</h2>
+
+ <%= form_for(:program, :url => {:action => 'update', :id => @program.id}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Update Program") %>
+  </div>
+
+ <% end%>
+</div>

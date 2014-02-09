@@ -1,0 +1,50 @@
+<% @page_title = "Activity" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="activity show">
+ <h2>Show Activity</h2>
+
+ <table summary="activity detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @activity.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @activity.description %></td>
+  </tr>
+ <tr>
+   <th>Performance Indicator</th>
+   <td><%= @activity.performance_indicator %></td>
+  </tr>
+ <tr>
+   <th>Target</th>
+   <td><%= @activity.target %></td>
+  </tr>
+ <tr>
+   <th>Amount</th>
+   <td><%= number_to_currency(@activity.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+  </tr>
+ <tr>
+   <th>Start Date</th>
+   <td><%= @activity.start %></td>
+  </tr>
+ <tr>
+   <th>Completion Date</th>
+   <td><%= @activity.completion %></td>
+  </tr>
+ <tr>
+   <th>Rank</th>
+   <td><%= @activity.rank %></td>
+  </tr>
+ <tr>
+   <th>Visible</th>
+   <td><%= @activity.visible %></td>
+  </tr>
+  <tr>
+   <th>Permalink</th>
+   <td><%= @activity.permalink %></td>
+  </tr>
+ </table>
+</div>
+

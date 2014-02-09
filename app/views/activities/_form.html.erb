@@ -1,0 +1,64 @@
+<%= error_messages_for(@activity) %>
+
+<table summary="Activity form fields">
+ <tr>
+  <th><%= f.label(:issue_id, "Issue") %></th>
+  <td><%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}) %></td>
+ </tr>
+
+ <tr>
+  <th><%= f.label(:project_id, "Project") %></th>
+  <td><%= f.select(:project_id, @projects.map {|p| [p.title, p.id]}) %></td>
+ </tr>
+
+ <tr>
+  <th><%= f.label(:title) %></th>
+  <td><%= f.text_field(:title) %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:description) %></th>
+  <td><%= f.text_area(:description, :size => "40x5") %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:performance_indicator) %></th>
+  <td><%= f.text_area(:performance_indicator, :size => "40x5") %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:target) %></th>
+  <td><%= f.text_area(:target, :size => "40x5") %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:amount) %></th>
+  <td><%= f.text_field(:amount) %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:start) %></th>
+  <td><%= f.date_select(:start) %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:completion) %></th>
+  <td><%= f.date_select(:completion) %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:rank) %></th>
+  <td><%= f.text_field(:rank) %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:visible) %></th>
+  <td><%= f.text_field(:visible) %></td>
+ </tr>
+ 
+ <tr>
+  <th><%= f.label(:permalink) %></th>
+  <td><%= f.text_field(:permalink) %></td>
+ </tr>
+
+</table>

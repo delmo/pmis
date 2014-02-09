@@ -17,8 +17,6 @@ ActiveRecord::Schema.define(version: 20140207185116) do
     t.integer  "issue_id"
     t.integer  "project_id"
     t.integer  "user_id"
-    t.integer  "department_id"
-    t.integer  "sector_id"
     t.integer  "source_id"
     t.string   "title"
     t.text     "description"
@@ -34,10 +32,8 @@ ActiveRecord::Schema.define(version: 20140207185116) do
     t.datetime "updated_at"
   end
 
-  add_index "activities", ["department_id"], name: "index_activities_on_department_id", using: :btree
   add_index "activities", ["issue_id"], name: "index_activities_on_issue_id", using: :btree
   add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
-  add_index "activities", ["sector_id"], name: "index_activities_on_sector_id", using: :btree
   add_index "activities", ["source_id"], name: "index_activities_on_source_id", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
@@ -100,8 +96,6 @@ ActiveRecord::Schema.define(version: 20140207185116) do
   create_table "programs", force: true do |t|
     t.integer  "issue_id"
     t.integer  "user_id"
-    t.integer  "department_id"
-    t.integer  "sector_id"
     t.integer  "source_id"
     t.string   "title"
     t.text     "description"
@@ -117,9 +111,7 @@ ActiveRecord::Schema.define(version: 20140207185116) do
     t.datetime "updated_at"
   end
 
-  add_index "programs", ["department_id"], name: "index_programs_on_department_id", using: :btree
   add_index "programs", ["issue_id"], name: "index_programs_on_issue_id", using: :btree
-  add_index "programs", ["sector_id"], name: "index_programs_on_sector_id", using: :btree
   add_index "programs", ["source_id"], name: "index_programs_on_source_id", using: :btree
   add_index "programs", ["user_id"], name: "index_programs_on_user_id", using: :btree
 
@@ -127,8 +119,6 @@ ActiveRecord::Schema.define(version: 20140207185116) do
     t.integer  "issue_id"
     t.integer  "program_id"
     t.integer  "user_id"
-    t.integer  "department_id"
-    t.integer  "sector_id"
     t.integer  "source_id"
     t.string   "title"
     t.text     "description"
@@ -144,10 +134,8 @@ ActiveRecord::Schema.define(version: 20140207185116) do
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["department_id"], name: "index_projects_on_department_id", using: :btree
   add_index "projects", ["issue_id"], name: "index_projects_on_issue_id", using: :btree
   add_index "projects", ["program_id"], name: "index_projects_on_program_id", using: :btree
-  add_index "projects", ["sector_id"], name: "index_projects_on_sector_id", using: :btree
   add_index "projects", ["source_id"], name: "index_projects_on_source_id", using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 

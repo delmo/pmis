@@ -1,0 +1,16 @@
+<%= @page_title = "New Project" %>
+
+<%= link_to("<< Back to list", {:action => "index"}) %>
+
+<div class="project new">
+ <h2>New Project</h2>
+
+ <%= form_for(:project, :url => {:action => 'create'}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Create Project") %>
+  </div>
+ <% end %>
+</div>

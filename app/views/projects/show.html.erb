@@ -1,0 +1,50 @@
+<% @page_title = "Project" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="project show">
+ <h2>Show Project</h2>
+
+ <table summary="project detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @project.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @project.description %></td>
+  </tr>
+ <tr>
+   <th>Performance Indicator</th>
+   <td><%= @project.performance_indicator %></td>
+  </tr>
+ <tr>
+   <th>Target</th>
+   <td><%= @project.target %></td>
+  </tr>
+ <tr>
+   <th>Amount</th>
+   <td><%= number_to_currency(@project.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+  </tr>
+ <tr>
+   <th>Start Date</th>
+   <td><%= @project.start %></td>
+  </tr>
+ <tr>
+   <th>Completion Date</th>
+   <td><%= @project.completion %></td>
+  </tr>
+ <tr>
+   <th>Rank</th>
+   <td><%= @project.rank %></td>
+  </tr>
+ <tr>
+   <th>Visible</th>
+   <td><%= @project.visible %></td>
+  </tr>
+  <tr>
+   <th>Permalink</th>
+   <td><%= @project.permalink %></td>
+  </tr>
+ </table>
+</div>
+

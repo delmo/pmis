@@ -1,0 +1,46 @@
+<%= @page_title = "Activities" %>
+
+<div class="pojects index">
+ <h2>Activities</h2>
+  <%= link_to("Add New Activity", {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@activities.size, 'activity') %> found</div>
+  <table class="listing" summary="activity list">
+   <tr class="header">
+    <th>Issue</th>
+    <th>Project</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Performance Indicator</th>
+    <th>Target</th>
+    <th>Amount</th>
+    <th>Start Date</th>
+    <th>Completion Date</th>
+    <th>Rank</th>
+    <th>Visible</th>
+    <th>Permalink</th>
+   </tr>
+
+   <% @activities.each do |activity| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+     <td><%= activity.issue.title if activity.issue %></td>
+     <td><%= activity.project.title if activity.project %></td>
+     <td><%= activity.title %></td>
+     <td><%= activity.description %></td>
+     <td><%= activity.performance_indicator %></td>
+     <td><%= activity.target %></td>
+     <td><%= number_to_currency(activity.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+     <td><%= activity.start %></td>
+     <td><%= activity.completion %></td>
+     <td><%= activity.rank %></td>
+     <td><%= activity.visible %></td>
+     <td><%= activity.permalink %></td>
+     <td class="actions">
+      <%= link_to("Show", {:action => 'show', :id => activity.id}, :class => 'action show') %>
+      <%= link_to("Edit", {:action => 'edit', :id => activity.id}, :class => 'action edit') %>
+      <%= link_to("Delete", {:action => 'delete', :id => activity.id}, :class => 'action delete') %>
+      </td>
+     </tr>
+   <% end %>
+  </table>
+ </div>

@@ -1,0 +1,16 @@
+<%= @page_title = "New Program" %>
+
+<%= link_to("<< Back to list", {:action => "index"}) %>
+
+<div class="program new">
+ <h2>New Program</h2>
+
+ <%= form_for(:program, :url => {:action => 'create'}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Create Program") %>
+  </div>
+ <% end %>
+</div>
