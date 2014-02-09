@@ -1,0 +1,31 @@
+<% @page_title = "Departments" %>
+<div class="departments index">
+ <h2>Departments</h2>
+
+ <%= link_to("Add New Department", {:action => 'new'}, :class => 'action new') %>
+
+ <div><%= pluralize(@departments.size, 'department') %> found</div>
+ <table class="listing" summary="Department list">
+  <tr class="header">
+   <th>Sector</th>
+   <th>Name</th>
+   <th>Description</th>
+   <th>Telephone</th>
+   <th>Email</th>
+  </tr>
+  <% @departments.each do |department| %>
+   <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= department.sector.name if department.sector %></td>
+    <td><%= department.name %></td>
+    <td><%= department.description %></td>
+    <td><%= department.telephone %></td>
+    <td><%= department.email %></td>
+    <td class="actions">
+     <%= link_to("Show", {:action => 'show', :id => department.id}, :class => 'action show') %>
+     <%= link_to("Edit", {:action => 'edit', :id => department.id}, :class => 'action edit') %>
+     <%= link_to("Delete", {:action => 'delete', :id => department.id}, :class => 'action delete') %>
+    </td>
+   </tr>
+  <% end %>
+ </table>
+</div>

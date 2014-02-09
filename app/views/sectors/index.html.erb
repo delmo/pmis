@@ -1,0 +1,37 @@
+<% @page_title = "Sectors" %>
+<div class="sectors index">
+ <h2>Sectors</h2>
+
+ <%= link_to("Add New Sector", {:action => 'new'}, :class => 'action new') %>
+
+ <div><%= pluralize(@sectors.size, 'sector') %> found</div>
+ <table class="listing" summary="Sector list">
+  <tr class="header">
+   <th>City</th>
+   <th>Name</th>
+   <th>Description</th>
+   <th>Goal</th>
+   <th>Development Thrust</th>
+   <th>Objective</th>
+   <th>Desired Outcome</th>
+   <th>Require Policy</th>
+  </tr>
+  <% @sectors.each do |sector| %>
+   <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= sector.city.name if sector.city %></td>
+    <td><%= sector.name %></td>
+    <td><%= sector.description %></td>
+    <td><%= sector.goal %></td>
+    <td><%= sector.development_thrust %></td>
+    <td><%= sector.objective %></td>
+    <td><%= sector.desired_outcome %></td>
+    <td><%= sector.required_policy %></td>
+    <td class="actions">
+     <%= link_to("Show", {:action => 'show', :id => sector.id}, :class => 'action show') %>
+     <%= link_to("Edit", {:action => 'edit', :id => sector.id}, :class => 'action edit') %>
+     <%= link_to("Delete", {:action => 'delete', :id => sector.id}, :class => 'action delete') %>
+    </td>
+   </tr>
+  <% end %>
+ </table>
+</div>

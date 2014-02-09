@@ -1,0 +1,24 @@
+<%= error_messages_for(@department) %>
+
+<table summary="Department form fields">
+ <tr>
+  <th><%= f.label(:sector_id, "Sector") %></th>
+  <td><%= f.select(:sector_id, @sectors.map {|s| [s.name, s.id]}) %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:name) %></th>
+  <td><%= f.text_field(:name) %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:description) %></th>
+  <td><%= f.text_area(:description, :size => "40x5") %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:telephone) %></th>
+  <td><%= f.text_field(:telephone) %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:email) %></th>
+  <td><%= f.text_field(:email) %></td>
+ </tr>
+</table>

@@ -1,0 +1,18 @@
+<% @page_title = "Delete a sector" %>
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="sectors delete">
+ <h2>Delete Sector</h2>
+
+ <%= form_for(:sector, :url => {:action => 'destroy', :id => @sector.id}) do |f| %>
+
+  <p>Are you sure you want to permanently delete this sector?</p>
+
+  <p class="reference-name"><%= @sector.name %></p>
+
+  <div class="form-buttons">
+   <%= submit_tag("Delete Sector") %>
+  </div>
+
+ <% end %>
+</div>

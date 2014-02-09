@@ -1,0 +1,16 @@
+<%= @page_title = "Edit Sector" %>
+<%= link_to("<< Back to list", {:action => 'index'}) %>
+
+<div class="sector new">
+ <h2>Edit Sector</h2>
+ 
+ <%= form_for(:sector, :url => {:action => 'update', :id => @sector.id}) do |f| %>
+
+  <%= render(:partial => "form", :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Update Sector") %>
+  </div>
+
+ <% end %>
+</div>

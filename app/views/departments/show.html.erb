@@ -1,0 +1,25 @@
+<% @page_title = "Department" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="departments show">
+ <h2>Show Department</h2>
+
+ <table summary="Department deatil view">
+  <tr>
+   <th>Name</th>
+   <td><%= @department.name %></td>
+  </tr>
+  <tr>
+   <th>Description</th>
+   <td><%= @department.description %></td>
+  </tr>
+  <tr>
+   <th>Telephone</th>
+   <td><%= @department.telephone %></td>
+  </tr>
+  <tr>
+   <th>Email</th>
+   <td><%= @department.email %></td>
+  </tr>
+ </table>
+</div>

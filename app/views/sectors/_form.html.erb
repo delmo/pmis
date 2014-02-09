@@ -1,0 +1,38 @@
+<%= error_messages_for(@sector) %>
+
+<table summary="Sector form fields">
+ <tr>
+  <th><%= f.label(:city_id, "Department") %></th>
+  <td><%= f.select(:city_id, @cities.map {|c| [c.name, c.id]}) %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:name) %></th>
+  <td><%= f.text_field(:name) %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:description) %></th>
+  <td><%= f.text_area(:description, :size => "40x5") %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:goal) %></th>
+  <td><%= f.text_area(:goal, :size => "40x5") %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:development_thrust) %></th>
+  <td><%= f.text_area(:development_thrust, :size => "40x5") %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:objective) %></th>
+  <td><%= f.text_area(:objective, :size => "40x5") %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:desired_outcome) %></th>
+  <td><%= f.text_area(:desired_outcome, :size => "40x5") %></td>
+ </tr>
+ <tr>
+  <th><%= f.label(:required_policy) %></th>
+  <td><%= f.text_area(:required_policy, :size => "40x5") %></td>
+ </tr>
+</table>
+
+
