@@ -8,7 +8,7 @@
 </head>
 <body>
   
- <nav class="navbar navbar-inverse" role="navigation">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
    <div class="container-fluid">
      <!-- Brand and toggle get grouped for better mobile display -->
      <div class="navbar-header">
@@ -72,8 +72,12 @@
    <%= yield %>
   </div>
  </div>
- <div id="footer">
-  <p id="copyright">&copy; ryandelmo.com / Ryan Delmo</p>
- </div>
+ <div class="container">
+  <div class="row">
+   <div class"nav-lg-12">
+    <p class="navbar-text pull-left"><span class="glyphicon glyphicon-copyright-mark"></span>  ryandelmo.com / Ryan Delmo</p>   
+   </div>
+  </div>
+</div>
 </body>
 </html>

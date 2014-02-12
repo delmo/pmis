@@ -1,6 +1,7 @@
-<%= @page_title = "Edit Activity" %>
-
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<% @page_title = "Edit Activity" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
 <div class="activity edit">
  <h2>Edit Activity</h2>
@@ -9,8 +10,8 @@
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-  <div class="form-buttons">
-   <%= submit_tag("Update Activity") %>
+  <div>
+   <%= submit_tag("Update Activity", class: "btn btn-default") %>
   </div>
 
  <% end%>
