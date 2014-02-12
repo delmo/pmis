@@ -5,12 +5,12 @@
 <div class="activity new">
  <h2>New Activity</h2>
 
- <%= form_for(:activity, :url => {:action => 'create'}) do |f| %>
+ <%= form_for(:activity, :url => {:action => 'create'}, :class => "form-group") do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-  <div class="form-buttons">
-   <%= submit_tag("Create Activity") %>
+  <div>
+   <%= submit_tag("Create Activity", :class => "btn btn-default") %>
   </div>
  <% end %>
 </div>
