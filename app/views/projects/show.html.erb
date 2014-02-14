@@ -1,10 +1,14 @@
 <% @page_title = "Project" %>
-<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<div class="project show">
- <h2>Show Project</h2>
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show Project
+ </div>
 
- <table summary="project detail view">
+ <table class="table" summary="project detail view">
   <tr>
    <th>Title</th>
    <td><%= @project.title %></td>

@@ -6,12 +6,12 @@
 <div class="activity edit">
  <h2>Edit Activity</h2>
 
- <%= form_for(:activity, :url => {:action => 'update', :id => @activity.id}) do |f| %>
+ <%= form_for(:activity, :url => {:action => 'update', :id => @activity.id}, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
   <div>
-   <%= submit_tag("Update Activity", class: "btn btn-default") %>
+   <%= submit_tag("Update Activity", :class => "btn btn-default") %>
   </div>
 
  <% end%>

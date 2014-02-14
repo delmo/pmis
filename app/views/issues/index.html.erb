@@ -1,29 +1,44 @@
 <% @page_title = "Issues" %>
-<div class="issues index">
- <h2>Issues</h2>
 
- <%= link_to("Add New Issue", {:action => 'new'}, :class => 'action new') %>
+<div id="pads">
+ <%= link_to("Add New Issue", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+</div>
 
- <div><%= pluralize(@issues.size, 'issue') %> found</div>
- <table class="listing" summary="Issue list">
-  <tr class="header">
-   <th>Department</th>
-   <th>Title</th>
-   <th>Implication</th>
-   <th>Intervention</th>
-  </tr>
-  <% @issues.each do |issue| %>
-   <tr class="<%= cycle('odd', 'even') %>">
-    <td><%= issue.department.name if issue.department %></td>
-    <td><%= issue.title %></td>
-    <td><%= issue.implication %></td>
-    <td><%= issue.intervention %></td>
-    <td class="actions">
-     <%= link_to("Show", {:action => 'show', :id => issue.id}, :class => 'action show') %>
-     <%= link_to("Edit", {:action => 'edit', :id => issue.id}, :class => 'action edit') %>
-     <%= link_to("Delete", {:action => 'delete', :id => issue.id}, :class => 'action delete') %>
-    </td>
-   </tr>
-  <% end %>
- </table>
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  issues
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @issues.size %> 
+  </div>
+   <%= @issues.size > 1 ? " issues found" : " issue found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="issue list">
+    <tr class="header">
+     <th>Department</th>
+     <th>Title</th>
+     <th>Implication</th>
+     <th>Intervention</th>
+     <th>Actions</th>
+    </tr>
+
+    <% @issues.each do |issue| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= issue.department.name if issue.department %></td>
+      <td><%= issue.title %></td>
+      <td><%= truncate(issue.implication, length: 50, omission: '...') %></td>
+      <td><%= truncate(issue.intervention, length: 50, omission: '...') %></td>
+      <td class="actions">
+      <%= link_to("Show", {:action => 'show', :id => issue.id}, :class => 'btn btn-primary btn-xs') %>
+      <%= link_to("Edit", {:action => 'edit', :id => issue.id}, :class => 'btn btn-default btn-xs') %>
+      <%= link_to("Delete", {:action => 'delete', :id => issue.id}, :class => 'btn btn-danger btn-xs') %>
+       </td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
 </div>

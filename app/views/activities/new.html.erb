@@ -2,10 +2,11 @@
 <div> 
  <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
 </div>
+
 <div class="activity new">
  <h2>New Activity</h2>
 
- <%= form_for(:activity, :url => {:action => 'create'}, :class => "form-group") do |f| %>
+ <%= form_for(:activity, :url => {:action => 'create'}, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 

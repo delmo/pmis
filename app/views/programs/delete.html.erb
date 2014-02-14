@@ -1,6 +1,8 @@
-<%= @page_title = "Delete a program" %>
+<% @page_title = "Delete Program" %>
 
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
 <div class="program delete">
  <h2>Delete Program</h2>
@@ -11,8 +13,8 @@
 
   <p class="reference-name"><%= @program.title %></p>
 
-  <div class="form-buttons">
-   <%= submit_tag("Delete Program") %>
+  <div>
+   <%= submit_tag("Delete Program", :class => "btn btn-danger btn") %>
   </div>
 
  <% end %>

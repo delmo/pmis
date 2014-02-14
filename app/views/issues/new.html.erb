@@ -1,16 +1,18 @@
-<%= @page_title = "New Issue" %>
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<% @page_title = "Create Issue" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<div class="issue new">
+<div class="issue create">
  <h2>Create Issue</h2>
- 
- <%= form_for(:issue, :url => {:action => 'create'}) do |f| %>
 
-  <%= render(:partial => "form", :locals => {:f => f}) %>
+ <%= form_for(:issue, :url => {:action => 'create'}, :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
 
   <div class="form-buttons">
-   <%= submit_tag("Create Issue") %>
+   <%= submit_tag("Create Issue", :class => "btn btn-default") %>
   </div>
 
- <% end %>
+ <% end%>
 </div>

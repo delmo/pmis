@@ -1,17 +1,17 @@
 <%= error_messages_for(@activity) %>
 
-<div  class="form-horizontal" summary="Activity form fields">
+<div  class="form-horizontal">
  <div class="form-group">
   <%= f.label(:issue_id, "Issue", :class => "col-sm-2 control-label") %> 
   <div class="col-sm-10">
-   <%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}, :class => "form-control") %> 
+   <%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}, {}, {:class => "form-control"}) %> 
   </div>
  </div>
 
  <div class="form-group">
   <%= f.label(:project_id, "Project", :class => "col-sm-2 control-label") %> 
   <div class="col-sm-10">
-   <%= f.select(:project_id, @projects.map {|p| [p.title, p.id]}, :class => "form-control") %> 
+   <%= f.select(:project_id, @projects.map {|p| [p.title, p.id]}, {}, {:class => "form-control"}) %> 
   </div>
  </div>
 
@@ -53,33 +53,25 @@
  <div class="form-group">
   <%= f.label(:start, :class => "col-sm-2 control-label") %> 
   <div class="col-sm-10">
-   <div class='input-group date' id='startpicker'>
-        <%= f.text_field(:start, :class => "form-control", :placeholder => "i.e. MM/DD/YYYY") %> 
+   <div class='input-group date'>
+        <%= f.text_field(:start, :class => "datepicker form-control", :placeholder => "i.e. MM/DD/YYYY") %> 
     <span class="input-group-addon">
      <span class="glyphicon glyphicon-calendar"></span>
     </span>
    </div>
   </div>
-  <script>$('#startpicker').datepicker({
-    format: 'mm/dd/yyyy'
-   });
-  </script>
 </div>
  
  <div class="form-group">
    <%= f.label(:completion, :class => "col-sm-2 control-label") %> 
   <div class="col-sm-10">
-   <div class='input-group date' id='endpicker'>
-    <%= f.text_field(:completion, :class => "form-control", :placeholder => "i.e. MM/DD/YYYY") %> 
+   <div class='input-group date'>
+    <%= f.text_field(:completion, :class => "datepicker form-control", :placeholder => "i.e. MM/DD/YYYY") %> 
     <span class="input-group-addon">
      <span class="glyphicon glyphicon-calendar"></span>
     </span>
    </div>
   </div>
-  <script>$('#endpicker').datepicker({
-    format: 'mm/dd/yyyy'
-   });
-  </script>
 </div>
 
  <div class="form-group">

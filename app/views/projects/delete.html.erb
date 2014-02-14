@@ -1,6 +1,8 @@
-<%= @page_title = "Delete a project" %>
+<% @page_title = "Delete Project" %>
 
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
 <div class="project delete">
  <h2>Delete Project</h2>
@@ -11,8 +13,8 @@
 
   <p class="reference-name"><%= @project.title %></p>
 
-  <div class="form-buttons">
-   <%= submit_tag("Delete Project") %>
+  <div>
+   <%= submit_tag("Delete Project", :class => "btn btn-danger btn") %>
   </div>
 
  <% end %>

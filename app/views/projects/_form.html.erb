@@ -1,64 +1,98 @@
 <%= error_messages_for(@project) %>
 
-<table summary="Project form fields">
- <tr>
-  <th><%= f.label(:issue_id, "Issue") %></th>
-  <td><%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}) %></td>
- </tr>
+<div  class="form-horizontal">
+ <div class="form-group">
+  <%= f.label(:issue_id, "Issue", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}, {}, {:class => "form-control"}) %> 
+  </div>
+ </div>
 
- <tr>
-  <th><%= f.label(:program_id, "Program") %></th>
-  <td><%= f.select(:program_id, @programs.map {|p| [p.title, p.id]}) %></td>
- </tr>
+ <div class="form-group">
+  <%= f.label(:program_id, "Program", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:program_id, @programs.map {|p| [p.title, p.id]}, {}, {:class => "form-control"}) %> 
+  </div>
+ </div>
 
- <tr>
-  <th><%= f.label(:title) %></th>
-  <td><%= f.text_field(:title) %></td>
- </tr>
+ <div class="form-group">
+  <%= f.label(:title, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:title, :class => "form-control", :placeholder => "Enter title") %> 
+  </div>
+ </div>
  
- <tr>
-  <th><%= f.label(:description) %></th>
-  <td><%= f.text_area(:description, :size => "40x5") %></td>
- </tr>
+ <div class="form-group">
+  <%= f.label(:description, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:description, :size => "40x5", :class => "form-control", :placeholder => "Description") %> 
+  </div>
+ </div>
  
- <tr>
-  <th><%= f.label(:performance_indicator) %></th>
-  <td><%= f.text_area(:performance_indicator, :size => "40x5") %></td>
- </tr>
+ <div class="form-group">
+  <%= f.label(:performance_indicator, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:performance_indicator, :size => "40x5", :class => "form-control", :placeholder => "Performance indicator") %> 
+  </div>
+ </div>
  
- <tr>
-  <th><%= f.label(:target) %></th>
-  <td><%= f.text_area(:target, :size => "40x5") %></td>
- </tr>
+ <div class="form-group">
+  <%= f.label(:target, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:target, :size => "40x5", :placeholder => "Target", :class => "form-control") %> 
+  </div>
+ </div>
  
- <tr>
-  <th><%= f.label(:amount) %></th>
-  <td><%= f.text_field(:amount) %></td>
- </tr>
+ <div class="form-group">
+  <%= f.label(:amount, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:amount, :placeholder => "Amount in Peso", :class => "form-control") %> 
+  </div>
+ </div>
  
- <tr>
-  <th><%= f.label(:start) %></th>
-  <td><%= f.date_select(:start) %></td>
- </tr>
+ <div class="form-group">
+  <%= f.label(:start, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <div class='input-group date'>
+        <%= f.text_field(:start, :class => "datepicker form-control", :placeholder => "i.e. MM/DD/YYYY") %> 
+    <span class="input-group-addon">
+     <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+   </div>
+  </div>
+</div>
  
- <tr>
-  <th><%= f.label(:completion) %></th>
-  <td><%= f.date_select(:completion) %></td>
- </tr>
- 
- <tr>
-  <th><%= f.label(:rank) %></th>
-  <td><%= f.text_field(:rank) %></td>
- </tr>
- 
- <tr>
-  <th><%= f.label(:visible) %></th>
-  <td><%= f.text_field(:visible) %></td>
- </tr>
- 
- <tr>
-  <th><%= f.label(:permalink) %></th>
-  <td><%= f.text_field(:permalink) %></td>
- </tr>
+ <div class="form-group">
+   <%= f.label(:completion, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <div class='input-group date'>
+    <%= f.text_field(:completion, :class => "datepicker form-control", :placeholder => "i.e. MM/DD/YYYY") %> 
+    <span class="input-group-addon">
+     <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+   </div>
+  </div>
+</div>
 
-</table>
+ <div class="form-group">
+   <%= f.label(:rank, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:rank, :placeholder => "Rank", :class => "form-control") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+   <%= f.label(:visible, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:visible, :class => "form-control") %> 
+  </div>
+ </div>
+  
+ <div class="form-group">
+   <%= f.label(:permalink, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:permalink, :placeholder => "Permalink", :class => "form-control") %> 
+  </div>
+ </div>
+
+</div>

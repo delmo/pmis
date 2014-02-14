@@ -1,19 +1,23 @@
 <% @page_title = "Issue" %>
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<div class="issues show">
- <h2>Show Issue</h2>
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show issue
+ </div>
 
- <table summary="Issue detail view">
+ <table class="table" summary="issue detail view">
   <tr>
    <th>Title</th>
    <td><%= @issue.title %></td>
   </tr>
-  <tr>
+ <tr>
    <th>Implication</th>
    <td><%= @issue.implication %></td>
   </tr>
-  <tr>
+ <tr>
    <th>Intervention</th>
    <td><%= @issue.intervention %></td>
   </tr>

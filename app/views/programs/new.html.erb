@@ -1,16 +1,18 @@
-<%= @page_title = "New Program" %>
+<% @page_title = "Create Program" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<%= link_to("<< Back to list", {:action => "index"}) %>
+<div class="program create">
+ <h2>Create Program</h2>
 
-<div class="program new">
- <h2>New Program</h2>
-
- <%= form_for(:program, :url => {:action => 'create'}) do |f| %>
+ <%= form_for(:program, :url => {:action => 'create'}, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
   <div class="form-buttons">
-   <%= submit_tag("Create Program") %>
+   <%= submit_tag("Create Program", :class => "btn btn-default") %>
   </div>
- <% end %>
+
+ <% end%>
 </div>

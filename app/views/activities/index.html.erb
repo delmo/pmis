@@ -1,18 +1,28 @@
 <% @page_title = "Activities" %>
 
+<div id="pads">
+ <%= link_to("Add New Activity", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+</div>
+
 <div class="panel panel-primary">
  <div class="panel-heading">Activities</div>
  <div class="panel-body">
 
-  <div><span class="badge"><%= pluralize(@activities.size, 'activity') %></span> found</div>
+  <div class="badge">
+   <%= @activities.size %>
+  </div>
+   <%= @activities.size > 1 ? " activities found" : " activity found" %>
  </div>
-  <table class="table" summary="activity list">
+
+ <div class="table-responsive">
+  <table class="table">
    <tr class="header">
     <th>Issue</th>
     <th>Project</th>
     <th>Title</th>
-    <th>Description</th>
     <th>Amount</th>
+    <th>Start Date</th>
+    <th>Completion Date</th>
     <th>Actions</th>
    </tr>
 
@@ -21,21 +31,16 @@
      <td><%= activity.issue.title if activity.issue %></td>
      <td><%= activity.project.title if activity.project %></td>
      <td><%= activity.title %></td>
-     <td><%= activity.description %></td>
      <td><%= number_to_currency(activity.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
-     <td class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-       Select
-       <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-       <li><%= link_to("Show", {:action => 'show', :id => activity.id}) %></li>
-       <li><%= link_to("Edit", {:action => 'edit', :id => activity.id}) %></li>
-       <li><%= link_to("Delete", {:action => 'delete', :id => activity.id}) %></li>
-      </ul>
+     <td><%= activity.start %></td>
+     <td><%= activity.completion %></td>
+     <td class="actions">
+      <%= link_to("Show", {:action => 'show', :id => activity.id}, :class => "btn btn-primary btn-xs") %>
+      <%= link_to("Edit", {:action => 'edit', :id => activity.id}, :class => "btn btn-default btn-xs") %>
+      <%= link_to("Delete", {:action => 'delete', :id => activity.id}, :class => "btn btn-danger btn-xs") %>
       </td>
      </tr>
    <% end %>
   </table>
  </div>
- <%= link_to("Add New Activity", {:action => 'new'}, :class => 'btn btn-primary') %>
+ </div>
