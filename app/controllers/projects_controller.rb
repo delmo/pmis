@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   def create
    @project = Project.new(project_params)
    if @project.save
-    flash[:notice] = "Project created successfully."
+    flash[:success] = "Project created successfully."
     redirect_to(:action => 'index')
    else
     @programs = Program.order("title ASC")
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
   def update
    @project = Project.find(params[:id])
    if @project.update_attributes(project_params)
-    flash[:notice] = "Project updated successfully."
+    flash[:success] = "Project updated successfully."
     redirect_to(:action => 'show', :id => @project.id)
    else
     @issues = Issue.order("title ASC")
@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
 
   def destroy
    project = Project.find(params[:id]).destroy
-   flash[:notice] = "#{project.title} destroyed successfully."
+   flash[:success] = "#{project.title} destroyed successfully."
    redirect_to(:action => 'index')
   end
 

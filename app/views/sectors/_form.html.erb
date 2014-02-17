@@ -2,7 +2,7 @@
 
 <table summary="Sector form fields">
  <tr>
-  <th><%= f.label(:city_id, "Department") %></th>
+  <th><%= f.label(:city_id, "City") %></th>
   <td><%= f.select(:city_id, @cities.map {|c| [c.name, c.id]}) %></td>
  </tr>
  <tr>

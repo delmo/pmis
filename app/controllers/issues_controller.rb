@@ -15,7 +15,7 @@ class IssuesController < ApplicationController
   def create
    @issue = Issue.new(issue_params)
    if @issue.save
-    flash[:notice] = "Issue created successfully."
+    flash[:success] = "Issue created successfully."
     redirect_to(:action => 'index')
    else
     @departments = Department.order("name ASC")
@@ -31,7 +31,7 @@ class IssuesController < ApplicationController
   def update
    @issue = Issue.find(params[:id])
    if @issue.update_attributes(issue_params)
-    flash[:notice] = "Issue updated succesfully."
+    flash[:success] = "Issue updated succesfully."
     redirect_to(:action => 'show', :id => @issue.id)
    else
     @departments = Department.order("name ASC")
@@ -45,7 +45,7 @@ class IssuesController < ApplicationController
 
   def destroy
    issue = Issue.find(params[:id]).destroy
-   flash[:notice] = "#{issue.title} destroyed successfully."
+   flash[:success] = "#{issue.title} destroyed successfully."
    redirect_to(:action => 'index')
   end
 

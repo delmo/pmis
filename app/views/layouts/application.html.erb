@@ -65,11 +65,13 @@
    </nav>
 
  <div class="container-fluid">
-  <% if !flash[:notice].blank? %>
-   <div class="alert alert-success">
-    <%= flash[:notice] %>
+
+  <% flash.each do |key, value| %>
+   <div class="alert alert-<%= key %>">
+    <%= value %>
    </div>
   <% end %>
+
   <div class="row">
    <%= yield %>
   </div>

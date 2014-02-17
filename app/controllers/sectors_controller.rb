@@ -15,7 +15,7 @@ class SectorsController < ApplicationController
   def create
    @sector = Sector.new(sector_params)
    if @sector.save
-    flash[:notice] = "Sector created successfully."
+    flash[:success] = "Sector created successfully."
     redirect_to(:action => 'index')
    else
     @cities = City.order("name ASC")
@@ -31,7 +31,7 @@ class SectorsController < ApplicationController
   def update
    @sector = Sector.find(params[:id])
    if @sector.update_attributes(sector_params)
-    flash[:notice] = "Sector updated successfully."
+    flash[:success] = "Sector updated successfully."
     redirect_to(:action => 'show', :id => @sector.id)
    else
     @cities = City.order("name ASC")
@@ -45,7 +45,7 @@ class SectorsController < ApplicationController
 
   def destroy
    sector = Sector.find(params[:id]).destroy
-   flash[:notice] = "#{sector.name} destroyed successfully."
+   flash[:success] = "#{sector.name} destroyed successfully."
    redirect_to(:action => 'index')
   end
 

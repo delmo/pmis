@@ -1,0 +1,45 @@
+<% @page_title = "Risks" %>
+
+<div id="pads">
+ <%= link_to("Add New Risk", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  risks
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @risks.size %> 
+  </div>
+   <%= @risks.size > 1 ? " risks found" : " risk found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="risk list">
+    <tr class="header">
+     <th>Program</th>
+     <th>Project</th>
+     <th>Activity</th>
+     <th>Title</th>
+     <th>Description</th>
+    </tr>
+
+    <% @risks.each do |risk| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= risk.program.title if risk.program %></td>
+      <td><%= risk.project.title if risk.project %></td>
+      <td><%= risk.activity.title if risk.activity %></td>
+      <td><%= risk.title %></td>
+      <td><%= truncate(risk.description, length: 50, omission: '...') %></td>
+      <td class="actions">
+      <%= link_to("Show", {:action => 'show', :id => risk.id}, :class => 'btn btn-primary btn-xs') %>
+      <%= link_to("Edit", {:action => 'edit', :id => risk.id}, :class => 'btn btn-default btn-xs') %>
+      <%= link_to("Delete", {:action => 'delete', :id => risk.id}, :class => 'btn btn-danger btn-xs') %>
+       </td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,18 @@
+<% @page_title = "Edit Risk" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="risk edit">
+ <h2>Edit Risk</h2>
+
+ <%= form_for(:risk, :url => {:action => 'update', :id => @risk.id}, :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Update Risk", :class => "btn btn-default") %>
+  </div>
+
+ <% end%>
+</div>

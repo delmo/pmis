@@ -15,4 +15,7 @@
 //= require jquery.ui.datepicker
 //= require turbolinks
 //= require bootstrap
+//= activities.js.coffee
+//= programs.js.coffee
+//= projects.js.coffee
 //= require_tree .

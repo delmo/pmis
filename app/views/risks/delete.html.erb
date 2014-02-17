@@ -1,0 +1,21 @@
+<% @page_title = "Delete Risk" %>
+
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="risk delete">
+ <h2>Delete Risk</h2>
+
+ <%= form_for(:risk, :url => {:action => 'destroy', :id => @risk.id}) do |f| %>
+
+  <p>Are you sure you want to permanently delete this risk?</p>
+
+  <p class="reference-name"><%= @risk.title %></p>
+
+  <div>
+   <%= submit_tag("Delete Risk", :class => "btn btn-danger btn") %>
+  </div>
+
+ <% end %>
+</div>

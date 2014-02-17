@@ -15,7 +15,7 @@ class ProgramsController < ApplicationController
   def create
    @program = Program.new(program_params)
    if @program.save
-    flash[:notice] = "Program created successfully."
+    flash[:success] = "Program created successfully."
     redirect_to(:action => 'index')
    else
     @issues = Issue.order("title ASC")
@@ -31,7 +31,7 @@ class ProgramsController < ApplicationController
   def update
    @program = Program.find(params[:id])
    if @program.update_attributes(program_params)
-    flash[:notice] = "Program updated successfully."
+    flash[:success] = "Program updated successfully."
     redirect_to(:action => 'show', :id => @program.id)
    else
     @issues = Issue.order("title ASC")
@@ -45,7 +45,7 @@ class ProgramsController < ApplicationController
 
   def destroy
    program = Program.find(params[:id]).destroy
-   flash[:notice] = "#{program.title} destroyed successfully."
+   flash[:success] = "#{program.title} destroyed successfully."
    redirect_to(:action => 'index')
   end
 

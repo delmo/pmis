@@ -16,7 +16,7 @@ class DepartmentsController < ApplicationController
    @department = Department.new(department_params)
    @sectors = Sector.order("name ASC")
    if @department.save
-    flash[:notice] = "Department created successfully."
+    flash[:success] = "Department created successfully."
     redirect_to(:action => 'index')
    else
     @sectors = Sector.order("name ASC")
@@ -33,7 +33,7 @@ class DepartmentsController < ApplicationController
    @department = Department.find(params[:id])
    @sectors = Sector.order("name ASC")
    if @department.update_attributes(department_params)
-    flash[:notice] = "Department updated successfully."
+    flash[:success] = "Department updated successfully."
     redirect_to(:action => 'show', :id => @department.id)
    else
     @sectors = Sector.order("name ASC")
@@ -47,7 +47,7 @@ class DepartmentsController < ApplicationController
 
   def destroy
    department = Department.find(params[:id]).destroy
-   flash[:notice] = "#department.name destroyed successfully."
+   flash[:success] = "#department.name destroyed successfully."
    redirect_to(:action => 'index')
   end
 

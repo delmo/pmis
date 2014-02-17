@@ -1,0 +1,38 @@
+<% @page_title = "Risk" %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show Risk
+ </div>
+
+ <table class="table" summary="risk detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @risk.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @risk.description %></td>
+  </tr>
+  <tr>
+   <th>Category</th>
+   <td><%= @risk.category %></td>
+  </tr>
+  <tr>
+   <th>Probability</th>
+   <td><%= @risk.probability %></td>
+  </tr>
+  <tr>
+   <th>Severity</th>
+   <td><%= @risk.severity %></td>
+  </tr>
+  <tr>
+   <th>Mitigation</th>
+   <td><%= @risk.mitigation %></td>
+  </tr>
+ </table>
+</div>
+

@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
   def create
    @activity = Activity.new(activity_params)
    if @activity.save
-    flash[:notice] = "Activity created successfully."
+    flash[:success] = "Activity created successfully."
     redirect_to(:action => 'index')
    else
     @projects = Project.order("title ASC")
@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
   def update
    @activity = Activity.find(params[:id])
    if @activity.update_attributes(activity_params)
-    flash[:notice] = "Activity updated successfully."
+    flash[:success] = "Activity updated successfully."
     redirect_to(:action => 'show', :id => @activity.id)
    else
     @issues = Issue.order("title ASC")
@@ -49,7 +49,7 @@ class ActivitiesController < ApplicationController
 
   def destroy
    activity = Activity.find(params[:id]).destroy
-   flash[:notice] = "#{activity.title} destroyed successfully."
+   flash[:success] = "#{activity.title} destroyed successfully."
    redirect_to(:action => 'index')
   end
 

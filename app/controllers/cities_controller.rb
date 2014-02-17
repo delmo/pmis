@@ -14,7 +14,7 @@ class CitiesController < ApplicationController
   def create
    @city = City.new(city_params)
    if @city.save
-    flash[:notice] = "City created successfully."
+    flash[:success] = "City created successfully."
     redirect_to(:action => 'index')
    else
     render('new')
@@ -28,7 +28,7 @@ class CitiesController < ApplicationController
   def update
    @city = City.find(params[:id])
    if @city.update_attributes(city_params)
-    flash[:notice] = "City updated successfully."
+    flash[:success] = "City updated successfully."
     redirect_to(:action => 'show', :id => @city.id)
    else
     render('edit')
@@ -41,7 +41,7 @@ class CitiesController < ApplicationController
 
   def destroy
    city = City.find(params[:id]).destroy
-   flash[:notice] = "#{city.name} city destroyed successfully."
+   flash[:success] = "#{city.name} city destroyed successfully."
    redirect_to(:action => 'index')
   end
 
