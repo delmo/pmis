@@ -1,4 +1,5 @@
 class ProgramsController < ApplicationController
+ before_filter :authenticate_user!, except: [:index, :show]
   def index
    @programs = Program.order("title ASC")
   end

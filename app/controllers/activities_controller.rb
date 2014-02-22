@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+ before_filter :authenticate_user!, except: [:index, :show]
+
   def index
    @activities = Activity.order("title ASC")
   end

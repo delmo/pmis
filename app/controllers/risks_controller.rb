@@ -1,4 +1,5 @@
 class RisksController < ApplicationController
+ before_filter :authenticate_user!, except: [:index, :show]
   def index
    @risks = Risk.order("created_at DESC")
   end

@@ -1,5 +1,7 @@
 Pmis::Application.routes.draw do
 
+ devise_for :users, path_names: { sign_in: "login", sign_out: "logout" }
+
  # if no route found, default will look at root
  # root :to => "docu#index"
  root "docu#index"

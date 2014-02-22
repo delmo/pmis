@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+ before_filter :authenticate_user!, except: [:index, :show]
   def index
    @cities = City.order("postcode ASC")
   end
