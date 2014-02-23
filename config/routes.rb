@@ -1,5 +1,19 @@
 Pmis::Application.routes.draw do
 
+ # Polymorphic routes
+ resources :activities do
+  resources :risks
+ end
+
+ resources :programs do
+  resources :risks
+ end
+ 
+ resources :projects do
+  resources :risks
+ end
+
+ # Devise route
  devise_for :users, path_names: { sign_in: "login", sign_out: "logout" }
 
  # if no route found, default will look at root

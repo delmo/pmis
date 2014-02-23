@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221225040) do
+ActiveRecord::Schema.define(version: 20140222123531) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -150,9 +150,6 @@ ActiveRecord::Schema.define(version: 20140221225040) do
   add_index "reports", ["portfolio_implement_id"], name: "index_reports_on_portfolio_implement_id", using: :btree
 
   create_table "risks", force: true do |t|
-    t.integer  "program_id"
-    t.integer  "project_id"
-    t.integer  "activity_id"
     t.string   "title"
     t.text     "description"
     t.string   "category"
@@ -161,11 +158,11 @@ ActiveRecord::Schema.define(version: 20140221225040) do
     t.text     "mitigation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "riskiness_id"
+    t.string   "riskiness_type"
   end
 
-  add_index "risks", ["activity_id"], name: "index_risks_on_activity_id", using: :btree
-  add_index "risks", ["program_id"], name: "index_risks_on_program_id", using: :btree
-  add_index "risks", ["project_id"], name: "index_risks_on_project_id", using: :btree
+  add_index "risks", ["riskiness_id", "riskiness_type"], name: "index_risks_on_riskiness_id_and_riskiness_type", using: :btree
 
   create_table "sectors", force: true do |t|
     t.integer  "city_id"

@@ -3,27 +3,6 @@
 <div  class="form-horizontal">
 
  <div class="form-group">
-  <%= f.label(:program_id, "Program", :class => "col-sm-2 control-label") %> 
-  <div class="col-sm-10">
-   <%= f.select(:program_id, @programs.map {|prog| [prog.title, prog.id]}, {:include_blank => "None"}, {:class => "form-control"}) %> 
-  </div>
- </div>
-
- <div class="form-group">
-  <%= f.label(:project_id, "Project", :class => "col-sm-2 control-label") %> 
-  <div class="col-sm-10">
-   <%= f.select(:project_id, @projects.map {|proj| [proj.title, proj.id]}, {:include_blank => "None"}, {:class => "form-control"}) %> 
-  </div>
- </div>
-
- <div class="form-group">
-  <%= f.label(:activity_id, "Activity", :class => "col-sm-2 control-label") %> 
-  <div class="col-sm-10">
-   <%= f.select(:activity_id, @activities.map {|act| [act.title, act.id]}, {:include_blank => "None"}, {:class => "form-control", :prompt => "Select Activity"}) %> 
-  </div>
- </div>
-
- <div class="form-group">
   <%= f.label(:title, :class => "col-sm-2 control-label") %> 
   <div class="col-sm-10">
    <%= f.text_field(:title, :class => "form-control", :placeholder => "Enter title") %> 

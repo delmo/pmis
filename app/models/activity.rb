@@ -1,6 +1,6 @@
 class Activity < ActiveRecord::Base
  belongs_to :issue
- has_many :risks
+ has_many :risks, as: :riskiness, dependent: :destroy
  belongs_to :project
  has_many :portfolio_implements
 

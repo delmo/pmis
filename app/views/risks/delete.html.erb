@@ -6,7 +6,7 @@
 
 <div class="risk delete">
  <h2>Delete Risk</h2>
-
+ <!-- :risk, :url => {:action => 'destroy', :id => @risk.id} -->
  <%= form_for(:risk, :url => {:action => 'destroy', :id => @risk.id}) do |f| %>
 
   <p>Are you sure you want to permanently delete this risk?</p>

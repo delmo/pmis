@@ -7,6 +7,8 @@ class ActivitiesController < ApplicationController
 
   def show
    @activity = Activity.find(params[:id])
+   @riskiness = @activity
+   @risks = @riskiness.risks
   end
 
   def new

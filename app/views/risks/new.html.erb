@@ -5,8 +5,8 @@
 
 <div class="risk edit">
  <h2>Edit Risk</h2>
-
- <%= form_for(:risk, :url => {:action => 'create', :id => @risk.id}, :html => {:role => "form"}) do |f| %>
+ <!-- :risk, :url => {:action => 'create', :id => @risk.id} -->
+ <%= form_for([@riskiness, @risk], :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
