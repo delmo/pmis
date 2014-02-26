@@ -39,7 +39,7 @@ class ActivitiesController < ApplicationController
    @activity = Activity.find(params[:id])
    if @activity.update_attributes(activity_params)
     flash[:success] = "Activity updated successfully."
-    redirect_to(:action => 'show', :id => @activity.id)
+    redirect_to(:action => 'index')
    else
     @issues = Issue.order("title ASC")
     @projects = Project.order("title ASC")

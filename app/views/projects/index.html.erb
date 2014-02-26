@@ -25,6 +25,7 @@
      <th>Amount</th>
      <th>Start Date</th>
      <th>Completion Date</th>
+     <th>Actions</th>
     </tr>
 
     <% @projects.each do |project| %>
@@ -36,9 +37,9 @@
       <td><%= project.start %></td>
       <td><%= project.completion %></td>
       <td class="actions">
-      <%= link_to("Show", {:action => 'show', :id => project.id}, :class => 'btn btn-primary btn-xs') %>
-      <%= link_to("Edit", {:action => 'edit', :id => project.id}, :class => 'btn btn-default btn-xs') %>
-      <%= link_to("Delete", {:action => 'delete', :id => project.id}, :class => 'btn btn-danger btn-xs') %>
+      <%= link_to("Show", project, :class => 'btn btn-primary btn-xs') %>
+      <%= link_to("Edit", edit_project_path(project), :class => 'btn btn-default btn-xs') %>
+      <%= link_to("Delete", project, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs') %>
        </td>
       </tr>
     <% end %>

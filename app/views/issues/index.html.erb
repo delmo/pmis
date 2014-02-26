@@ -32,9 +32,10 @@
       <td><%= truncate(issue.implication, length: 50, omission: '...') %></td>
       <td><%= truncate(issue.intervention, length: 50, omission: '...') %></td>
       <td class="actions">
-      <%= link_to("Show", {:action => 'show', :id => issue.id}, :class => 'btn btn-primary btn-xs') %>
-      <%= link_to("Edit", {:action => 'edit', :id => issue.id}, :class => 'btn btn-default btn-xs') %>
-      <%= link_to("Delete", {:action => 'delete', :id => issue.id}, :class => 'btn btn-danger btn-xs') %>
+      <%= link_to "Show", issue, :class => 'btn btn-primary btn-xs' %>
+      <%= link_to "Edit", edit_issue_path(issue), :class => 'btn btn-default btn-xs' %>
+      <%= link_to "Delete", issue, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs' %>
+
        </td>
       </tr>
     <% end %>

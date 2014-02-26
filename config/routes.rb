@@ -1,5 +1,13 @@
 Pmis::Application.routes.draw do
+ resources :blogs
+ resources :issues
+ #match "docu/index",
+ # :to => "docu#index",
+ # :via => :get
+ # Devise route
+ devise_for :users, path_names: { sign_in: "login", sign_out: "logout" }
 
+ 
  # Polymorphic routes
  resources :activities do
   resources :risks
@@ -13,20 +21,12 @@ Pmis::Application.routes.draw do
   resources :risks
  end
 
- # Devise route
- devise_for :users, path_names: { sign_in: "login", sign_out: "logout" }
-
  # if no route found, default will look at root
  # root :to => "docu#index"
  root "docu#index"
 
- # default route is
- # :controller/:action/:id
- match ':controller(/:action(/:id))', :via => [:get, :post]
-
  # with format like JSON
  #  match ':controller(/:action(/:id(.:format)))', :via => :get
- 
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -83,4 +83,6 @@ Pmis::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+#  match ':controller(/:action(/:id))', via: :all 
 end

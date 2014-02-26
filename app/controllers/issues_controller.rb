@@ -31,12 +31,13 @@ class IssuesController < ApplicationController
 
   def update
    @issue = Issue.find(params[:id])
+   @departments = Department.order("name ASC")
    if @issue.update_attributes(issue_params)
     flash[:success] = "Issue updated succesfully."
-    redirect_to(:action => 'show', :id => @issue.id)
+    redirect_to @issue
    else
     @departments = Department.order("name ASC")
-    render('edit')
+    render action: 'edit'
    end
   end
 

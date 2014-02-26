@@ -6,7 +6,8 @@
 <div class="issue edit">
  <h2>Edit Issue</h2>
 
- <%= form_for(:issue, :url => {:action => 'update', :id => @issue.id}, :html => {:role => "form"}) do |f| %>
+ <%= form_for(@issue, :html => {:role => "form"}) do |f| %>
+ <%# form_for(:issue, :url => {:action => 'update', :id => @issue.id}, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 

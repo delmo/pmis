@@ -6,7 +6,7 @@
 <div class="program edit">
  <h2>Edit Program</h2>
 
- <%= form_for(:program, :url => {:action => 'update', :id => @program.id}, :html => {:role => "form"}) do |f| %>
+ <%= form_for(@program, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 

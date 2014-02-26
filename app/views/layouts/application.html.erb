@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <!-- <meta name="viewport" content="width=device-with", initial-scale=1.0"> -->
  <title>PMIS | <%= @page_title || "Admin" %></title>
+ <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Project Management Information System - Pinamalayan" %>">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -18,7 +20,7 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </button>
-       <a class="navbar-brand" href="#">PMIS</a>
+       <%= link_to 'PMIS', root_path, class: "navbar-brand" %>
      </div>
 
      <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,10 +31,10 @@
          <li class="dropdown">
            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
            <ul class="dropdown-menu">
-            <li><%= link_to("Issues", controller: "issues", action: "index") %></li>
-            <li><%= link_to("Programs", controller: "programs", action: "index") %></li>
-            <li><%= link_to("Projects", controller: "projects", action: "index") %></li>
-            <li><%= link_to("Activities", controller: "activities", action: "index") %></li>
+            <li><%= link_to "Issues", issues_path %></li>
+            <li><%= link_to "Programs", programs_path %></li>
+            <li><%= link_to "Projects", projects_path %></li>
+            <li><%= link_to "Activities", activities_path %></li>
              <li class="divider"></li>
              <li><a href="#">Status</a></li>
              <li><a href="#">Report</a></li>
