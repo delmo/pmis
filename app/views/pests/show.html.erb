@@ -1,0 +1,26 @@
+<% @page_title = "PEST" %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show PEST
+ </div>
+
+ <table class="table" summary="pest detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @pest.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @pest.description %></td>
+  </tr>
+  <tr>
+   <th>Justification</th>
+   <td><%= @pest.justification %></td>
+  </tr>
+ </table>
+</div>
+

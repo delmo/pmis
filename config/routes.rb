@@ -10,15 +10,24 @@ Pmis::Application.routes.draw do
  
  # Polymorphic routes
  resources :activities do
+  resources :relations
+  resources :pests
   resources :risks
+  resources :in_lines
  end
 
  resources :programs do
+  resources :relations
+  resources :pests
   resources :risks
+  resources :in_lines
  end
  
  resources :projects do
+  resources :relations
+  resources :pests
   resources :risks
+  resources :in_lines
  end
 
  # if no route found, default will look at root

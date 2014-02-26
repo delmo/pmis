@@ -1,6 +1,9 @@
 class Activity < ActiveRecord::Base
  belongs_to :issue
  has_many :risks, as: :riskiness, dependent: :destroy
+ has_many :in_lines, as: :achievable, dependent: :destroy
+ has_many :pests, as: :feasible, dependent: :destroy
+ has_many :relations, as: :linkable, dependent: :destroy
  belongs_to :project
  has_many :portfolio_implements
 

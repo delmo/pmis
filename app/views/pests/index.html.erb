@@ -1,0 +1,43 @@
+<% @page_title = "PESTs" %>
+
+<div id="pads">
+ <%= link_to("Add New pest", [:new, @feasible, :pest], :class => 'btn btn-success btn-sm') %>
+ <%= link_to("Back to #{@feasible.title}", @feasible, :class => "btn btn-default btn-sm") %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  PESTs 
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @pests.size %> 
+  </div>
+   <%= @pests.size > 1 ? " pests found" : " pest found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="pest list">
+    <tr class="header">
+     <th>Title</th>
+     <th>Description</th>
+     <th>Justification</th>
+     <th>Actions</th>
+    </tr>
+
+    <% @pests.each do |pest| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= pest.title %></td>
+      <td><%= truncate(pest.description, length: 50, omission: '...') %></td>
+      <td><%= truncate(pest.justification, length: 50, omission: '...') %></td>
+      <td class="actions">
+      <%= link_to("Show", {:action => 'show', :id => pest.id}, :class => 'btn btn-primary btn-xs') %>
+      <%= link_to("Edit", {:action => 'edit', :id => pest.id}, :class => 'btn btn-default btn-xs') %>
+      <%= link_to("Delete", [@feasible, pest], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+       </td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
+</div>

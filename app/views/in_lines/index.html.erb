@@ -1,0 +1,43 @@
+<% @page_title = "In_lines" %>
+
+<div id="pads">
+ <%= link_to("Add New In_line", [:new, @achievable, :in_line], :class => 'btn btn-success btn-sm') %>
+ <%= link_to("Back to #{@achievable.title}", @achievable, :class => "btn btn-default btn-sm") %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  In_lines
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @in_lines.size %> 
+  </div>
+   <%= @in_lines.size > 1 ? " in_lines found" : " in_line found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="in_line list">
+    <tr class="header">
+     <th>Title</th>
+     <th>Description</th>
+     <th>Justification</th>
+     <th>Actions</th>
+    </tr>
+
+    <% @in_lines.each do |in_line| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= in_line.title %></td>
+      <td><%= truncate(in_line.description, length: 50, omission: '...') %></td>
+      <td><%= truncate(in_line.justification, length: 50, omission: '...') %></td>
+      <td class="actions">
+      <%= link_to("Show", {:action => 'show', :id => in_line.id}, :class => 'btn btn-primary btn-xs') %>
+      <%= link_to("Edit", {:action => 'edit', :id => in_line.id}, :class => 'btn btn-default btn-xs') %>
+      <%= link_to("Delete", [@achievable, in_line], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+       </td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
+</div>

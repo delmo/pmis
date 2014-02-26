@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226152530) do
+ActiveRecord::Schema.define(version: 20140226173753) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 20140226152530) do
 
   add_index "departments", ["sector_id"], name: "index_departments_on_sector_id", using: :btree
 
+  create_table "in_lines", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "justification"
+    t.integer  "achievable_id"
+    t.string   "achievable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "in_lines", ["achievable_id", "achievable_type"], name: "index_in_lines_on_achievable_id_and_achievable_type", using: :btree
+
   create_table "issues", force: true do |t|
     t.integer  "department_id"
     t.string   "title"
@@ -80,6 +92,18 @@ ActiveRecord::Schema.define(version: 20140226152530) do
   end
 
   add_index "issues", ["department_id"], name: "index_issues_on_department_id", using: :btree
+
+  create_table "pests", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "justification"
+    t.integer  "feasible_id"
+    t.string   "feasible_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pests", ["feasible_id", "feasible_type"], name: "index_pests_on_feasible_id_and_feasible_type", using: :btree
 
   create_table "portfolio_implements", force: true do |t|
     t.integer  "department_id"
@@ -145,6 +169,18 @@ ActiveRecord::Schema.define(version: 20140226152530) do
   add_index "projects", ["program_id"], name: "index_projects_on_program_id", using: :btree
   add_index "projects", ["source_id"], name: "index_projects_on_source_id", using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+
+  create_table "relations", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "justification"
+    t.integer  "linkable_id"
+    t.string   "linkable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relations", ["linkable_id", "linkable_type"], name: "index_relations_on_linkable_id_and_linkable_type", using: :btree
 
   create_table "reports", force: true do |t|
     t.integer  "portfolio_implement_id"

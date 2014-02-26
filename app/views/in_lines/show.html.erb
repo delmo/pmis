@@ -1,0 +1,26 @@
+<% @page_title = "In-line" %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show In-line
+ </div>
+
+ <table class="table" summary="in_line detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @in_line.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @in_line.description %></td>
+  </tr>
+  <tr>
+   <th>Justification</th>
+   <td><%= @in_line.justification %></td>
+  </tr>
+ </table>
+</div>
+

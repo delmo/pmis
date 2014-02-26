@@ -1,0 +1,17 @@
+<% @page_title = "Edit PEST" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="PEST edit">
+ <h2>Edit PEST</h2>
+ <%= form_for([@feasible, @pest], :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Update PEST", :class => "btn btn-default") %>
+  </div>
+
+ <% end%>
+</div>

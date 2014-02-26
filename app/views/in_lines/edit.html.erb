@@ -1,0 +1,18 @@
+<% @page_title = "Edit In-line" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="in-line edit">
+ <h2>Edit In-line</h2>
+ <!-- :risk, :url => {:action => 'update', :id => @risk.id} -->
+ <%= form_for([@achievable, @in_line], :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Update In-line", :class => "btn btn-default") %>
+  </div>
+
+ <% end%>
+</div>

@@ -1,0 +1,26 @@
+<% @page_title = "Relation" %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show relation
+ </div>
+
+ <table class="table" summary="relation detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @relation.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @relation.description %></td>
+  </tr>
+  <tr>
+   <th>Justification</th>
+   <td><%= @relation.justification %></td>
+  </tr>
+ </table>
+</div>
+

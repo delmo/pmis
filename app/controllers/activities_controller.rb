@@ -9,6 +9,8 @@ class ActivitiesController < ApplicationController
    @activity = Activity.find(params[:id])
    @riskiness = @activity
    @risks = @riskiness.risks
+   @achievable = @activity
+   @in_lines = @achievable.in_lines
   end
 
   def new

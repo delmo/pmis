@@ -1,0 +1,17 @@
+<% @page_title = "Edit Relation" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="relation edit">
+ <h2>Edit Relation</h2>
+ <%= form_for([@linkable, @relation], :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-buttons">
+   <%= submit_tag("Update Relation", :class => "btn btn-default") %>
+  </div>
+
+ <% end%>
+</div>
