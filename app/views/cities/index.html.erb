@@ -1,33 +1,43 @@
-<% @page_title = "Cities" %>
-<div class="cities index">
- <h2>Cities</h2>
+<% @page_title = "City" %>
 
- <%= link_to("Add New City", {:action => 'new'}, :class => 'action new') %>
+<div id="pads">
+ <% link_to("Add New City", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+</div>
 
- <div><%= pluralize(@cities.size, 'city') %> found</div>
- <table class="listing" summary="City list">
-  <tr class="header">
-   <th>Name</th>
-   <th>Address</th>
-   <th>Postcode</th>
-   <th>Telephone</th>
-   <th>Website</th>
-   <th>Email</th>
-  </tr>
-  <% @cities.each do |city| %>
-   <tr class="<%= cycle('odd', 'even') %>">
-    <td><%= city.name %></td>
-    <td><%= city.address %></td>
-    <td><%= city.postcode %></td>
-    <td><%= city.telephone %></td>
-    <td><%= city.website %></td>
-    <td><%= city.email %></td>
-    <td class="actions">
-     <%= link_to("Show", {:action => 'show', :id => city.id}, :class => 'action show') %>
-     <%= link_to("Edit", {:action => 'edit', :id => city.id}, :class => 'action edit') %>
-     <%= link_to("Delete", {:action => 'delete', :id => city.id}, :class => 'action delete') %>
-    </td>
-   </tr>
-  <% end %>
- </table>
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  Welcome
+ </div>
+ <div class="panel-body">
+
+  <div class="#badge">
+   <% @cities.size %> 
+  </div>
+   <% @cities.size > 1 ? " citys found" : " city found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="city list">
+    <tr class="header">
+     <th>Name</th>
+     <th>Vision</th>
+     <th>Mission</th>
+     <th>Actions</th>
+    </tr>
+
+    <% @cities.each do |city| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= city.name %></td>
+      <td><%= city.vision %></td>
+      <td><%= city.mission %></td>
+      <td class="actions">
+      <%= link_to "More", city, :class => 'btn btn-primary btn-xs' %>
+      <%= link_to "Edit", edit_city_path(city), :class => 'btn btn-default btn-xs' %>
+      <% link_to "Delete", city, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs' %>
+
+       </td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
 </div>

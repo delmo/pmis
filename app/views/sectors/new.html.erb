@@ -1,16 +1,21 @@
-<%= @page_title = "New Sector" %>
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<% @page_title = "Create Sector" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<div class="sector new">
+<div class="sector create">
  <h2>Create Sector</h2>
  
- <%= form_for(:sector, :url => {:action => 'create'}) do |f| %>
+ <%= form_for(@sector, :html => {:role => "form"}) do |f| %>
 
-  <%= render(:partial => "form", :locals => {:f => f}) %>
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-  <div class="form-buttons">
-   <%= submit_tag("Create Sector") %>
+  <div class="form-group">
+   <div class="col-sm-2"></div>
+   <div class="col-sm-10">
+   <%= submit_tag("Create Sector", :class => "btn btn-default") %>
+  </div>
   </div>
 
- <% end %>
+ <% end%>
 </div>

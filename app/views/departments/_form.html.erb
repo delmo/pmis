@@ -1,24 +1,40 @@
 <%= error_messages_for(@department) %>
 
-<table summary="Department form fields">
- <tr>
-  <th><%= f.label(:sector_id, "Sector") %></th>
-  <td><%= f.select(:sector_id, @sectors.map {|s| [s.name, s.id]}) %></td>
- </tr>
- <tr>
-  <th><%= f.label(:name) %></th>
-  <td><%= f.text_field(:name) %></td>
- </tr>
- <tr>
-  <th><%= f.label(:description) %></th>
-  <td><%= f.text_area(:description, :size => "40x5") %></td>
- </tr>
- <tr>
-  <th><%= f.label(:telephone) %></th>
-  <td><%= f.text_field(:telephone) %></td>
- </tr>
- <tr>
-  <th><%= f.label(:email) %></th>
-  <td><%= f.text_field(:email) %></td>
- </tr>
-</table>
+<div  class="form-horizontal">
+ <div class="form-group">
+  <%= f.label(:sector_id, "Sector", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:sector_id, @sectors.map {|s| [s.name, s.id]}, {}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:name, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:name, :class => "form-control", :placeholder => "Name") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:description, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:description, :size => "40x5", :class => "form-control", :placeholder => "Department's function") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:telephone, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:telephone, :class => "form-control", :placeholder => "Telephone") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:email, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:email, :class => "form-control", :placeholder => "Email") %> 
+  </div>
+ </div>
+
+</div>
+

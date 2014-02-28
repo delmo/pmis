@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226173753) do
+ActiveRecord::Schema.define(version: 20140227225709) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 20140226173753) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_risky"
+    t.boolean  "not_in_line"
+    t.boolean  "not_related"
+    t.boolean  "not_pest"
   end
 
   add_index "activities", ["issue_id"], name: "index_activities_on_issue_id", using: :btree
@@ -140,6 +144,10 @@ ActiveRecord::Schema.define(version: 20140226173753) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_risky"
+    t.boolean  "not_in_line"
+    t.boolean  "not_related"
+    t.boolean  "not_pest"
   end
 
   add_index "programs", ["issue_id"], name: "index_programs_on_issue_id", using: :btree
@@ -163,6 +171,10 @@ ActiveRecord::Schema.define(version: 20140226173753) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_risky"
+    t.boolean  "not_in_line"
+    t.boolean  "not_related"
+    t.boolean  "not_pest"
   end
 
   add_index "projects", ["issue_id"], name: "index_projects_on_issue_id", using: :btree

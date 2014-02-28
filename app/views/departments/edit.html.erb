@@ -1,17 +1,22 @@
-<%= @page_title = "Edit Department" %>
+<% @page_title = "Edit Department" %>
 
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<div class="department edit">
+<div class="department update">
  <h2>Edit Department</h2>
 
- <%= form_for(:department, :url => {:action => 'update', :id => @department.id}) do |f| %>
+ <%= form_for(:department, :url => {:action => 'update'}, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-  <div class="form-buttons">
-   <%= submit_tag("Update Department") %>
+  <div class="form-group">
+   <div class="col-sm-2"></div>
+   <div class="col-sm-10">
+    <%= submit_tag("Update Department", :class => "btn btn-default") %>
+   </div>
   </div>
 
- <% end %>
+ <% end%>
 </div>

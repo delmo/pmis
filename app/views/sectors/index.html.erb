@@ -1,37 +1,39 @@
 <% @page_title = "Sectors" %>
-<div class="sectors index">
- <h2>Sectors</h2>
 
- <%= link_to("Add New Sector", {:action => 'new'}, :class => 'action new') %>
+<div id="pads">
+ <%= link_to("Add New Sector", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+</div>
 
- <div><%= pluralize(@sectors.size, 'sector') %> found</div>
- <table class="listing" summary="Sector list">
-  <tr class="header">
-   <th>City</th>
-   <th>Name</th>
-   <th>Description</th>
-   <th>Goal</th>
-   <th>Development Thrust</th>
-   <th>Objective</th>
-   <th>Desired Outcome</th>
-   <th>Require Policy</th>
-  </tr>
-  <% @sectors.each do |sector| %>
-   <tr class="<%= cycle('odd', 'even') %>">
-    <td><%= sector.city.name if sector.city %></td>
-    <td><%= sector.name %></td>
-    <td><%= sector.description %></td>
-    <td><%= sector.goal %></td>
-    <td><%= sector.development_thrust %></td>
-    <td><%= sector.objective %></td>
-    <td><%= sector.desired_outcome %></td>
-    <td><%= sector.required_policy %></td>
-    <td class="actions">
-     <%= link_to("Show", {:action => 'show', :id => sector.id}, :class => 'action show') %>
-     <%= link_to("Edit", {:action => 'edit', :id => sector.id}, :class => 'action edit') %>
-     <%= link_to("Delete", {:action => 'delete', :id => sector.id}, :class => 'action delete') %>
-    </td>
-   </tr>
-  <% end %>
- </table>
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  sectors
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @sectors.size %> 
+  </div>
+   <%= @sectors.size > 1 ? " sectors found" : " sector found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="sector list">
+    <tr class="header">
+     <th>Name</th>
+     <th>Actions</th>
+    </tr>
+
+    <% @sectors.each do |sector| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= sector.name %></td>
+      <td class="actions">
+      <%= link_to "Show", sector, :class => 'btn btn-primary btn-xs' %>
+      <%= link_to "Edit", edit_sector_path(sector), :class => 'btn btn-default btn-xs' %>
+      <%= link_to "Delete", sector, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs' %>
+
+       </td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
 </div>

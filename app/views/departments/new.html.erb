@@ -1,17 +1,20 @@
-<%= @page_title = "New Department" %>
+<% @page_title = "New Department" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<%= link_to("<< Back to list", {:action => 'index'}) %>
-
-<div class="department new">
+<div class="department create">
  <h2>New Department</h2>
-
- <%= form_for(:department, :url => {:action => 'create'}) do |f| %>
+ <%= form_for(:department, :url => {:action => 'create'}, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 
-  <div class="form-buttons">
-   <%= submit_tag("Create Department") %>
+  <div class="form-group">
+   <div class="col-sm-2"></div>
+   <div class="col-sm-10">
+    <%= submit_tag("Create Department", :class => "btn btn-default") %>
+   </div>
   </div>
 
- <% end %>
+ <% end%>
 </div>

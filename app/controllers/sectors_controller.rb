@@ -10,7 +10,7 @@ class SectorsController < ApplicationController
 
   def new
    @sector = Sector.new
-   @cities = City.order("name ASC")
+   @cities = City.first
   end
 
   def create

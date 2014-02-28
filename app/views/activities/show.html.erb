@@ -51,7 +51,7 @@
   </tr>
  </table>
 </div>
-<%= link_to("Risk", activity_risks_path(@activity), :class => "btn btn-warning") %>
-<%= link_to("In-line", activity_in_lines_path(@activity), :class => "btn btn-warning") %>
-<%= link_to("Relation", activity_relations_path(@activity), :class => "btn btn-warning") %>
-<%= link_to("PEST", activity_pests_path(@activity), :class => "btn btn-warning") %>
+<%= link_to("Risk", activity_risks_path(@activity), :class => "#{@activity.is_risky == true ? 'btn btn-danger' : 'btn btn-success'}") %>
+<%= link_to("In-line", activity_in_lines_path(@activity), :class => "btn btn-#{@activity.not_in_line == true ? 'danger' : 'success'}") %>
+<%= link_to("Relation", activity_relations_path(@activity), :class => "btn btn-#{@activity.not_related == true ? 'danger' : 'success'}") %>
+<%= link_to("PEST", activity_pests_path(@activity), :class => "btn btn-#{@activity.not_pest == true ? 'danger' : 'success'}") %>

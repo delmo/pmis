@@ -52,7 +52,7 @@ class ProgramsController < ApplicationController
 
   private
    def program_params
-    params.require(:program).permit(:issue_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink)
+    params.require(:program).permit(:issue_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_related, :not_pest)
    end
 
 end

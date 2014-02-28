@@ -95,4 +95,35 @@
   </div>
  </div>
 
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+    <%= f.check_box :is_risky %>
+    <%= f.label("With excessive risk or with risk culture?", class: "control-label") %>
+  </div>
+ </div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+    <%= f.check_box :not_in_line %>
+    <%= f.label("Not in-line with available resources, mission, or other criteria?", class: "control-label") %>
+  </div>
+ </div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+    <%= f.check_box :not_related %>
+    <%= f.label("Not sound politically, socially, or for business relationships?", class: "control-label") %>
+  </div>
+ </div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+   <%= f.check_box :not_pest %>
+   <%= f.label("Not feasible both technology and economically? (PEST)", class: "control-label") %>
+  </div>
+ </div>
 </div>

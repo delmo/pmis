@@ -1,38 +1,61 @@
 <%= error_messages_for(@sector) %>
 
-<table summary="Sector form fields">
- <tr>
-  <th><%= f.label(:city_id, "City") %></th>
-  <td><%= f.select(:city_id, @cities.map {|c| [c.name, c.id]}) %></td>
- </tr>
- <tr>
-  <th><%= f.label(:name) %></th>
-  <td><%= f.text_field(:name) %></td>
- </tr>
- <tr>
-  <th><%= f.label(:description) %></th>
-  <td><%= f.text_area(:description, :size => "40x5") %></td>
- </tr>
- <tr>
-  <th><%= f.label(:goal) %></th>
-  <td><%= f.text_area(:goal, :size => "40x5") %></td>
- </tr>
- <tr>
-  <th><%= f.label(:development_thrust) %></th>
-  <td><%= f.text_area(:development_thrust, :size => "40x5") %></td>
- </tr>
- <tr>
-  <th><%= f.label(:objective) %></th>
-  <td><%= f.text_area(:objective, :size => "40x5") %></td>
- </tr>
- <tr>
-  <th><%= f.label(:desired_outcome) %></th>
-  <td><%= f.text_area(:desired_outcome, :size => "40x5") %></td>
- </tr>
- <tr>
-  <th><%= f.label(:required_policy) %></th>
-  <td><%= f.text_area(:required_policy, :size => "40x5") %></td>
- </tr>
-</table>
+<div  class="form-horizontal">
+ <div class="form-group">
+  <% f.label(:city_id, "City", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <% f.number_field(:city_id, value: @cities.id) %> 
+  </div>
+ </div>
 
+ <div class="form-group">
+  <%= f.label(:name, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:name, :class => "form-control", :placeholder => "Sector name") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:description, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:description, :size => "40x5", :class => "form-control", :placeholder => "Description") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:goal, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:goal, :size => "40x5", :class => "form-control", :placeholder => "Sector's goals") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:development_thrust, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:development_thrust, :size => "40x5", :class => "form-control", :placeholder => "Sector's development thrust") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:objective, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:objective, :size => "40x5", :class => "form-control", :placeholder => "Sector's objective") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:desired_outcome, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:desired_outcome, :size => "40x5", :class => "form-control", :placeholder => "Sector's desired outcome") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:required_policy, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:required_policy, :size => "40x5", :class => "form-control", :placeholder => "Sector's required policy") %> 
+  </div>
+ </div>
+
+</div>
 

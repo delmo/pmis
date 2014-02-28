@@ -1,10 +1,14 @@
 <% @page_title = "Sector" %>
-<%= link_to("<< Back to list", {:action => 'index'}) %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<div class="sectors show">
- <h2>Show Sector</h2>
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show Sector
+ </div>
 
- <table summary="sector detail view">
+ <table class="table" summary="sector detail view">
   <tr>
    <th>Name</th>
    <td><%= @sector.name %></td>
@@ -16,7 +20,7 @@
   <tr>
    <th>Goal</th>
    <td><%= @sector.goal %></td>
-  </tr> 
+  </tr>
   <tr>
    <th>Development Thrust</th>
    <td><%= @sector.development_thrust %></td>
@@ -33,7 +37,6 @@
    <th>Required Policy</th>
    <td><%= @sector.required_policy %></td>
   </tr>
-
  </table>
 </div>
 

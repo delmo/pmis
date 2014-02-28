@@ -61,7 +61,7 @@ class ActivitiesController < ApplicationController
 
   private
    def activity_params
-    params.require(:activity).permit(:issue_id, :project_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink)
+    params.require(:activity).permit(:issue_id, :project_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_ralated, :not_pest)
    end
 
 end

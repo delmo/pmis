@@ -1,6 +1,10 @@
 Pmis::Application.routes.draw do
  resources :blogs
  resources :issues
+ resources :departments
+ resources :sectors
+ resources :cities
+
  #match "docu/index",
  # :to => "docu#index",
  # :via => :get
