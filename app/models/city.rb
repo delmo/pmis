@@ -1,6 +1,6 @@
 class City < ActiveRecord::Base
  has_many :sectors
- validates :name, :postcode, :vision, :mission, :development_thrust,  presence: true
+ validates :name, :address, :postcode, :vision, :mission, :development_thrust,  presence: true
 
  validates :email, presence: true, email: true
 

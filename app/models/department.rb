@@ -3,6 +3,8 @@ class Department < ActiveRecord::Base
  has_many :portfolio_implements
  has_many :issues
 
+ validates :name, uniqueness: true 
+ 
  validates :name, :description, presence: true
 
  validates :email, presence: true, email: true

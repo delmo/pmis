@@ -23,7 +23,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: #pmis_test
+  database: pmis_test
   pool: 5
   username: romel
   password: lalakero
