@@ -20,3 +20,9 @@
 *~
 .project
 .idea
+
+# Ignore configuration file
+/config/environments/production.rb
+/config/environmenst/development.rb
+/config/initializers/devise.rb
+/config/database.yml
