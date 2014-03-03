@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <!-- add viewport for small devices -->
  <!-- <meta name="viewport" content="width=device-with", initial-scale=1.0"> -->
  <title>PMIS | <%= @page_title || "Admin" %></title>
  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Project Management Information System - Pinamalayan" %>">
@@ -10,8 +11,9 @@
 </head>
 <body>
  <div class="container">
- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
    <div class="container-fluid">
+
      <!-- Brand and toggle get grouped for better mobile display -->
      <div class="navbar-header">
        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -26,8 +28,8 @@
      <!-- Collect the nav links, forms, and other content for toggling -->
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <ul class="nav navbar-nav">
-         <li class="active"><a href="#">Home</a></li>
-         <li><a href="#">About Us</a></li>
+        <li class="active"><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About Us", about_docus_path %></li>
          <li class="dropdown">
            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
            <ul class="dropdown-menu">
@@ -50,7 +52,7 @@
          <button type="submit" class="btn btn-default">Submit</button>
        </form>
        <ul class="nav navbar-nav navbar-right">
-         <li><a href="#">Contact</a></li>
+        <li><%= link_to "Contact", contact_docus_path %></li>
          <% if user_signed_in? %>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.first_name %> <b class="caret"></b></a>
@@ -69,35 +71,29 @@
           <li><%= link_to "Login", new_user_session_path %></li>
          <% end %>
        </ul>
-     </div><!-- /.navbar-collapse -->
-   </div><!-- /.container-fluid -->
-   </nav>
+      </div><!-- /.navbar-collapse -->
+     </div><!-- /.container-fluid -->
+    </nav>
 
- <div class="container-fluid">
+  <div class="container-fluid">
 
-  <% flash.each do |key, value| %>
-   <% if flash[:notice] %>
-    <div class="alert alert-success">
-   <% elsif flash[:alert] %>
-    <div class="alert alert-danger">
-   <% else %>
-    <div class="alert alert-<%= key %>">
-   <% end %>
+   <% flash.each do |key, value| %>
+    <% if flash[:notice] %>
+     <div class="alert alert-success">
+    <% elsif flash[:alert] %>
+     <div class="alert alert-danger">
+    <% else %>
+     <div class="alert alert-<%= key %>">
+    <% end %>
     <%= value %>
-   </div>
-  <% end %>
+    </div>
+   <% end %>
 
-  <div class="row">
-   <%= yield %>
-  </div>
- </div>
- <div class="container">
-  <div class="row">
-   <div class"nav-lg-12">
-    <p class="navbar-text pull-left"><span class="glyphicon glyphicon-copyright-mark"></span>  ryandelmo.com / Ryan Delmo</p>   
+   <div class="row">
+    <%= yield %>
    </div>
+   <%= render "layouts/footer" %>
   </div>
-</div>
 </div>
 </body>
 </html>

@@ -5,6 +5,15 @@ Pmis::Application.routes.draw do
  resources :sectors
  resources :cities
 
+ resources :docus do
+  collection do
+   get 'about'
+   get 'contact'
+   get 'developer'
+   get 'support'
+  end
+ end
+
  #match "docu/index",
  # :to => "docu#index",
  # :via => :get
@@ -36,7 +45,7 @@ Pmis::Application.routes.draw do
 
  # if no route found, default will look at root
  # root :to => "docu#index"
- root "docu#index"
+ root "docus#index"
 
  # with format like JSON
  #  match ':controller(/:action(/:id(.:format)))', :via => :get
