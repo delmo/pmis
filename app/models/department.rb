@@ -2,6 +2,10 @@ class Department < ActiveRecord::Base
  belongs_to :sector
  has_many :portfolio_implements
  has_many :issues
+ has_many :users
+ has_many :activities
+ has_many :programs
+ has_many :projects
 
  validates :name, uniqueness: true 
  

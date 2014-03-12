@@ -11,6 +11,7 @@ class ProgramsController < ApplicationController
   def new
    @program = Program.new
    @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
   end
 
   def create
@@ -20,6 +21,7 @@ class ProgramsController < ApplicationController
     redirect_to(:action => 'index')
    else
     @issues = Issue.order("title ASC")
+    @departments = Department.order("name ASC")
     render('new')
    end
   end
@@ -27,6 +29,7 @@ class ProgramsController < ApplicationController
   def edit
    @program = Program.find(params[:id])
    @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
   end
 
   def update
@@ -36,6 +39,7 @@ class ProgramsController < ApplicationController
     redirect_to(:action => 'show', :id => @program.id)
    else
     @issues = Issue.order("title ASC")
+    @departments = Department.order("name ASC")
     render('edit')
    end
   end
@@ -52,7 +56,7 @@ class ProgramsController < ApplicationController
 
   private
    def program_params
-    params.require(:program).permit(:issue_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_related, :not_pest)
+    params.require(:program).permit(:issue_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_related, :not_pest, :department_id)
    end
 
 end

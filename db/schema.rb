@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302225709) do
+ActiveRecord::Schema.define(version: 20140310212348) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
     t.integer  "project_id"
-    t.integer  "user_id"
     t.integer  "source_id"
     t.string   "title"
     t.text     "description"
@@ -34,12 +33,13 @@ ActiveRecord::Schema.define(version: 20140302225709) do
     t.boolean  "not_in_line"
     t.boolean  "not_related"
     t.boolean  "not_pest"
+    t.integer  "department_id"
   end
 
+  add_index "activities", ["department_id"], name: "index_activities_on_department_id", using: :btree
   add_index "activities", ["issue_id"], name: "index_activities_on_issue_id", using: :btree
   add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
   add_index "activities", ["source_id"], name: "index_activities_on_source_id", using: :btree
-  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -130,7 +130,6 @@ ActiveRecord::Schema.define(version: 20140302225709) do
 
   create_table "programs", force: true do |t|
     t.integer  "issue_id"
-    t.integer  "user_id"
     t.integer  "source_id"
     t.string   "title"
     t.text     "description"
@@ -148,16 +147,16 @@ ActiveRecord::Schema.define(version: 20140302225709) do
     t.boolean  "not_in_line"
     t.boolean  "not_related"
     t.boolean  "not_pest"
+    t.integer  "department_id"
   end
 
+  add_index "programs", ["department_id"], name: "index_programs_on_department_id", using: :btree
   add_index "programs", ["issue_id"], name: "index_programs_on_issue_id", using: :btree
   add_index "programs", ["source_id"], name: "index_programs_on_source_id", using: :btree
-  add_index "programs", ["user_id"], name: "index_programs_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.integer  "issue_id"
     t.integer  "program_id"
-    t.integer  "user_id"
     t.integer  "source_id"
     t.string   "title"
     t.text     "description"
@@ -175,12 +174,13 @@ ActiveRecord::Schema.define(version: 20140302225709) do
     t.boolean  "not_in_line"
     t.boolean  "not_related"
     t.boolean  "not_pest"
+    t.integer  "department_id"
   end
 
+  add_index "projects", ["department_id"], name: "index_projects_on_department_id", using: :btree
   add_index "projects", ["issue_id"], name: "index_projects_on_issue_id", using: :btree
   add_index "projects", ["program_id"], name: "index_projects_on_program_id", using: :btree
   add_index "projects", ["source_id"], name: "index_projects_on_source_id", using: :btree
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "relations", force: true do |t|
     t.string   "title"
@@ -259,8 +259,10 @@ ActiveRecord::Schema.define(version: 20140302225709) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "department_id"
   end
 
+  add_index "users", ["department_id"], name: "index_users_on_department_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree

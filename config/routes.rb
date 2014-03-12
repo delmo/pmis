@@ -1,4 +1,9 @@
 Pmis::Application.routes.draw do
+  get "selections/index"
+  get "selections/general"
+  get "selections/social"
+  get "selections/economic"
+  get "selections/other"
  resources :blogs
  resources :issues
  resources :departments

@@ -17,6 +17,7 @@ class ActivitiesController < ApplicationController
    @activity = Activity.new
    @projects = Project.order("title ASC")
    @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
   end
 
   def create
@@ -27,6 +28,7 @@ class ActivitiesController < ApplicationController
    else
     @projects = Project.order("title ASC")
     @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
     render('new')
    end
   end
@@ -35,6 +37,7 @@ class ActivitiesController < ApplicationController
    @projects = Project.order("title ASC")
    @activity = Activity.find(params[:id])
    @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
   end
 
   def update
@@ -45,6 +48,7 @@ class ActivitiesController < ApplicationController
    else
     @issues = Issue.order("title ASC")
     @projects = Project.order("title ASC")
+   @departments = Department.order("name ASC")
     render('edit')
    end
   end
@@ -61,7 +65,7 @@ class ActivitiesController < ApplicationController
 
   private
    def activity_params
-    params.require(:activity).permit(:issue_id, :project_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_ralated, :not_pest)
+    params.require(:activity).permit(:issue_id, :project_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_related, :not_pest, :department_id)
    end
 
 end

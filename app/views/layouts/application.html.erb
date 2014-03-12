@@ -3,6 +3,7 @@
 <head>
  <!-- add viewport for small devices -->
  <!-- <meta name="viewport" content="width=device-with", initial-scale=1.0"> -->
+ <meta name="viewport" content="width=device-with", initial-scale=1.0">
  <title>PMIS | <%= @page_title || "Admin" %></title>
  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Project Management Information System - Pinamalayan" %>">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -10,9 +11,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
- <div class="container">
+ <div class="container-fluid">
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-   <div class="container-fluid">
+   <div class="container">
 
      <!-- Brand and toggle get grouped for better mobile display -->
      <div class="navbar-header">
@@ -72,10 +73,11 @@
          <% end %>
        </ul>
       </div><!-- /.navbar-collapse -->
-     </div><!-- /.container-fluid -->
+     </div><!-- / navbar -->
     </nav>
 
-  <div class="container-fluid">
+  <!-- main content -->
+  <div class="container">
 
    <% flash.each do |key, value| %>
     <% if flash[:notice] %>
@@ -93,7 +95,7 @@
     <%= yield %>
    </div>
    <%= render "layouts/footer" %>
-  </div>
-</div>
+  </div><!-- / main content -->
+ </div><!-- / outside container -->
 </body>
 </html>

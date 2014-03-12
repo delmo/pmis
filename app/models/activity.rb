@@ -6,10 +6,16 @@ class Activity < ActiveRecord::Base
  has_many :relations, as: :linkable, dependent: :destroy
  belongs_to :project
  has_many :portfolio_implements
+ belongs_to :user
+ belongs_to :department
 
  validates :title, :description, :performance_indicator,
            :target, :presence => true
 
  validates :amount, :presence => true, numericality: { only_integer: true }
+
+ def sector
+  department.sector
+ end
 
 end

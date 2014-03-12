@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+  belongs_to :department
+  has_many :activities
+  has_many :programs
+  has_many :projects
 
   
   # Virtual attribute for authenticating by either username or email
@@ -29,6 +33,10 @@ class User < ActiveRecord::Base
 
   validates :username,
    :uniqueness => { :case_sensitive => false }
+
+  def sector
+   department.sector
+  end
 
 
 end

@@ -11,4 +11,11 @@ class Program < ActiveRecord::Base
            :target, :presence => true
 
  validates :amount, :presence => true, numericality: { only_integer: true }
+ belongs_to :user
+ belongs_to :department
+
+ def sector
+  department.sector
+ end
+
 end

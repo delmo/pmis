@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
    @project = Project.new
    @programs = Program.order("title ASC")
    @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
   end
 
   def create
@@ -22,6 +23,7 @@ class ProjectsController < ApplicationController
    else
     @programs = Program.order("title ASC")
     @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
     render('new')
    end
   end
@@ -30,6 +32,7 @@ class ProjectsController < ApplicationController
    @programs = Program.order("title ASC")
    @project = Project.find(params[:id])
    @issues = Issue.order("title ASC")
+   @departments = Department.order("name ASC")
   end
 
   def update
@@ -40,6 +43,7 @@ class ProjectsController < ApplicationController
    else
     @issues = Issue.order("title ASC")
     @programs = Program.order("title ASC")
+   @departments = Department.order("name ASC")
     render('edit')
    end
   end
@@ -56,7 +60,7 @@ class ProjectsController < ApplicationController
 
   private
    def project_params
-    params.require(:project).permit(:issue_id, :program_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_related, :not_pest)
+    params.require(:project).permit(:issue_id, :program_id, :title, :description, :performance_indicator, :target, :amount, :start, :completion,  :rank, :visible, :permalink, :is_risky, :not_in_line, :not_related, :not_pest, :department_id)
    end
 
 end

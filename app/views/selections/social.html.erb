@@ -1,0 +1,39 @@
+<% @page_title = "Economic Sector's Portfolio of Projects" %>
+
+<div id="pads">
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  Economic Sector
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @counter %> 
+  </div>
+   <%= @counter > 1 ? " ppas".upcase + " found" : " ppa".upcase + " found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="ppa list">
+    <tr class="header">
+     <th>Issue</th>
+     <th>PPA</th>
+     <th>Title</th>
+     <th>Amount</th>
+    </tr>
+
+    <% @ppas.each do |ppa| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <% if ppa.sector.name == "Social Services" %>
+       <td><%= ppa.issue.title if ppa.issue %></td>
+       <td><%= ppa.class %></td>
+       <td><%= ppa.title %></td>
+       <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+      <% end %>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
+</div>
