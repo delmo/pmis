@@ -1,4 +1,5 @@
 class RankCartsController < ApplicationController
+ before_filter :authenticate_user!, except: [:show]
   before_action :set_rank_cart, only: [:show, :edit_multiple]
 
   def show

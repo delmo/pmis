@@ -7,14 +7,24 @@ Pmis::Application.routes.draw do
   end
  end
 
+ resources :selections do
+  collection do
+   get :general
+   get :social
+   get :economic
+   get :other
+  end
+ end
+
+=begin
  scope path: "/selections", controller: :selections do
   get "index" => :index
   get "general" => :general
   get "social" => :social
   get "economic" => :economic
   get "other" => :other
-  get "evaluate" => :evaluate, as: "evaluate"
  end
+=end
 
  resources :rank_criteria
  resources :blogs

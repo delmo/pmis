@@ -1,4 +1,5 @@
 class RankCriteriaController < ApplicationController
+ before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_rank_criterium, only: [:show, :edit, :update, :destroy]
 
   # GET /rank_criteria
