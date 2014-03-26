@@ -1,0 +1,21 @@
+<% @page_title = "Edit Program/Project/Activity" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="PPA edit">
+ <h2>Edit PPA</h2>
+
+ <%= form_for(@portfolio, :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div class="form-group">
+   <div class="col-sm-2"></div>
+   <div class="col-sm-10">
+    <%= submit_tag("Update", :class => "btn btn-default") %>
+   </div>
+  </div>
+
+ <% end%>
+</div>

@@ -1,0 +1,36 @@
+<% @page_title = "Criteria for ranking" %>
+
+<div id="pads">
+ <%= link_to("Back", {controller: "selections", action: @sector}, :class => 'btn btn-primary') %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  Ranking criteria for <%= @portfolio.title %>
+ </div>
+ <div class="panel-body">
+  <div class="table-responsive">
+   <%= form_tag edit_multiple_rank_carts_path, method: :get do %> 
+    <table class="table table-striped table-hover" summary="criteria list">
+     <tr>
+      <th>Edit?</th>
+      <th>Criteria</th>
+      <th>Weight</th>
+      <th>Score</th>
+     </tr>
+      <% @rank_items.each do |item| %>
+        <tr>
+         <td><%= check_box_tag "rank_item_ids[]", item.id %></td>
+         <td><%= item.rank_criterium.criteria %></td>
+         <td><%= item.weight %></td>
+         <td><%= item.rank_score %></td> 
+        </tr>
+      <% end %>
+     </table>
+   <%= hidden_field_tag :id, @rank_cart.id %>
+   <%= submit_tag "Edit", :class => "btn btn-default" %>
+   <% end %>
+  </div>
+ </div>
+</div>
+

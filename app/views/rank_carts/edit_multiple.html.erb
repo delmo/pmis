@@ -1,0 +1,34 @@
+<h2>Edit</h2>
+<p>
+Please select between 0 to 10. For instance, if the project is risky then you may select lower number. However, if the project is likely be successful you can must select a higher score.
+</p>
+<%= form_tag update_multiple_rank_carts_path, method: :put do %>
+ <% @rank_items.each do |item| %>
+  <h4><%= item.rank_criterium.criteria %></h4>
+  <%= fields_for "rank_items[]", item do |f| %>
+
+   <div class="form-group">
+    <%= f.label :weight, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+    <%= f.text_field :weight, :class => "form-control", disabled: true %>
+   </div>
+   </div>
+
+   <div class="form-group">
+    <%= f.label :rank_score, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+     <%= f.select :rank_score, options_for_select(0..10, :selected => f.object.rank_score),{}, {:class => "form-control"} %>
+   </div>
+  </div>
+
+  <% end %>
+ <% end %>
+ <div class="form-group">
+  <%= hidden_field_tag :portfolio_id, @rank_cart.portfolio_id %>
+  <div class="col-lg-2"></div>
+  <div class="col-lg-10" id="pads">
+   <%= submit_tag "Update", :class => "btn btn-default" %>
+   <%= link_to "Cancel", {controller: "selections", action: @sector}, :class => "btn btn-default" %>
+  </div>
+ </div>
+<% end %>

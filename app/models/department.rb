@@ -6,6 +6,7 @@ class Department < ActiveRecord::Base
  has_many :activities
  has_many :programs
  has_many :projects
+ has_many :portfolios
 
  validates :name, uniqueness: true 
  

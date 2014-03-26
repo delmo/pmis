@@ -3,6 +3,21 @@
 <div id="pads">
 </div>
 
+<div class="btn-group">
+ <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+  Rank by sector <span class="caret"></span>
+ </button>
+ <ul class="dropdown-menu" role="menu">
+   <li><%= link_to "Economic Services", {controller: :selections, action: :economic} %> 
+   <li><%= link_to "General Public", {controller: :selections, action: :general} %> 
+   <li><%= link_to "Social Services", {controller: :selections, action: :social} %> 
+   <li><%= link_to "Other Services", {controller: :selections, action: :other} %> 
+  </ul>
+ </div>
+
+<div id="pads">
+</div>
+
 <div class="panel panel-primary">
  <div class="panel-heading">
   List of evaluated ppas, projects and activities
@@ -19,18 +34,23 @@
     <tr class="header">
      <th>Issue</th>
      <th>Sector</th>
-     <th>PPA</th>
      <th>Title</th>
      <th>Amount</th>
+     <th>Score</th>
+     <th class="text-center">Rank</th>
+     <!-- <th>Action</th> -->
     </tr>
 
+    <% rank = 0 %>
     <% @ppas.each do |ppa| %>
      <tr class="<%= cycle('odd', 'even') %>">
       <td><%= ppa.issue.title if ppa.issue %></td>
       <td><%= ppa.sector.name %></td>
-      <td><%= ppa.class %></td>
-      <td><%= ppa.title %></td>
+      <td><%= ppa.title %>
       <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+      <td><%= ppa.rank_cart.total_score %></td>
+      <td class="text-center"><%= rank += 1 %>
+      <!-- <td><%# link_to "Evaluate", {controller: :rank_carts, action: :show, id: ppa.rank_cart.id}, class: "btn btn-primary btn-sm" %></td> -->
       </tr>
     <% end %>
    </table>

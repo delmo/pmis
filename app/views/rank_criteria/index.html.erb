@@ -1,0 +1,31 @@
+<h1>Listing rank_criteria</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Criteria</th>
+      <th>Description</th>
+      <th>Weight</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rank_criteria.each do |rank_criterium| %>
+      <tr>
+        <td><%= rank_criterium.criteria %></td>
+        <td><%= rank_criterium.description %></td>
+        <td><%= rank_criterium.weight %></td>
+        <td><%= link_to 'Show', rank_criterium %></td>
+        <td><%= link_to 'Edit', edit_rank_criterium_path(rank_criterium) %></td>
+        <td><%= link_to 'Destroy', rank_criterium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rank criterium', new_rank_criterium_path %>

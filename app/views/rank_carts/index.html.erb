@@ -1,0 +1,25 @@
+<h1>Listing rank_carts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rank_carts.each do |rank_cart| %>
+      <tr>
+        <td><%= link_to 'Show', rank_cart %></td>
+        <td><%= link_to 'Edit', edit_rank_cart_path(rank_cart) %></td>
+        <td><%= link_to 'Destroy', rank_cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rank cart', new_rank_cart_path %>

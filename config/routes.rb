@@ -1,9 +1,22 @@
 Pmis::Application.routes.draw do
-  get "selections/index"
-  get "selections/general"
-  get "selections/social"
-  get "selections/economic"
-  get "selections/other"
+ 
+ resources :rank_carts do
+  collection do
+   get :edit_multiple
+   put :update_multiple
+  end
+ end
+
+ scope path: "/selections", controller: :selections do
+  get "index" => :index
+  get "general" => :general
+  get "social" => :social
+  get "economic" => :economic
+  get "other" => :other
+  get "evaluate" => :evaluate, as: "evaluate"
+ end
+
+ resources :rank_criteria
  resources :blogs
  resources :issues
  resources :departments
@@ -27,7 +40,7 @@ Pmis::Application.routes.draw do
 
  
  # Polymorphic routes
- resources :activities do
+ resources :portfolios do
   resources :relations
   resources :pests
   resources :risks
@@ -48,6 +61,12 @@ Pmis::Application.routes.draw do
   resources :in_lines
  end
 
+ resources :activities do
+  resources :relations
+  resources :pests
+  resources :risks
+  resources :in_lines
+ end
  # if no route found, default will look at root
  # root :to => "docu#index"
  root "docus#index"

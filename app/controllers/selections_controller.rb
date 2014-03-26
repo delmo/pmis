@@ -39,6 +39,13 @@ class SelectionsController < ApplicationController
     end
    }
   end
+
+  def evaluate
+   @criteria = RankCriterium.all
+
+   flash[:notice] = "It has been evaluated."
+   redirect_to :back
+  end
   
   private
 
@@ -49,6 +56,9 @@ class SelectionsController < ApplicationController
                              not_related: :false, not_pest: :false)
    @activities = Activity.where(is_risky: :false, not_in_line: :false,
                              not_related: :false, not_pest: :false)
-   @ppas = @programs + @projects + @activities
+   # @ppas = @programs + @projects + @activities
+   @ppas = Portfolio.where(is_risky: :false, not_in_line: :false, 
+                             not_related: :false, not_pest: :false).sort_by {|p| p.rank_cart.total_score}.reverse
+   @sectors = Sector.all
   end
 end

@@ -10,7 +10,7 @@ class SectorsController < ApplicationController
 
   def new
    @sector = Sector.new
-   @cities = City.first
+   @city = City.first
   end
 
   def create
@@ -19,14 +19,14 @@ class SectorsController < ApplicationController
     flash[:success] = "Sector created successfully."
     redirect_to(:action => 'index')
    else
-    @cities = City.order("name ASC")
+    @city = City.first
     render('new')
    end
   end 
 
   def edit
    @sector = Sector.find(params[:id])
-   @cities = City.order("name ASC")
+   @city = City.first
   end
 
   def update
@@ -35,7 +35,7 @@ class SectorsController < ApplicationController
     flash[:success] = "Sector updated successfully."
     redirect_to(:action => 'show', :id => @sector.id)
    else
-    @cities = City.order("name ASC")
+    @city = City.first
     render('edit')
    end
   end

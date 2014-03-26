@@ -1,0 +1,2 @@
+module RankCartsHelper
+end

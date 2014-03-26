@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Criteria:</strong>
+  <%= @rank_criterium.criteria %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rank_criterium.description %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @rank_criterium.weight %>
+</p>
+
+<%= link_to 'Edit', edit_rank_criterium_path(@rank_criterium) %> |
+<%= link_to 'Back', rank_criteria_path %>

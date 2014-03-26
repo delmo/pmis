@@ -45,6 +45,9 @@ end
 # Device authentication
 gem 'devise'
 
+# Mass insertion of records in the DB
+gem 'activerecord-import', '~> 0.5.0'
+
 
 group :development, :test do
  gem "rspec-rails", "~> 2.14.0"

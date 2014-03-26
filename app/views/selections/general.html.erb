@@ -1,11 +1,15 @@
-<% @page_title = "Economic Sector's Portfolio of Projects" %>
+<% @page_title = "General Public's Portfolio of Projects" %>
+
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
 <div id="pads">
 </div>
 
 <div class="panel panel-primary">
  <div class="panel-heading">
-  Economic Sector
+  General Services
  </div>
  <div class="panel-body">
 
@@ -14,6 +18,7 @@
   </div>
    <%= @counter > 1 ? " ppas".upcase + " found" : " ppa".upcase + " found" %>
 
+
   <div class="table-responsive">
    <table class="table table-striped table-hover" summary="ppa list">
     <tr class="header">
@@ -21,15 +26,19 @@
      <th>PPA</th>
      <th>Title</th>
      <th>Amount</th>
+     <th>Score</th>
+     <th>Action</th>
     </tr>
 
     <% @ppas.each do |ppa| %>
      <tr class="<%= cycle('odd', 'even') %>">
       <% if ppa.sector.name == "General Public" %>
        <td><%= ppa.issue.title if ppa.issue %></td>
-       <td><%= ppa.class %></td>
+       <td><%= ppa.portfolio_type %></td>
        <td><%= ppa.title %></td>
        <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+       <td><%= ppa.rank_cart.total_score %></td>
+       <td><%= link_to "Evaluate", {controller: :rank_carts, action: :show, id: ppa.rank_cart.id}, class: "btn btn-primary btn-sm" %></td>
       <% end %>
       </tr>
     <% end %>
@@ -37,3 +46,4 @@
   </div>
  </div>
 </div>
+

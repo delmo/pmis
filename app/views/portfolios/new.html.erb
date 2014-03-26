@@ -1,0 +1,17 @@
+<% @page_title = "New Program/Project/Activity" %>
+<div> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="portfolio new">
+ <h2>New PPA</h2>
+
+ <%= form_for(:portfolio, :url => {:action => 'create'}, :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div>
+   <%= submit_tag("Create", :class => "btn btn-default") %>
+  </div>
+ <% end %>
+</div>

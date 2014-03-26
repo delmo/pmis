@@ -35,14 +35,15 @@
            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
            <ul class="dropdown-menu">
             <li><%= link_to "Issues", issues_path %></li>
-            <li><%= link_to "Programs", programs_path %></li>
-            <li><%= link_to "Projects", projects_path %></li>
-            <li><%= link_to "Activities", activities_path %></li>
-             <li class="divider"></li>
-             <li><a href="#">Status</a></li>
-             <li><a href="#">Report</a></li>
-             <li class="divider"></li>
-             <li><a href="#">Schedule</a></li>
+            <li><%= link_to "Proposed portfolio", portfolios_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Appeal to committe", "#" %></li>
+            <li><%= link_to "Rank",  {controller: "selections", action: "index"} %></li>
+            <li><%= link_to "Select portfolio of projects", "#" %></li>
+            <li><a href="#">Schedule</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Status</a></li>
+            <li><a href="#">Report</a></li>
            </ul>
          </li>
        </ul>

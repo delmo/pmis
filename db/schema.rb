@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310212348) do
+ActiveRecord::Schema.define(version: 20140322150233) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140310212348) do
     t.decimal  "amount",                precision: 12, scale: 2
     t.date     "start"
     t.date     "completion"
-    t.integer  "rank"
+    t.decimal  "rank",                  precision: 6,  scale: 4
     t.boolean  "visible",                                        default: false
     t.string   "permalink"
     t.datetime "created_at"
@@ -128,6 +128,32 @@ ActiveRecord::Schema.define(version: 20140310212348) do
   add_index "portfolio_implements", ["program_id"], name: "index_portfolio_implements_on_program_id", using: :btree
   add_index "portfolio_implements", ["project_id"], name: "index_portfolio_implements_on_project_id", using: :btree
 
+  create_table "portfolios", force: true do |t|
+    t.integer  "issue_id"
+    t.integer  "source_id"
+    t.integer  "department_id"
+    t.integer  "portfolio_id"
+    t.string   "portfolio_type"
+    t.string   "title"
+    t.text     "description"
+    t.text     "performance_indicator"
+    t.text     "target"
+    t.decimal  "amount",                precision: 12, scale: 2
+    t.date     "start"
+    t.date     "completion"
+    t.boolean  "visible",                                        default: false
+    t.boolean  "is_risky",                                       default: false
+    t.boolean  "not_in_line",                                    default: false
+    t.boolean  "not_related",                                    default: false
+    t.boolean  "not_pest",                                       default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "portfolios", ["department_id"], name: "index_portfolios_on_department_id", using: :btree
+  add_index "portfolios", ["issue_id"], name: "index_portfolios_on_issue_id", using: :btree
+  add_index "portfolios", ["source_id"], name: "index_portfolios_on_source_id", using: :btree
+
   create_table "programs", force: true do |t|
     t.integer  "issue_id"
     t.integer  "source_id"
@@ -138,7 +164,7 @@ ActiveRecord::Schema.define(version: 20140310212348) do
     t.decimal  "amount",                precision: 12, scale: 2
     t.date     "start"
     t.date     "completion"
-    t.integer  "rank"
+    t.decimal  "rank",                  precision: 6,  scale: 4
     t.boolean  "visible",                                        default: false
     t.string   "permalink"
     t.datetime "created_at"
@@ -165,7 +191,7 @@ ActiveRecord::Schema.define(version: 20140310212348) do
     t.decimal  "amount",                precision: 12, scale: 2
     t.date     "start"
     t.date     "completion"
-    t.integer  "rank"
+    t.decimal  "rank",                  precision: 6,  scale: 4
     t.boolean  "visible",                                        default: false
     t.string   "permalink"
     t.datetime "created_at"
@@ -181,6 +207,36 @@ ActiveRecord::Schema.define(version: 20140310212348) do
   add_index "projects", ["issue_id"], name: "index_projects_on_issue_id", using: :btree
   add_index "projects", ["program_id"], name: "index_projects_on_program_id", using: :btree
   add_index "projects", ["source_id"], name: "index_projects_on_source_id", using: :btree
+
+  create_table "rank_carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "portfolio_id"
+  end
+
+  add_index "rank_carts", ["portfolio_id"], name: "index_rank_carts_on_portfolio_id", unique: true, using: :btree
+
+  create_table "rank_criteria", force: true do |t|
+    t.string   "criteria"
+    t.text     "description"
+    t.decimal  "weight",      precision: 5, scale: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rank_items", force: true do |t|
+    t.integer  "portfolio_id"
+    t.integer  "rank_criterium_id"
+    t.integer  "rank_score",                                default: 0
+    t.decimal  "weight",            precision: 5, scale: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rank_cart_id"
+  end
+
+  add_index "rank_items", ["portfolio_id"], name: "index_rank_items_on_portfolio_id", using: :btree
+  add_index "rank_items", ["rank_cart_id"], name: "index_rank_items_on_rank_cart_id", using: :btree
+  add_index "rank_items", ["rank_criterium_id"], name: "index_rank_items_on_rank_criterium_id", using: :btree
 
   create_table "relations", force: true do |t|
     t.string   "title"

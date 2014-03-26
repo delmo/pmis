@@ -1,0 +1,117 @@
+<%= error_messages_for(@portfolio) %>
+
+<div  class="form-horizontal">
+ <div class="form-group">
+  <%= f.label(:issue_id, "Issue", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}, {include_blank: "No Program"}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:portfolio_id, "Parent PPA", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:portfolio_id, @portfolios.map {|p| [p.title, p.id]}, {include_blank: "No parent PPA"}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:portfolio_type, "Type", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:portfolio_type, @portfolio_types.each {|t| t}, {include_blank: "Select portfolio type"}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+
+ <div class="form-group">
+  <%= f.label(:department_id, "Department", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:department_id, @departments.map {|d| [d.name, d.id]}, {}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:title, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:title, :class => "form-control", :placeholder => "Enter title") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:description, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:description, :size => "40x5", :class => "form-control", :placeholder => "Description") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:performance_indicator, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:performance_indicator, :size => "40x5", :class => "form-control", :placeholder => "Performance indicator") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:target, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:target, :size => "40x5", :placeholder => "Target", :class => "form-control") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:amount, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:amount, :placeholder => "Amount in Peso", :class => "form-control") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:start, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <div class='input-group'>
+    <%= f.date_select(:start, prompt: {day: 'Select day', month: 'Select month', year: 'Select year'}, html_options: {:class => "form-control"}) %> 
+   </div>
+  </div>
+</div>
+ 
+ <div class="form-group">
+   <%= f.label(:completion, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <div class='input-group'>
+    <%= f.date_select(:completion, prompt: {day: 'Select day', month: 'Select month', year: 'Select year'}, html_options: {:class => "form-control"}) %> 
+   </div>
+  </div>
+</div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+    <%= f.check_box :is_risky %>
+    <%= f.label("With excessive risk or with risk culture?", class: "control-label") %>
+  </div>
+ </div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+    <%= f.check_box :not_in_line %>
+    <%= f.label("Not in-line with available resources, mission, or other criteria?", class: "control-label") %>
+  </div>
+ </div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+    <%= f.check_box :not_related %>
+    <%= f.label("Not sound politically, socially, or for business relationships?", class: "control-label") %>
+  </div>
+ </div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+   <%= f.check_box :not_pest %>
+   <%= f.label("Not feasible both technology and economically? (PEST)", class: "control-label") %>
+  </div>
+ </div>
+</div>
