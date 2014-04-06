@@ -55,6 +55,9 @@ Pmis::Application.routes.draw do
   resources :pests
   resources :risks
   resources :in_lines
+  collection do
+   get 'appeal'
+  end
  end
 
  resources :programs do

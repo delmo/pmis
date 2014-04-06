@@ -75,6 +75,10 @@ class PortfoliosController < ApplicationController
     redirect_to(:action => 'index')
   end
 
+  def appeal
+   @portfolios = Portfolio.where("is_risky = true or not_in_line = true or not_related = true or not_pest = true")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio

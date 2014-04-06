@@ -1,0 +1,46 @@
+<% @page_title = "Portfolios not pre-selected" %>
+
+<div id="pads">
+ <%= link_to("Back", {:action => 'index'}, :class => 'btn btn-success btn-sm') %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">The following projects are subject for appeal</div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @portfolios.size %>
+  </div>
+   <%= @portfolios.size > 1 ? " portfolios found" : " portfolio found" %>
+ </div>
+
+ <div class="table-responsive">
+  <table class="table">
+   <tr class="header">
+    <th>Issue</th>
+    <th>Parent PPA</th>
+    <th>Title</th>
+    <th>Amount</th>
+    <th>Start Date</th>
+    <th>Completion Date</th>
+    <th>Action</th>
+   </tr>
+
+   <% @portfolios.each do |portfolio| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+     <td><%= portfolio.issue.title if portfolio.issue %></td>
+     <td><%= portfolio.parent.title if portfolio.parent %></td>
+     <td><%= portfolio.title %></td>
+     <td><%= number_to_currency(portfolio.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+     <td><%= portfolio.start %></td>
+     <td><%= portfolio.completion %></td>
+     <td class="actions">
+      <%= link_to "Appeal", portfolio, :class => "btn btn-warning btn-xs" %>
+      <%# link_to "Edit", edit_portfolio_path(portfolio), :class => "btn btn-default btn-xs" %>
+      <%# link_to "Delete", portfolio, method: 'delete', data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %>
+      </td>
+     </tr>
+   <% end %>
+  </table>
+ </div>
+ </div>
