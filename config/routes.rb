@@ -13,6 +13,9 @@ Pmis::Application.routes.draw do
    get :social
    get :economic
    get :other
+   put :select
+   put :unselect
+   get :finalist
   end
  end
 
