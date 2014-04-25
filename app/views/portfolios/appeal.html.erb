@@ -1,9 +1,5 @@
 <% @page_title = "Portfolios not pre-selected" %>
 
-<div id="pads">
- <%= link_to("Back", {:action => 'index'}, :class => 'btn btn-success btn-sm') %>
-</div>
-
 <div class="panel panel-primary">
  <div class="panel-heading">The following projects are subject for appeal</div>
  <div class="panel-body">
@@ -35,11 +31,9 @@
      <td><%= portfolio.start %></td>
      <td><%= portfolio.completion %></td>
      <td class="actions">
-      <%= link_to "Appeal", portfolio, :class => "btn btn-warning btn-xs" %>
-      <%# link_to "Edit", edit_portfolio_path(portfolio), :class => "btn btn-default btn-xs" %>
-      <%# link_to "Delete", portfolio, method: 'delete', data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %>
-      </td>
-     </tr>
+      <%= link_to "Appeal", submit_appeal_portfolios_path(id: portfolio.id), :class => "btn btn-warning btn-xs" %>
+     </td>
+    </tr>
    <% end %>
   </table>
  </div>

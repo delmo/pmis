@@ -6,6 +6,7 @@ class SelectionsController < ApplicationController
   end
 
   def finalist
+   budget_needed
   end
 
   def select
@@ -84,5 +85,9 @@ class SelectionsController < ApplicationController
 
   def portfolio_params
     params.require(:portfolio).permit(:portfolio_id, :approved)
+  end
+
+  def budget_needed
+   @total_amount = Portfolio.where(approved: true).sum(:amount)
   end
 end

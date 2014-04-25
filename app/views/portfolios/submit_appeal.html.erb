@@ -1,0 +1,53 @@
+<% @page_title = "PPA" %>
+<div id="pads"> 
+ <%= link_to("Back to appeal list", {:action => "appeal"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Appeal PPA
+ </div>
+
+ <table class="table" summary="portfolio detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @portfolio.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @portfolio.description %></td>
+  </tr>
+ <tr>
+   <th>Performance Indicator</th>
+   <td><%= @portfolio.performance_indicator %></td>
+  </tr>
+ <tr>
+   <th>Target</th>
+   <td><%= @portfolio.target %></td>
+  </tr>
+ <tr>
+   <th>Amount</th>
+   <td><%= number_to_currency(@portfolio.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+  </tr>
+ <tr>
+   <th>Start Date</th>
+   <td><%= @portfolio.start %></td>
+  </tr>
+ <tr>
+   <th>Completion Date</th>
+   <td><%= @portfolio.completion %></td>
+  </tr>
+ </table>
+</div>
+<%= link_to("Risk", portfolio_risks_path(@portfolio), :class => "#{@portfolio.is_risky == true ? 'btn btn-danger' : 'btn btn-success'}") %>
+<%= link_to("In-line", portfolio_in_lines_path(@portfolio), :class => "btn btn-#{@portfolio.not_in_line == true ? 'danger' : 'success'}") %>
+<%= link_to("Relation", portfolio_relations_path(@portfolio), :class => "btn btn-#{@portfolio.not_related == true ? 'danger' : 'success'}") %>
+<%= link_to("PEST", portfolio_pests_path(@portfolio), :class => "btn btn-#{@portfolio.not_pest == true ? 'danger' : 'success'}") %>
+
+<hr>
+<p>Please justify your appeal if any of categories is in red status before you click the submit button.
+ <%= form_for(@portfolio) do |f| %>
+  <%= f.hidden_field :appeal, value: true %>
+  <%= submit_tag("Submit", :class => "btn btn-default") %>
+ <% end%>
+

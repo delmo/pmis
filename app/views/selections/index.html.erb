@@ -50,12 +50,6 @@
       <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
       <td><%= ppa.rank_cart.total_score %></td>
       <td class="text-center"><%= rank += 1 %>
-      <!-- <td><%# link_to "Evaluate", {controller: :rank_carts, action: :show, id: ppa.rank_cart.id}, class: "btn btn-primary btn-sm" %></td> -->
-      <% if ppa.approved %>
-        <td><%= link_to "Unselect", unselect_selections_path(id: ppa.id), method: :put, class: "btn btn-danger btn-sm" %></td>
-       <% else %>
-        <td><%= link_to "Select", select_selections_path(id: ppa.id), method: :put, class: "btn btn-success btn-sm" %></td>
-       <%end%>
       </tr>
     <% end %>
    </table>

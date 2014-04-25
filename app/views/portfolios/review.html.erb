@@ -1,24 +1,7 @@
-<% @page_title = "Portfolios" %>
-
-<div class="row-fluid" id="pads">
- <div class="col-sm-6">
-  <div class="pull-left">
-   <%= link_to("Add New PPA", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
- </div>
- </div>
- <div class="col-sm-6">
-  <div class="pull-right">
-   <%= form_tag portfolios_path, method: 'get' do %>
-   <%= text_field_tag :search, params[:search] %>
-   <%= submit_tag "Search", name: nil, class: 'btn btn-default btn-sm' %>
-  <% end %>
- </div>
- </div>
- <br/><br/>  
-</div>
+<% @page_title = "Review page" %>
 
 <div class="panel panel-primary">
- <div class="panel-heading">List of proposed projects.</div>
+ <div class="panel-heading">The following projects are subject for review.</div>
  <div class="panel-body">
 
   <div class="badge">
@@ -36,7 +19,7 @@
     <th>Amount</th>
     <th>Start Date</th>
     <th>Completion Date</th>
-    <th>Actions</th>
+    <th>Action</th>
    </tr>
 
    <% @portfolios.each do |portfolio| %>
@@ -48,11 +31,9 @@
      <td><%= portfolio.start %></td>
      <td><%= portfolio.completion %></td>
      <td class="actions">
-      <%= link_to "Show", portfolio, :class => "btn btn-primary btn-xs" %>
-      <%= link_to "Edit", edit_portfolio_path(portfolio), :class => "btn btn-default btn-xs" %>
-      <%= link_to "Delete", portfolio, method: 'delete', data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %>
-      </td>
-     </tr>
+      <%= link_to "Review", decision_portfolios_path(id: portfolio.id), :class => "btn btn-warning btn-xs" %>
+     </td>
+    </tr>
    <% end %>
   </table>
  </div>

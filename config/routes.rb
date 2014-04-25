@@ -60,6 +60,9 @@ Pmis::Application.routes.draw do
   resources :in_lines
   collection do
    get 'appeal'
+   get 'decision'
+   get 'submit_appeal'
+   get 'review'
   end
  end
 

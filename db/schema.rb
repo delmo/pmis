@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406204259) do
+ActiveRecord::Schema.define(version: 20140425101424) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -149,6 +149,8 @@ ActiveRecord::Schema.define(version: 20140406204259) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "approved",                                       default: false
+    t.boolean  "appeal",                                         default: false
+    t.text     "decision"
   end
 
   add_index "portfolios", ["department_id"], name: "index_portfolios_on_department_id", using: :btree

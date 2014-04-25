@@ -1,0 +1,72 @@
+<% @page_title = "PPA" %>
+<div id="pads"> 
+ <%= link_to("Back to review list", {:action => "review"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Review PPA
+ </div>
+
+ <table class="table" summary="portfolio detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @portfolio.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @portfolio.description %></td>
+  </tr>
+ <tr>
+   <th>Performance Indicator</th>
+   <td><%= @portfolio.performance_indicator %></td>
+  </tr>
+ <tr>
+   <th>Target</th>
+   <td><%= @portfolio.target %></td>
+  </tr>
+ <tr>
+   <th>Amount</th>
+   <td><%= number_to_currency(@portfolio.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+  </tr>
+ <tr>
+   <th>Start Date</th>
+   <td><%= @portfolio.start %></td>
+  </tr>
+ <tr>
+   <th>Completion Date</th>
+   <td><%= @portfolio.completion %></td>
+  </tr>
+ </table>
+</div>
+<%= link_to("Risk", portfolio_risks_path(@portfolio), :class => "#{@portfolio.is_risky == true ? 'btn btn-danger' : 'btn btn-success'}") %>
+<%= link_to("In-line", portfolio_in_lines_path(@portfolio), :class => "btn btn-#{@portfolio.not_in_line == true ? 'danger' : 'success'}") %>
+<%= link_to("Relation", portfolio_relations_path(@portfolio), :class => "btn btn-#{@portfolio.not_related == true ? 'danger' : 'success'}") %>
+<%= link_to("PEST", portfolio_pests_path(@portfolio), :class => "btn btn-#{@portfolio.not_pest == true ? 'danger' : 'success'}") %>
+
+<hr>
+ <%= form_for(@portfolio) do |f| %>
+ <div>
+    <%= f.check_box :is_risky %>
+    <%= f.label("With excessive risk or with risk culture?", class: "control-label") %>
+ </div>
+
+ <div>
+    <%= f.check_box :not_in_line %>
+    <%= f.label("Not in-line with available resources, mission, or other criteria?", class: "control-label") %>
+ </div>
+
+ <div>
+    <%= f.check_box :not_related %>
+    <%= f.label("Not sound politically, socially, or for business relationships?", class: "control-label") %>
+ </div>
+
+ <div>
+   <%= f.check_box :not_pest %>
+   <%= f.label("Not feasible both technology and economically? (PEST)", class: "control-label") %>
+ </div>
+  <%= f.text_area(:decision, :size => "40x8", :class => "form-control", :placeholder => "Write the decision here.") %> 
+  <%= f.hidden_field :appeal, value: false %>
+  <%= submit_tag("Submit", :class => "btn btn-default") %>
+ <% end%>
+

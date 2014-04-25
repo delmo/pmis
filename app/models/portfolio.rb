@@ -19,9 +19,24 @@ class Portfolio < ActiveRecord::Base
  validates :portfolio_type, inclusion: PORTFOLIO_TYPES
  validates :title, :description, :performance_indicator,
            :target, :amount,  presence: true
+ validate :dates_must_make_sense
+
+ def self.search(search)
+  if search
+   find(:all, conditions: ['title LIKE ?', "%#{search}%"])
+  else
+   find(:all)
+  end
+ end
 
  def sector
   department.sector
  end
 
+ private
+ def dates_must_make_sense
+  if completion <= start
+   errors.add(:start, ' date has to be before the completion date')
+  end
+ end
 end
