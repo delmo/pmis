@@ -1,0 +1,18 @@
+<% @page_title = "Edit Task" %>
+<div> 
+ <%= link_to("Back to list", {controller: "tasks", action: "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="task edit">
+ <h2>Edit Task</h2>
+
+ <%= form_for([@ppa, @task], :html => {:role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div>
+   <%= f.hidden_field :portfolio_id, value: @ppa.id %>
+   <%= submit_tag("Update", :class => "btn btn-default") %>
+  </div>
+ <% end %>
+</div>

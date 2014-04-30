@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425101424) do
+ActiveRecord::Schema.define(version: 20140430100038) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -298,6 +298,17 @@ ActiveRecord::Schema.define(version: 20140425101424) do
     t.text     "description"
     t.decimal  "amount",      precision: 16, scale: 2
     t.date     "budget_year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "due_date"
+    t.integer  "done"
+    t.integer  "portfolio_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

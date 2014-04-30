@@ -11,7 +11,7 @@
  *= require jquery.ui.datepicker
  *= require_self
  * require bootstrap #this is already imported in custom.css.scss
- * require_tree .
+ *= require_tree .
  *= require custom.css.scss
  */
 

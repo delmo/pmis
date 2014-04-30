@@ -1,0 +1,44 @@
+<%= error_messages_for(@task) %>
+
+<div  class="form-horizontal">
+
+ <div class="form-group">
+  <%= f.label(:title, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:title, :class => "form-control", :placeholder => "Enter title") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:description, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_area(:description, :size => "40x5", :class => "form-control", :placeholder => "Description") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:start_date, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <div class='input-group'>
+    <%= f.text_field :start_date, :class => "form-control" %>
+   </div>
+  </div>
+</div>
+ 
+ <div class="form-group">
+   <%= f.label(:due_date, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <div class='input-group'>
+    <%= f.text_field :due_date, :class => "form-control" %>
+   </div>
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:done, "% Done", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:done, Task::WORK_PERCENTAGES.each {|t| t}, {include_blank: "Select % complete"}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+</div>

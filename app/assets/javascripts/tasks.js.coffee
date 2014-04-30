@@ -2,9 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
- $('#portfolio_start').datepicker
+ $('#task_start_date').datepicker
   dateFormat: 'yy-mm-dd'
 
 jQuery ->
- $('#portfolio_completion').datepicker
+ $('#task_due_date').datepicker
   dateFormat: 'yy-mm-dd'

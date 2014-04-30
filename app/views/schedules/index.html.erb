@@ -1,0 +1,40 @@
+<% @page_title = "Schedule Portfolio of Projects" %>
+
+<div id="pads">
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  To schedule a program, project or activity please create one or more tasks. 
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @ppas.size %> 
+  </div>
+   <%= @ppas.size > 1 ? " ppa".upcase + "s found" : " ppa".upcase + " found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="ppa list">
+    <tr class="header">
+     <th>Title</th>
+     <th>Amount</th>
+     <th>Score</th>
+     <th class="text-center">Rank</th>
+     <th>Action</th>
+    </tr>
+
+    <% rank = 0 %>
+    <% @ppas.each do |ppa| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= ppa.title %>
+      <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+      <td><%= ppa.rank_cart.total_score %></td>
+      <td class="text-center"><%= rank += 1 %>
+      <td><%= link_to "Schedule", portfolio_tasks_path(ppa), class: "btn btn-primary btn-sm" %></td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
+</div>

@@ -27,6 +27,8 @@ gem 'jquery-rails'
 # gem for calendar
 gem 'jquery-ui-rails'
 
+#add jquery-turbolinks to be able to work some jquery code like datepicker without refreshing the browser manually.
+gem 'jquery-turbolinks'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

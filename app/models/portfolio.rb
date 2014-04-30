@@ -3,6 +3,7 @@ class Portfolio < ActiveRecord::Base
  belongs_to :issue
  belongs_to :source
  belongs_to :department
+ has_many :tasks, dependent: :destroy
 
  belongs_to :parent, :class_name => 'Portfolio', :foreign_key => 'portfolio_id'
  has_many :children, :class_name => 'Portfolio'

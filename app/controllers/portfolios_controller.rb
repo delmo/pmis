@@ -87,6 +87,12 @@ class PortfoliosController < ApplicationController
    @portfolio = Portfolio.find(params[:id])
   end
 
+  def calendar
+   @ppas = Portfolio.where("approved = true")
+   @ppas_by_date = @ppas.group_by(&:start)
+   @date = params[:date] ? Date.parse(params[:date]) : Date.today
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio

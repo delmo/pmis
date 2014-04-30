@@ -1,5 +1,8 @@
 Pmis::Application.routes.draw do
  
+
+ get "schedules/index"
+
  resources :rank_carts do
   collection do
    get :edit_multiple
@@ -54,11 +57,13 @@ Pmis::Application.routes.draw do
  
  # Polymorphic routes
  resources :portfolios do
+  resources :tasks
   resources :relations
   resources :pests
   resources :risks
   resources :in_lines
   collection do
+   get 'calendar'
    get 'appeal'
    get 'decision'
    get 'submit_appeal'

@@ -1,0 +1,43 @@
+<% @page_title = "Task" %>
+<div id="pads"> 
+ <%= link_to 'Back', portfolio_tasks_path(@ppa), :class => "btn btn-primary" %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Task Progress
+  <div class="progress">
+   <% if DateTime.now <= @task.due_date %>
+    <div class="progress-bar progress-bar-success" role="progressbar"
+     aria-valuenow="<%=@task.done%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=@task.done%>%">
+     <%= @task.done %>% Complete and on time
+    </div>
+   <% else %>
+    <div class="progress-bar progress-bar-danger" role="progressbar"
+     aria-valuenow="<%=@task.done%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=@task.done%>%">
+     <%= @task.done %>% Complete and late
+    </div>
+   <% end %>
+  </div>
+ </div>
+
+ <table class="table" summary="task detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @task.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @task.description %></td>
+  </tr>
+  <tr>
+   <th>Start date</th>
+   <td><%= @task.start_date %></td>
+  </tr>
+  <tr>
+   <th>Due date</th>
+   <td><%= @task.due_date %></td>
+  </tr>
+ </table>
+</div>
+

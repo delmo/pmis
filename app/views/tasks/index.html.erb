@@ -1,0 +1,46 @@
+<% @page_title = "Tasks" %>
+
+<div id="pads">
+ <%= link_to("Add New Task", new_portfolio_task_path, :class => 'btn btn-success btn-sm') %>
+ <%= link_to("Back", schedules_index_path, :class => "btn btn-default btn-sm") %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  Tasks
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @tasks.size %> 
+  </div>
+   <%= @tasks.size > 1 ? " tasks found" : " task found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="risk list">
+    <tr class="header">
+     <th>Title</th>
+     <th>Description</th>
+     <th>Start date</th>
+     <th>Due date</th>
+     <th>Action</th>
+    </tr>
+
+
+   <% if !@tasks.nil? %>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= truncate(task.description, length: 50, omission: '...') %></td>
+        <td><%= task.start_date %></td>
+        <td><%= task.due_date %></td>
+        <td><%= link_to("Show", {:action => 'show', :id => task.id}, :class => 'btn btn-primary btn-xs') %>
+        <%= link_to("Edit", {:action => 'edit', :id => task.id}, :class => 'btn btn-warning btn-xs') %>
+        <%= link_to("Delete", [@ppa, task], confirm: "Are you sure?", :method =>"delete", :class => 'btn btn-danger btn-xs') %></td>
+      </tr>
+    <% end %>
+   <% end %>
+ </table>
+</div>
+
+
