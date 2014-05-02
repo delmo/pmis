@@ -1,6 +1,9 @@
 Pmis::Application.routes.draw do
  
 
+ get "monitors/general"
+ get "monitors/ongoing"
+
  get "schedules/index"
 
  resources :rank_carts do

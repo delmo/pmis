@@ -19,8 +19,6 @@
     <tr class="header">
      <th>Title</th>
      <th>Amount</th>
-     <th>Score</th>
-     <th class="text-center">Rank</th>
      <th>Action</th>
     </tr>
 
@@ -29,8 +27,6 @@
      <tr class="<%= cycle('odd', 'even') %>">
       <td><%= ppa.title %>
       <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
-      <td><%= ppa.rank_cart.total_score %></td>
-      <td class="text-center"><%= rank += 1 %>
       <td><%= link_to "Schedule", portfolio_tasks_path(ppa), class: "btn btn-primary btn-sm" %></td>
       </tr>
     <% end %>

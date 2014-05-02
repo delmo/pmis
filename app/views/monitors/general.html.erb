@@ -1,0 +1,18 @@
+<div class="jumbotron">
+ <h1><%= Time.now.year %> Portfolio of projects</h1>
+ <p>This page shows the graphical status of projects that are being implemented this year. To learn more about the individual status of the project please click the button below...</p>
+ <p><%= link_to "See more", monitors_ongoing_path, :class => "btn btn-primary btn-lg" %></p>
+<div>
+ <h2>Portfolio types</h2>
+ <%= pie_chart Portfolio.group(:portfolio_type).count %>
+</div>
+<hr>
+<div>
+ <h2>Projects distribution per month</h2>
+ <%= line_chart Portfolio.group_by_month(:start).count %>
+</div>
+<hr>
+<div>
+ <h2>Status of this year's portfolio</h2>
+ <%= column_chart @status %>
+</div>

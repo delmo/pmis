@@ -1,0 +1,52 @@
+<% @page_title = "Portfolio status" %>
+
+<div id="pads">
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  List of current projects
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @ppas.size %> 
+  </div>
+   <%= @ppas.size > 1 ? " ppa".upcase + "s found" : " ppa".upcase + " found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="ppa list">
+    <tr class="header">
+     <th>Title</th>
+     <th>Start date</th>
+     <th>Completion date</th>
+     <th>Amount</th>
+     <th>Status</th>
+     <th>Action</th>
+    </tr>
+
+    <% rank = 0 %>
+    <% @ppas.each do |ppa| %>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= ppa.title %></td>
+      <td><%= ppa.start %></td>
+      <td><%= ppa.completion %></td>
+      <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+      <td>
+      <% if ppa.status == "late" %>
+       <span class="label label-danger"><%= ppa.status %></span>
+      <% elsif ppa.status == "completed" %>
+       <span class="label label-success"><%= ppa.status %></span>
+      <% elsif ppa.status == "on-going" %>
+       <span class="label label-primary"><%= ppa.status %></span>
+      <% elsif ppa.status == "start soon" %>
+       <span class="label label-default"><%= ppa.status %></span>
+      <% end %>
+      </td>
+      <td><%= link_to "More", portfolio_tasks_path(ppa), class: "btn btn-primary btn-sm" %></td>
+      </tr>
+    <% end %>
+   </table>
+  </div>
+ </div>
+</div>

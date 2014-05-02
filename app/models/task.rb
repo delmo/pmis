@@ -26,7 +26,7 @@ class Task < ActiveRecord::Base
 
   def check_end_date
    ppa = Portfolio.find(portfolio_id)
-   if due_date < ppa.completion
+   if due_date > ppa.completion
     errors.add(:due_date, "Due date should be within PPA's implementation date.")
    end
   end

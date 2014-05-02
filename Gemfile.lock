@@ -42,6 +42,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (1.2.4)
     childprocess (0.5.1)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.0.1)
@@ -70,6 +71,8 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     ffi (1.9.3)
+    groupdate (2.1.0)
+      activerecord (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -182,11 +185,13 @@ DEPENDENCIES
   activerecord-import (~> 0.5.0)
   bootstrap-sass (~> 3.1.1)
   capybara (~> 2.1.0)
+  chartkick
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.0.1)
   devise
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.1.2)
+  groupdate
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks

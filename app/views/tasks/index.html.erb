@@ -23,6 +23,7 @@
      <th>Description</th>
      <th>Start date</th>
      <th>Due date</th>
+     <th>Progress</th>
      <th>Action</th>
     </tr>
 
@@ -34,6 +35,7 @@
         <td><%= truncate(task.description, length: 50, omission: '...') %></td>
         <td><%= task.start_date %></td>
         <td><%= task.due_date %></td>
+        <td><%= task.done %>%</td>
         <td><%= link_to("Show", {:action => 'show', :id => task.id}, :class => 'btn btn-primary btn-xs') %>
         <%= link_to("Edit", {:action => 'edit', :id => task.id}, :class => 'btn btn-warning btn-xs') %>
         <%= link_to("Delete", [@ppa, task], confirm: "Are you sure?", :method =>"delete", :class => 'btn btn-danger btn-xs') %></td>

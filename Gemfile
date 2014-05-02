@@ -56,6 +56,13 @@ group :development, :test do
  gem "factory_girl_rails", "~> 4.2.1"
 end
 
+#Groupdate is gem for grouping by day, week, hour of the day, and more
+#nice to work with Chartkick gem
+gem "groupdate"
+
+#Chartkick is a gem for charts and graphs.
+gem "chartkick"
+
 group :test do
  gem "faker", "~> 1.1.2"
  gem "capybara", "~> 2.1.0"

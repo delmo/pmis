@@ -3,6 +3,7 @@
 <head>
  <!-- add viewport for small devices -->
  <!-- <meta name="viewport" content="width=device-with", initial-scale=1.0"> -->
+ <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
  <meta name="viewport" content="width=device-with", initial-scale=1.0">
  <title>PMIS | <%= @page_title || "Admin" %></title>
  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Project Management Information System - Pinamalayan" %>">
@@ -44,7 +45,7 @@
             <li><%= link_to "Schedule", schedules_index_path %></li>
             <li class="divider"></li>
             <li><%= link_to "Calendar", calendar_portfolios_path  %></li>
-            <li><a href="#">Status</a></li>
+            <li><%= link_to "Status", monitors_general_path %></li>
             <li><a href="#">Report</a></li>
            </ul>
          </li>
