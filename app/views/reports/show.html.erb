@@ -1,0 +1,31 @@
+<% @page_title = "Report" %>
+<div id="pads"> 
+ <%= link_to 'Back', portfolio_reports_path(@ppa), :class => "btn btn-primary" %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Report summary 
+ </div>
+</div>
+
+ <table class="table" summary="report detail view">
+  <tr>
+   <th>Photo</th>
+   <td><%= image_tag @report.photo.url(:medium) %>
+    <br/>
+    <br/>
+    <%= link_to "Actual Size", @report.photo.url, :class => "btn btn-default btn-xs" %>
+   </td>
+  </tr>
+  <tr>
+   <th>Title</th>
+   <td><%= @report.title %></td>
+  </tr>
+  <tr>
+   <th>Description</th>
+   <td><%= @report.description %></td>
+  </tr>
+ </table>
+</div>
+

@@ -44,6 +44,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Paperclip for uploading files
+gem 'paperclip', '~> 4.1'
+
+# Pagination
+gem 'kaminari'
+
 # Device authentication
 gem 'devise'
 

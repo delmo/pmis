@@ -1,0 +1,44 @@
+<% @page_title = "Reports" %>
+
+<div id="pads">
+ <%= link_to("Add New Report", new_portfolio_report_path, :class => 'btn btn-success btn-sm') %>
+ <%= link_to("Back", report_portfolios_path, :class => "btn btn-default btn-sm") %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+  List of reports
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @reports.size %> 
+  </div>
+   <%= @reports.size > 1 ? " reports found" : " report found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="report list">
+    <tr class="header">
+     <th>Photo</th>
+     <th>Title</th>
+     <th>Description</th>
+     <th>Action</th>
+    </tr>
+
+
+   <% if !@reports.nil? %>
+    <% @reports.each do |report| %>
+      <tr>
+       <td><%= image_tag report.photo.url(:thumb) %></td>
+        <td><%= report.title %></td>
+        <td><%= truncate(report.description, length: 50, omission: '...') %></td>
+        <td><%= link_to("Show", {:action => 'show', :id => report.id}, :class => 'btn btn-primary btn-xs') %>
+        <%= link_to("Edit", {:action => 'edit', :id => report.id}, :class => 'btn btn-warning btn-xs') %>
+        <%= link_to("Delete", [@ppa, report], confirm: "Are you sure?", :method =>"delete", :class => 'btn btn-danger btn-xs') %></td>
+      </tr>
+    <% end %>
+   <% end %>
+ </table>
+</div>
+
+

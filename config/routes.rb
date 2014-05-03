@@ -60,6 +60,7 @@ Pmis::Application.routes.draw do
  
  # Polymorphic routes
  resources :portfolios do
+  resources :reports 
   resources :tasks
   resources :relations
   resources :pests
@@ -71,6 +72,7 @@ Pmis::Application.routes.draw do
    get 'decision'
    get 'submit_appeal'
    get 'review'
+   get 'report'
   end
  end
 

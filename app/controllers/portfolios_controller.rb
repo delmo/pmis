@@ -2,9 +2,14 @@ class PortfoliosController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
 
+  def report
+   @ppas = Portfolio.report_search(params[:search]).page(params[:page]).per(2)
+  end
+
   # GET /portfolios
   def index
-   @portfolios = Portfolio.search(params[:search])
+   #ppas = Portfolio.search(params[:search])
+   @portfolios = Portfolio.next_year_search(params[:search]).page(params[:page]).per(10)
   end
 
   # GET /portfolios/1

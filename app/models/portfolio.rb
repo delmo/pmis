@@ -4,6 +4,7 @@ class Portfolio < ActiveRecord::Base
  belongs_to :source
  belongs_to :department
  has_many :tasks, dependent: :destroy
+ has_many :reports, dependent: :destroy
 
  belongs_to :parent, :class_name => 'Portfolio', :foreign_key => 'portfolio_id'
  has_many :children, :class_name => 'Portfolio'
@@ -29,6 +30,23 @@ class Portfolio < ActiveRecord::Base
    find(:all)
   end
  end
+
+ def self.report_search(search)
+  if search
+   current_portfolio.where('title LIKE ?', "%#{search}%")
+  else
+   current_portfolio
+  end
+ end
+
+ def self.next_year_search(search)
+  if search
+   next_year_portfolio.where('title LIKE ?', "%#{search}%")
+  else
+   next_year_portfolio
+  end
+ end
+
 
  def sector
   department.sector
@@ -67,7 +85,10 @@ class Portfolio < ActiveRecord::Base
  scope :current_portfolio, lambda { where("EXTRACT(YEAR FROM start) = ?", Time.now.year).where("approved = ?", true)}
 
  #portfolio for next year
- scope :next_year_portfolio, lambda { where("EXTRACT(YEAR FROM start) = ?", Time.now.year+1).where("approved = ?", true)}
+ scope :approved_next_year_portfolio, lambda { where("EXTRACT(YEAR FROM start) = ?", Time.now.year+1).where("approved = ?", true)}
+
+ #portfolio for next year
+ scope :next_year_portfolio, lambda { where("EXTRACT(YEAR FROM start) = ?", Time.now.year+1)}
 
  private
  def dates_must_make_sense
