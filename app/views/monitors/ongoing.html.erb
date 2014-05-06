@@ -43,7 +43,7 @@
        <span class="label label-default"><%= ppa.status %></span>
       <% end %>
       </td>
-      <td><%= link_to "More", portfolio_tasks_path(ppa), class: "btn btn-primary btn-sm" %></td>
+      <td><%= link_to "More", portfolio_tasks_path(ppa, previous_link: "monitoring"), class: "btn btn-primary btn-sm" %></td>
       </tr>
     <% end %>
    </table>

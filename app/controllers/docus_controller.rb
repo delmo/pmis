@@ -1,4 +1,5 @@
 class DocusController < ApplicationController
+ after_action :verify_authorized, except:  [:index, :about, :contact]
   def index
    @city = City.first
   end

@@ -1,9 +1,14 @@
 class ReportsController < ApplicationController
+ before_filter :authenticate_user!, except: [:index, :show]
  before_action :set_report, only: [:show, :edit, :update, :destroy]
+ after_action :verify_authorized, except:  [:index, :show]
 
   def index
    @ppa = Portfolio.find(params[:portfolio_id])
    @reports = Report.where("portfolio_id = ?", params[:portfolio_id])
+   if !@ppa.nil?
+    @location = @ppa.locations.first
+   end
   end
 
   def show
@@ -13,12 +18,15 @@ class ReportsController < ApplicationController
    @ppa = Portfolio.find(params[:portfolio_id])
    if @ppa
     @report = @ppa.reports.new
+    authorize @report
    end
   end
 
   def create
    @ppa = Portfolio.find(params[:portfolio_id])
    @report = Report.new(report_params)
+   authorize @report
+   @report.user = current_user
    if @report.save
     redirect_to portfolio_reports_path(@ppa), notice: "Report was successfully created."
    else
@@ -27,9 +35,11 @@ class ReportsController < ApplicationController
   end
 
   def edit
+   authorize @report
   end
 
   def update
+   authorize @report
    if @report.update(report_params)
     redirect_to portfolio_reports_path(@ppa), notice: "Report was successfully updated."
    else
@@ -41,6 +51,7 @@ class ReportsController < ApplicationController
   end
 
   def destroy
+   authorize @report
    @report.destroy
    redirect_to portfolio_reports_path(@ppa)
   end

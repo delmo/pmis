@@ -36,17 +36,28 @@
            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
            <ul class="dropdown-menu">
             <li><%= link_to "Issues", issues_path %></li>
-            <li><%= link_to "Proposed portfolio", portfolios_path %></li>
+            <li><%= link_to "Approved", current_portfolios_path(year: Time.now.year) %></li>
+            <% if user_signed_in? %>
+            <li><%= link_to "Proposed", portfolios_path %></li>
             <li class="divider"></li>
-            <li><%= link_to "Appeal to committe", appeal_portfolios_path %></li>
-            <li><%= link_to "Review the appeal", review_portfolios_path %></li>
-            <li><%= link_to "Rank",  selections_path %></li>
-            <li><%= link_to "Select portfolio of projects", finalist_selections_path %></li>
+            <li><%= link_to "Appeal", appeal_portfolios_path %></li>
+            <% if user_signed_in? and (current_user.council? or current_user.coordinator? or current_user.admin?) %>
+             <li><%= link_to "Review", review_portfolios_path %></li>
+            <% end %>
+            <% if user_signed_in? and (current_user.coordinator? or current_user.admin?) %>
+             <li><%= link_to "Rank",  selections_path %></li>
+            <% end %>
+            <% if user_signed_in? and (current_user.admin? or current_user.ceo?) %>
+             <li><%= link_to "Prioritize", finalist_selections_path %></li>
+            <% end %>
             <li><%= link_to "Schedule", schedules_index_path %></li>
             <li class="divider"></li>
             <li><%= link_to "Calendar", calendar_portfolios_path  %></li>
-            <li><%= link_to "Status", monitors_general_path %></li>
+            <% if user_signed_in? and (current_user.admin? or current_user.ceo?) %>
+             <li><%= link_to "Status", monitors_general_path %></li>
+            <% end %>
             <li><%= link_to "Report", report_portfolios_path %></li>
+            <% end %>
            </ul>
          </li>
        </ul>
@@ -66,15 +77,16 @@
             <ul class="dropdown-menu">
              <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-             <li class="divider"></li>
-             <li><%= link_to 'Manage Sectors', sectors_path %></li>
-             <li><%= link_to 'Manage Departments', departments_path %></li>
-             <li><a href="#">Manage Users</a></li>
-             <li><%= link_to 'LGU details', cities_path %></li>
+             <% if current_user.role == 'admin' %> 
+              <li class="divider"></li>
+              <li><%= link_to 'Manage Sectors', sectors_path %></li>
+              <li><%= link_to 'Manage Departments', departments_path %></li>
+              <li><a href="#">Manage Users</a></li>
+              <li><%= link_to 'LGU details', cities_path %></li>
+             <% end %>
             </ul>
           </li>
          <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
          <% end %>
        </ul>

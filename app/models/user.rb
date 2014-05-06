@@ -8,6 +8,14 @@ class User < ActiveRecord::Base
   has_many :programs
   has_many :projects
 
+  # Roles definition
+  enum role: [:user, :manager, :admin, :ceo, :coordinator, :council]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+   self.role ||= :user
+  end
+
   
   # Virtual attribute for authenticating by either username or email
   # This is is addition to a real persisted field like 'username'
@@ -37,6 +45,5 @@ class User < ActiveRecord::Base
   def sector
    department.sector
   end
-
 
 end

@@ -1,5 +1,6 @@
 class DepartmentsController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
+ after_action :verify_authorized, except:  [:index, :show]
   def index
    @departments = Department.order("name ASC")
   end
@@ -10,11 +11,14 @@ class DepartmentsController < ApplicationController
 
   def new
    @department = Department.new
+   authorize @department
    @sectors = Sector.order("name ASC")
   end
 
   def create
    @department = Department.new(department_params)
+   authorize @department
+   @department.user = current_user
    @sectors = Sector.order("name ASC")
    if @department.save
     flash[:success] = "Department created successfully."
@@ -27,15 +31,17 @@ class DepartmentsController < ApplicationController
 
   def edit
    @department = Department.find(params[:id])
+   authorize @department
    @sectors = Sector.order("name ASC")
   end
 
   def update
    @department = Department.find(params[:id])
+   authorize @department
    @sectors = Sector.order("name ASC")
    if @department.update_attributes(department_params)
     flash[:success] = "Department updated successfully."
-    redirect_to(:action => 'show', :id => @department.id)
+    redirect_to @department
    else
     @sectors = Sector.order("name ASC")
     render('edit')
@@ -48,7 +54,8 @@ class DepartmentsController < ApplicationController
 
   def destroy
    department = Department.find(params[:id]).destroy
-   flash[:success] = "#department.name destroyed successfully."
+   authorize department
+   flash[:success] = "#{department.name} destroyed successfully."
    redirect_to(:action => 'index')
   end
 

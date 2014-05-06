@@ -1,0 +1,18 @@
+<% @page_title = "New Location" %>
+<div> 
+ <%= link_to("Back to list", {controller: "locations", action: "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="location new">
+ <h2>Edit Location</h2>
+
+ <%= form_for([@ppa, @location], :html => {:multipart => true, :role => "form"}) do |f| %>
+
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <div>
+   <%= f.hidden_field :portfolio_id, value: @ppa.id %>
+   <%= submit_tag("Create", :class => "btn btn-default") %>
+  </div>
+ <% end %>
+</div>

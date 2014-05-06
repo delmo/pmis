@@ -26,6 +26,7 @@ class RankCriteriaController < ApplicationController
   # POST /rank_criteria.json
   def create
     @rank_criterium = RankCriterium.new(rank_criterium_params)
+    @rank_criterium.user = current_user
 
     respond_to do |format|
       if @rank_criterium.save

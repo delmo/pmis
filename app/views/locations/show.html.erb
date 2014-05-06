@@ -1,0 +1,33 @@
+<% @page_title = "Location" %>
+<div id="pads"> 
+ <%= link_to 'Back', portfolio_locations_path(@ppa), :class => "btn btn-primary" %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Location of the project 
+ </div>
+</div>
+
+ <table class="table" summary="location detail view">
+  <tr>
+   <th>Map static photo</th>
+   <td>
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=600x300&sensor=false&zoom=12&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+   </td>
+  </tr>
+  <tr>
+   <th>Address</th>
+   <td><%= @location.address %></td>
+  </tr>
+  <tr>
+   <th>Latitude</th>
+   <td><%= @location.latitude %></td>
+  </tr>
+  <tr>
+   <th>Longitude</th>
+   <td><%= @location.longitude %></td>
+  </tr>
+ </table>
+</div>
+

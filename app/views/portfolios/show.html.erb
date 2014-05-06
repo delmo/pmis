@@ -37,9 +37,15 @@
    <th>Completion Date</th>
    <td><%= @portfolio.completion %></td>
   </tr>
+ <tr>
+   <th>Status</th>
+   <td><%= @portfolio.status %></td>
+  </tr>
  </table>
 </div>
-<%= link_to("Risk", portfolio_risks_path(@portfolio), :class => "#{@portfolio.is_risky == true ? 'btn btn-danger' : 'btn btn-success'}") %>
-<%= link_to("In-line", portfolio_in_lines_path(@portfolio), :class => "btn btn-#{@portfolio.not_in_line == true ? 'danger' : 'success'}") %>
-<%= link_to("Relation", portfolio_relations_path(@portfolio), :class => "btn btn-#{@portfolio.not_related == true ? 'danger' : 'success'}") %>
-<%= link_to("PEST", portfolio_pests_path(@portfolio), :class => "btn btn-#{@portfolio.not_pest == true ? 'danger' : 'success'}") %>
+<% if user_signed_in? and (current_user.admin? or current_user.coordinator?) %>
+ <%= link_to("Risk", portfolio_risks_path(@portfolio), :class => "#{@portfolio.is_risky == true ? 'btn btn-danger' : 'btn btn-success'}") %>
+ <%= link_to("In-line", portfolio_in_lines_path(@portfolio), :class => "btn btn-#{@portfolio.not_in_line == true ? 'danger' : 'success'}") %>
+ <%= link_to("Relation", portfolio_relations_path(@portfolio), :class => "btn btn-#{@portfolio.not_related == true ? 'danger' : 'success'}") %>
+ <%= link_to("PEST", portfolio_pests_path(@portfolio), :class => "btn btn-#{@portfolio.not_pest == true ? 'danger' : 'success'}") %>
+<% end %>

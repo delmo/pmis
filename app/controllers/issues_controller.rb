@@ -1,5 +1,6 @@
 class IssuesController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
+ after_action :verify_authorized, except:  [:index, :show]
   def index
    @issues = Issue.order("created_at DESC")
   end
@@ -10,11 +11,14 @@ class IssuesController < ApplicationController
 
   def new
    @issue = Issue.new
+   authorize @issue
    @departments = Department.order("name ASC")
   end
 
   def create
    @issue = Issue.new(issue_params)
+   authorize @issue
+   @issue.user = current_user
    if @issue.save
     flash[:success] = "Issue created successfully."
     redirect_to(:action => 'index')
@@ -26,11 +30,13 @@ class IssuesController < ApplicationController
 
   def edit
    @issue = Issue.find(params[:id])
+   authorize @issue
    @departments = Department.order("name ASC")
   end
 
   def update
    @issue = Issue.find(params[:id])
+   authorize @issue
    @departments = Department.order("name ASC")
    if @issue.update_attributes(issue_params)
     flash[:success] = "Issue updated succesfully."
@@ -47,6 +53,7 @@ class IssuesController < ApplicationController
 
   def destroy
    issue = Issue.find(params[:id]).destroy
+   authorize issue
    flash[:success] = "#{issue.title} destroyed successfully."
    redirect_to(:action => 'index')
   end

@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
+ after_action :verify_authorized, except:  [:index, :show]
   def index
    @cities = City.order("postcode ASC")
   end
@@ -10,10 +11,13 @@ class CitiesController < ApplicationController
 
   def new
    @city = City.new
+   authorize @city
   end
 
   def create
    @city = City.new(city_params)
+   authorize @city
+   @city.user = current_user
    if @city.save
     flash[:success] = "City created successfully."
     redirect_to(:action => 'index')
@@ -24,10 +28,12 @@ class CitiesController < ApplicationController
 
   def edit
    @city = City.find(params[:id])
+   authorize @city
   end
 
   def update
    @city = City.find(params[:id])
+   authorize @city
    if @city.update_attributes(city_params)
     flash[:success] = "City updated successfully."
     redirect_to(:action => 'show', :id => @city.id)
@@ -42,6 +48,7 @@ class CitiesController < ApplicationController
 
   def destroy
    city = City.find(params[:id]).destroy
+   authorize city
    flash[:success] = "#{city.name} city destroyed successfully."
    redirect_to(:action => 'index')
   end

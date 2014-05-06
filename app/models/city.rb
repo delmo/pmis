@@ -1,4 +1,5 @@
 class City < ActiveRecord::Base
+ belongs_to :user
  has_many :sectors
  validates :name, :address, :postcode, :vision, :mission, :development_thrust,  presence: true
 

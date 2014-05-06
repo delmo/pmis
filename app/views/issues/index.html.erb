@@ -2,12 +2,14 @@
 
 
 <div id="pads">
- <%= link_to("Add New Issue", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+ <% if user_signed_in? %>
+  <%= link_to("Add New Issue", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+ <% end %>
 </div>
 
 <div class="panel panel-primary">
  <div class="panel-heading">
-  issues
+  Issues
  </div>
  <div class="panel-body">
 
@@ -34,8 +36,12 @@
       <td><%= truncate(issue.intervention, length: 50, omission: '...') %></td>
       <td class="actions">
       <%= link_to "Show", issue, :class => 'btn btn-primary btn-xs' %>
-      <%= link_to "Edit", edit_issue_path(issue), :class => 'btn btn-default btn-xs' %>
-      <%= link_to "Delete", issue, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs' %>
+      <% if user_signed_in? and (policy(issue).edit?) %>
+       <%= link_to "Edit", edit_issue_path(issue), :class => 'btn btn-default btn-xs' %>
+      <% end %>
+      <% if user_signed_in? and (policy(issue).destroy?) %>
+       <%= link_to "Delete", issue, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs' %>
+      <% end %>
 
        </td>
       </tr>

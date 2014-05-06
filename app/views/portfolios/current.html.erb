@@ -1,0 +1,64 @@
+<% @page_title = "Portfolios" %>
+
+<div class="row-fluid" id="pads">
+ <div class="col-sm-6">
+  <div class="btn-group">
+   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Select a year
+    <span class="caret"></span>
+   </button>
+   <ul class="dropdown-menu">
+    <% @years.each do |year| %>
+     <li><%= link_to year, current_portfolios_path(year: year) %></li>
+    <%end%>
+   </ul>
+  </div>
+ </div>
+ <div class="col-sm-6">
+  <%= form_tag current_portfolios_path, method: 'get', :class => "navbar-form navbar-right" do %>
+    <div class="form-group">
+     <%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "form-control" %>
+    </div>
+    <%= submit_tag "Submit", name: nil, class: 'btn btn-default btn-md' %>
+  <% end %>
+ </div>
+ <br/><br/>  
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">Approved portfolio of projects</div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @portfolios.size %>
+  </div>
+   <%= @portfolios.size > 1 ? " portfolios found" : " portfolio found" %>
+ </div>
+
+ <div class="table-responsive">
+  <table class="table">
+   <tr class="header">
+    <th>Title</th>
+    <th>Amount</th>
+    <th>Start Date</th>
+    <th>Completion Date</th>
+    <th>Action</th>
+   </tr>
+
+   <% @portfolios.each do |portfolio| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+     <td><%= portfolio.title %></td>
+     <td><%= number_to_currency(portfolio.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+     <td><%= portfolio.start %></td>
+     <td><%= portfolio.completion %></td>
+     <td class="actions">
+      <%= link_to "Show", current_show_portfolios_path(id: portfolio.id), :class => "btn btn-primary btn-xs" %>
+      </td>
+     </tr>
+   <% end %>
+  </table>
+ </div>
+ </div>
+<div class="pull-right">
+ <%= paginate @portfolios %>
+</div>

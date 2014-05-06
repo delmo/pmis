@@ -2,7 +2,11 @@
 
 <div id="pads">
  <%= link_to("Add New Task", new_portfolio_task_path, :class => 'btn btn-success btn-sm') %>
- <%= link_to("Back", schedules_index_path, :class => "btn btn-default btn-sm") %>
+ <% if @previous == "monitoring" %>
+  <%= link_to("Back", monitors_ongoing_path, :class => "btn btn-default btn-sm") %>
+ <% else %> 
+  <%= link_to("Back", schedules_index_path, :class => "btn btn-default btn-sm") %>
+ <% end %>
 </div>
 
 <div class="panel panel-primary">
@@ -37,8 +41,12 @@
         <td><%= task.due_date %></td>
         <td><%= task.done %>%</td>
         <td><%= link_to("Show", {:action => 'show', :id => task.id}, :class => 'btn btn-primary btn-xs') %>
-        <%= link_to("Edit", {:action => 'edit', :id => task.id}, :class => 'btn btn-warning btn-xs') %>
-        <%= link_to("Delete", [@ppa, task], confirm: "Are you sure?", :method =>"delete", :class => 'btn btn-danger btn-xs') %></td>
+         <% if policy(task).update? %>
+          <%= link_to("Edit", {:action => 'edit', :id => task.id}, :class => 'btn btn-warning btn-xs') %>
+         <% end %>
+         <% if policy(task).destroy? %>
+          <%= link_to("Delete", [@ppa, task], confirm: "Are you sure?", :method =>"delete", :class => 'btn btn-danger btn-xs') %></td>
+         <% end %>
       </tr>
     <% end %>
    <% end %>

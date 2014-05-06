@@ -1,0 +1,41 @@
+<% @page_title = "PPA" %>
+<div id="pads"> 
+ <%= link_to("Back to calendar", {:action => "calendar"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show PPA
+ </div>
+
+ <table class="table" summary="portfolio detail view">
+  <tr>
+   <th>Title</th>
+   <td><%= @portfolio.title %></td>
+  </tr>
+ <tr>
+   <th>Description</th>
+   <td><%= @portfolio.description %></td>
+  </tr>
+ <tr>
+   <th>Performance Indicator</th>
+   <td><%= @portfolio.performance_indicator %></td>
+  </tr>
+ <tr>
+   <th>Target</th>
+   <td><%= @portfolio.target %></td>
+  </tr>
+ <tr>
+   <th>Amount</th>
+   <td><%= number_to_currency(@portfolio.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
+  </tr>
+ <tr>
+   <th>Start Date</th>
+   <td><%= @portfolio.start %></td>
+  </tr>
+ <tr>
+   <th>Completion Date</th>
+   <td><%= @portfolio.completion %></td>
+  </tr>
+ </table>
+</div>

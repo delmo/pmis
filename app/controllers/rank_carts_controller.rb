@@ -1,6 +1,7 @@
 class RankCartsController < ApplicationController
  before_filter :authenticate_user!, except: [:show]
-  before_action :set_rank_cart, only: [:show, :edit_multiple]
+ before_action :set_rank_cart, only: [:show, :edit_multiple]
+ after_action :verify_authorized, except:  [:show, :update_multiple]
 
   def show
    @portfolio = Portfolio.find_by(id: @rank_cart.portfolio_id)
@@ -10,6 +11,7 @@ class RankCartsController < ApplicationController
 
   def edit_multiple
    @portfolio = Portfolio.find_by(id: @rank_cart.portfolio_id)
+   authorize @portfolio
    @sector = find_action(@portfolio)
    if params[:rank_item_ids].nil?
     redirect_to @rank_cart, alert: 'Please ensure to tick at least one category rank.' 

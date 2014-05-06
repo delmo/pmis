@@ -1,0 +1,26 @@
+<%= error_messages_for(@location) %>
+
+<div  class="form-horizontal">
+
+ <div class="form-group">
+  <%= f.label(:address, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:address, :class => "form-control", :placeholder => "Enter address") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:latitude, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:latitude, :class => "form-control", :placeholder => "Enter latitude") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:longitude, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:longitude, :class => "form-control", :placeholder => "Enter longitude") %> 
+  </div>
+ </div>
+
+</div>

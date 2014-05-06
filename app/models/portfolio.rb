@@ -1,10 +1,12 @@
 class Portfolio < ActiveRecord::Base
+ belongs_to :user
  PORTFOLIO_TYPES = ["Program", "Project", "Activity"]
  belongs_to :issue
  belongs_to :source
  belongs_to :department
  has_many :tasks, dependent: :destroy
  has_many :reports, dependent: :destroy
+ has_many :locations, dependent: :destroy
 
  belongs_to :parent, :class_name => 'Portfolio', :foreign_key => 'portfolio_id'
  has_many :children, :class_name => 'Portfolio'
@@ -28,6 +30,12 @@ class Portfolio < ActiveRecord::Base
    find(:all, conditions: ['title LIKE ?', "%#{search}%"])
   else
    find(:all)
+  end
+ end
+
+ def self.approved_search(search)
+  if search
+   all_approved_portfolio.where('title LIKE ?', "%#{search}%")
   end
  end
 
@@ -89,6 +97,19 @@ class Portfolio < ActiveRecord::Base
 
  #portfolio for next year
  scope :next_year_portfolio, lambda { where("EXTRACT(YEAR FROM start) = ?", Time.now.year+1)}
+
+ #search approved portfolio by year
+ scope :search_portfolio, -> (year = Time.now.year) { where("EXTRACT(YEAR FROM start) = ?", year).where("approved = ?", true)}
+
+ #return all approved portfolio
+ scope :all_approved_portfolio, lambda { where("approved = ?", true)}
+
+ def self.years
+  arr = Portfolio.all.pluck(:start)
+  out = []
+  arr.each { |date| out << date.year unless out.include? date.year }
+  out
+ end
 
  private
  def dates_must_make_sense

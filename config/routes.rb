@@ -1,6 +1,7 @@
 Pmis::Application.routes.draw do
  
 
+
  get "monitors/general"
  get "monitors/ongoing"
 
@@ -24,16 +25,6 @@ Pmis::Application.routes.draw do
    get :finalist
   end
  end
-
-=begin
- scope path: "/selections", controller: :selections do
-  get "index" => :index
-  get "general" => :general
-  get "social" => :social
-  get "economic" => :economic
-  get "other" => :other
- end
-=end
 
  resources :rank_criteria
  resources :blogs
@@ -60,6 +51,7 @@ Pmis::Application.routes.draw do
  
  # Polymorphic routes
  resources :portfolios do
+  resources :locations
   resources :reports 
   resources :tasks
   resources :relations
@@ -67,6 +59,9 @@ Pmis::Application.routes.draw do
   resources :risks
   resources :in_lines
   collection do
+   get 'current_show'
+   get 'current'
+   get 'calendar_show'
    get 'calendar'
    get 'appeal'
    get 'decision'

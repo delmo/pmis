@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+ belongs_to :user
  WORK_PERCENTAGES = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
  belongs_to :portfolio
 

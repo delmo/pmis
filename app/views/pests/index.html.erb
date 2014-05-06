@@ -2,7 +2,12 @@
 
 <div id="pads">
  <%= link_to("Add New pest", [:new, @feasible, :pest], :class => 'btn btn-success btn-sm') %>
- <%= link_to("Back to #{@feasible.title}", @feasible, :class => "btn btn-default btn-sm") %>
+ <% if @feasible.appeal %>
+  <%= link_to("Back to #{@feasible.title}", decision_portfolios_path(:id => @feasible), :class => "btn btn-default btn-sm") %>
+ <% else %>
+  <%= link_to("Back to #{@feasible.title}", submit_appeal_portfolios_path(:id => @feasible), :class => "btn btn-default btn-sm") %>
+ <% end %>
+
 </div>
 
 <div class="panel panel-primary">
@@ -32,8 +37,12 @@
       <td><%= truncate(pest.justification, length: 50, omission: '...') %></td>
       <td class="actions">
       <%= link_to("Show", {:action => 'show', :id => pest.id}, :class => 'btn btn-primary btn-xs') %>
-      <%= link_to("Edit", {:action => 'edit', :id => pest.id}, :class => 'btn btn-default btn-xs') %>
-      <%= link_to("Delete", [@feasible, pest], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+      <% if policy(pest).edit? %>
+       <%= link_to("Edit", {:action => 'edit', :id => pest.id}, :class => 'btn btn-default btn-xs') %>
+      <% end %>
+      <% if policy(pest).destroy? %>
+       <%= link_to("Delete", [@feasible, pest], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+      <% end %>
        </td>
       </tr>
     <% end %>

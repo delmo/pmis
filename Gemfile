@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
@@ -37,7 +37,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Passanger rather then webrick
-gem 'passenger'
+gem 'passenger', '~> 4.0.41'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -47,8 +47,14 @@ end
 # Paperclip for uploading files
 gem 'paperclip', '~> 4.1'
 
+# Geocoder for mapping
+gem 'geocoder'
+
 # Pagination
 gem 'kaminari'
+
+# Pundit for authorisation
+gem 'pundit'
 
 # Device authentication
 gem 'devise'

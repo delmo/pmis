@@ -13,7 +13,7 @@
   <% if @ppas_by_date[date] %>
    <ul>
     <% @ppas_by_date[date].each do |ppa| %>
-     <li><%= link_to ppa.title, ppa %></li>
+     <li><%= link_to ppa.title, {action: "calendar_show", id: ppa.id} %></li>
     <% end %>
    </ul>
   <% end %>

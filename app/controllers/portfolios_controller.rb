@@ -1,47 +1,67 @@
 class PortfoliosController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+ before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+ after_action :verify_authorized, :except => [:current, :report, :index, :show, :appeal, :submit_appeal, :calendar, :calendar_show, :current_show]
 
-  def report
-   @ppas = Portfolio.report_search(params[:search]).page(params[:page]).per(2)
+  def current
+   if params[:year]
+    @portfolios = Portfolio.search_portfolio(params[:year]).page(params[:page]).per(10)
+   elsif params[:search]
+    @portfolios = Portfolio.approved_search(params[:search]).page(params[:page]).per(10)
+   else
+    @portfolios = Portfolio.all_approved_portfolio
+   end
+   @years = Portfolio.years
   end
 
-  # GET /portfolios
+  def current_show
+   @portfolio = Portfolio.find(params[:id])
+  end
+
+  def report
+   @ppas = Portfolio.report_search(params[:search]).page(params[:page]).per(10)
+  end
+
   def index
    #ppas = Portfolio.search(params[:search])
    @portfolios = Portfolio.next_year_search(params[:search]).page(params[:page]).per(10)
   end
 
-  # GET /portfolios/1
   def show
    @portfolio = Portfolio.find(params[:id])
-   
   end
 
-  # GET /portfolios/new
+  def calendar_show
+   @portfolio = Portfolio.find(params[:id])
+  end
+
   def new
    @portfolio = Portfolio.new
+   authorize @portfolio
    @portfolios = Portfolio.order("title ASC")
    @departments = Department.order("name ASC")
    @portfolio_types = Portfolio::PORTFOLIO_TYPES
    @issues = Issue.order("title ASC")
   end
 
-  # GET /portfolios/1/edit
   def edit
    @portfolio = Portfolio.find(params[:id])
+   authorize @portfolio
    @departments = Department.order("name ASC")
    @portfolios = Portfolio.order("title ASC")
    @issues = Issue.order("title ASC")
    @portfolio_types = Portfolio::PORTFOLIO_TYPES
   end
 
-  # POST /portfolios
   def create
    @portfolio = Portfolio.new(portfolio_params)
+   authorize @portfolio
+   @portfolio.user = current_user
    if @portfolio.save
     cart = RankCart.create(portfolio_id: @portfolio.id)
     cart.populate_rank_criteria(@portfolio.id, cart.id)
+    cart.user = current_user
+    cart.save
     flash[:success] = "PPA created successfully."
     redirect_to(:action => 'index')
    else
@@ -53,9 +73,9 @@ class PortfoliosController < ApplicationController
    end
   end
 
-  # PATCH/PUT /portfolios/1
   def update
    @portfolio = Portfolio.find(params[:id])
+   authorize @portfolio # policy for update
    if @portfolio.update_attributes(portfolio_params)
     flash[:success] = "PPA updated successfully."
     #redirect_to(:action => 'index')
@@ -69,19 +89,20 @@ class PortfoliosController < ApplicationController
    end
   end
 
-  # DELETE /portfolios/1
   def destroy
+   authorize @portfolio # policy for delete
     portfolio = Portfolio.find(params[:id]).destroy
     flash[:success] = "#{portfolio.title} destroyed successfully."
     redirect_to(:action => 'index')
   end
 
   def appeal
-   @portfolios = Portfolio.where("is_risky = true or not_in_line = true or not_related = true or not_pest = true").where("appeal = false")
+   @portfolios = Portfolio.next_year_portfolio.where("is_risky = true or not_in_line = true or not_related = true or not_pest = true").where("appeal = false")
   end
 
   def review
-   @portfolios = Portfolio.where("appeal = true")
+   @portfolios = Portfolio.next_year_portfolio.where("appeal = true")
+   authorize @portfolios
   end
 
   def submit_appeal
@@ -90,6 +111,7 @@ class PortfoliosController < ApplicationController
 
   def decision
    @portfolio = Portfolio.find(params[:id])
+   authorize @portfolio
   end
 
   def calendar

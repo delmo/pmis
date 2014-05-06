@@ -7,7 +7,7 @@
 <div class="department update">
  <h2>Edit Department</h2>
 
- <%= form_for(:department, :url => {:action => 'update'}, :html => {:role => "form"}) do |f| %>
+ <%= form_for(@department, :html => {:role => "form"}) do |f| %>
 
   <%= render(:partial => 'form', :locals => {:f => f}) %>
 

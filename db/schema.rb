@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502200732) do
+ActiveRecord::Schema.define(version: 20140504221912) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.text     "post"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "cities", force: true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.text     "development_thrust"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "departments", force: true do |t|
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "departments", ["sector_id"], name: "index_departments_on_sector_id", using: :btree
@@ -82,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.string   "achievable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "in_lines", ["achievable_id", "achievable_type"], name: "index_in_lines_on_achievable_id_and_achievable_type", using: :btree
@@ -93,9 +97,22 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.text     "intervention"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "issues", ["department_id"], name: "index_issues_on_department_id", using: :btree
+
+  create_table "locations", force: true do |t|
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "portfolio_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "locations", ["portfolio_id"], name: "index_locations_on_portfolio_id", using: :btree
 
   create_table "pests", force: true do |t|
     t.string   "title"
@@ -105,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.string   "feasible_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "pests", ["feasible_id", "feasible_type"], name: "index_pests_on_feasible_id_and_feasible_type", using: :btree
@@ -151,6 +169,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.boolean  "approved",                                       default: false
     t.boolean  "appeal",                                         default: false
     t.text     "decision"
+    t.integer  "user_id"
   end
 
   add_index "portfolios", ["department_id"], name: "index_portfolios_on_department_id", using: :btree
@@ -215,6 +234,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "portfolio_id"
+    t.integer  "user_id"
   end
 
   add_index "rank_carts", ["portfolio_id"], name: "index_rank_carts_on_portfolio_id", unique: true, using: :btree
@@ -225,6 +245,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.decimal  "weight",      precision: 5, scale: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "rank_items", force: true do |t|
@@ -235,6 +256,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rank_cart_id"
+    t.integer  "user_id"
   end
 
   add_index "rank_items", ["portfolio_id"], name: "index_rank_items_on_portfolio_id", using: :btree
@@ -249,6 +271,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "relations", ["linkable_id", "linkable_type"], name: "index_relations_on_linkable_id_and_linkable_type", using: :btree
@@ -263,6 +286,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "user_id"
   end
 
   add_index "reports", ["portfolio_id"], name: "index_reports_on_portfolio_id", using: :btree
@@ -278,6 +302,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.datetime "updated_at"
     t.integer  "riskiness_id"
     t.string   "riskiness_type"
+    t.integer  "user_id"
   end
 
   add_index "risks", ["riskiness_id", "riskiness_type"], name: "index_risks_on_riskiness_id_and_riskiness_type", using: :btree
@@ -293,6 +318,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.text     "required_policy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "sectors", ["city_id"], name: "index_sectors_on_city_id", using: :btree
@@ -304,6 +330,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.date     "budget_year"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "tasks", force: true do |t|
@@ -315,6 +342,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.integer  "portfolio_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -334,6 +362,7 @@ ActiveRecord::Schema.define(version: 20140502200732) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "department_id"
+    t.integer  "role"
   end
 
   add_index "users", ["department_id"], name: "index_users_on_department_id", using: :btree

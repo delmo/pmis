@@ -5,7 +5,7 @@
 
 <div class="panel panel-primary">
  <div class="panel-heading">
-  To schedule a program, project or activity please create one or more tasks. 
+  <%= Time.now.year+1 %> Portfolio of projects. To schedule a program, project or activity please create one or more tasks. 
  </div>
  <div class="panel-body">
 
@@ -19,7 +19,7 @@
     <tr class="header">
      <th>Title</th>
      <th>Amount</th>
-     <th>Action</th>
+     <th>Actions</th>
     </tr>
 
     <% rank = 0 %>
@@ -27,7 +27,9 @@
      <tr class="<%= cycle('odd', 'even') %>">
       <td><%= ppa.title %>
       <td><%= number_to_currency(ppa.amount, :precision => 2, :unit => "Php", :format => "%u %n") %></td>
-      <td><%= link_to "Schedule", portfolio_tasks_path(ppa), class: "btn btn-primary btn-sm" %></td>
+      <td><%= link_to "Schedule", portfolio_tasks_path(ppa), class: "btn btn-primary btn-sm" %>
+          <%= link_to "Set Location", portfolio_locations_path(ppa), class: "btn btn-default btn-sm" %>
+      </td>
       </tr>
     <% end %>
    </table>

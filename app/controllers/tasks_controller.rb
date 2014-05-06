@@ -1,10 +1,13 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_percentages, only: [:new, :create, :update, :edit]
+ before_filter :authenticate_user!, except: [:index, :show]
+ before_action :set_task, only: [:show, :edit, :update, :destroy]
+ before_action :set_percentages, only: [:new, :create, :update, :edit]
+ after_action :verify_authorized, except:  [:index, :show, :new, :create, :edit]
 
   def index
    @ppa = Portfolio.find(params[:portfolio_id])
    @tasks = Task.where("portfolio_id = ?", params[:portfolio_id])
+   @previous = params[:previous_link]
   end
 
   def show
@@ -23,6 +26,7 @@ class TasksController < ApplicationController
   def create
    @ppa = Portfolio.find(params[:portfolio_id])
    @task = Task.new(task_params)
+   @task.user = current_user
    if @task.save
      redirect_to portfolio_tasks_path(@ppa), notice: 'Task was successfully created.' 
    else
@@ -31,6 +35,7 @@ class TasksController < ApplicationController
   end
 
   def update
+   authorize @task
      if @task.update(task_params)
        redirect_to portfolio_tasks_path(@ppa), notice: 'Task was successfully updated.' 
      else
@@ -39,6 +44,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+   authorize @task
    @task.destroy
    redirect_to portfolio_tasks_path(@ppa) 
   end

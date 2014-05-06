@@ -5,7 +5,7 @@
 
 <div class="panel panel-primary">
  <div class="panel-heading">
-  The total budget for the next fiscal year is <%= number_to_currency(@total_amount, :precision => 2, :unit => "Php", :format => "%u %n") %> 
+  The total budget for <%= Time.now.year+1 %> is <%= number_to_currency(@total_amount, :precision => 2, :unit => "Php", :format => "%u %n") %> 
  </div>
  <div class="panel-body">
 

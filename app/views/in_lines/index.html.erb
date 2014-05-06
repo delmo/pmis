@@ -2,7 +2,11 @@
 
 <div id="pads">
  <%= link_to("Add New In_line", [:new, @achievable, :in_line], :class => 'btn btn-success btn-sm') %>
- <%= link_to("Back to #{@achievable.title}", @achievable, :class => "btn btn-default btn-sm") %>
+ <% if @achievable.appeal %>
+  <%= link_to("Back to #{@achievable.title}", decision_portfolios_path(:id => @achievable), :class => "btn btn-default btn-sm") %>
+ <% else %>
+  <%= link_to("Back to #{@achievable.title}", submit_appeal_portfolios_path(:id => @achievable), :class => "btn btn-default btn-sm") %>
+ <% end %>
 </div>
 
 <div class="panel panel-primary">
@@ -32,8 +36,12 @@
       <td><%= truncate(in_line.justification, length: 50, omission: '...') %></td>
       <td class="actions">
       <%= link_to("Show", {:action => 'show', :id => in_line.id}, :class => 'btn btn-primary btn-xs') %>
-      <%= link_to("Edit", {:action => 'edit', :id => in_line.id}, :class => 'btn btn-default btn-xs') %>
-      <%= link_to("Delete", [@achievable, in_line], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+      <% if policy(in_line).edit? %>
+       <%= link_to("Edit", {:action => 'edit', :id => in_line.id}, :class => 'btn btn-default btn-xs') %>
+      <% end %>
+      <% if policy(in_line).destroy? %>
+       <%= link_to("Delete", [@achievable, in_line], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+      <% end %>
        </td>
       </tr>
     <% end %>

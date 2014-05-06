@@ -2,7 +2,12 @@
 
 <div id="pads">
  <%= link_to("Add New Risk", [:new, @riskiness, :risk], :class => 'btn btn-success btn-sm') %>
- <%= link_to("Back to #{@riskiness.title}", @riskiness, :class => "btn btn-default btn-sm") %>
+ <% if @riskiness.appeal %>
+  <%= link_to("Back to #{@riskiness.title}", decision_portfolios_path(:id => @riskiness), :class => "btn btn-default btn-sm") %>
+ <% else %>
+  <%= link_to("Back to #{@riskiness.title}", submit_appeal_portfolios_path(:id => @riskiness), :class => "btn btn-default btn-sm") %>
+ <% end %>
+
 </div>
 
 <div class="panel panel-primary">
@@ -21,6 +26,7 @@
     <tr class="header">
      <th>Title</th>
      <th>Description</th>
+     <th>Actions</th>
     </tr>
 
     <% @risks.each do |risk| %>
@@ -29,8 +35,12 @@
       <td><%= truncate(risk.description, length: 50, omission: '...') %></td>
       <td class="actions">
       <%= link_to("Show", {:action => 'show', :id => risk.id}, :class => 'btn btn-primary btn-xs') %>
-      <%= link_to("Edit", {:action => 'edit', :id => risk.id}, :class => 'btn btn-default btn-xs') %>
-      <%= link_to("Delete", [@riskiness, risk], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+      <% if policy(risk).edit? %>
+       <%= link_to("Edit", {:action => 'edit', :id => risk.id}, :class => 'btn btn-default btn-xs') %>
+      <% end %>
+      <% if policy(risk).destroy? %>
+       <%= link_to("Delete", [@riskiness, risk], confirm: "Are you sure?", method: :delete,  :class => 'btn btn-danger btn-xs') %>
+      <% end %>
        </td>
       </tr>
     <% end %>

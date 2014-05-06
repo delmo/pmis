@@ -1,4 +1,5 @@
 class RankCart < ActiveRecord::Base
+ belongs_to :user
  belongs_to :portfolio
  has_many :rank_items, dependent: :destroy
 

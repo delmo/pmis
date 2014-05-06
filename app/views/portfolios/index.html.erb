@@ -3,7 +3,9 @@
 <div class="row-fluid" id="pads">
  <div class="col-sm-6">
   <div class="pull-left">
-   <%= link_to("Add New PPA", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+   <% if user_signed_in? %>
+    <%= link_to("Add New PPA", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+   <% end %>
  </div>
  </div>
  <div class="col-sm-6">
@@ -18,7 +20,7 @@
 </div>
 
 <div class="panel panel-primary">
- <div class="panel-heading">List of proposed projects.</div>
+ <div class="panel-heading"><%= Time.now.year+1 %> proposed programs, projects and activities.</div>
  <div class="panel-body">
 
   <div class="badge">
@@ -49,8 +51,12 @@
      <td><%= portfolio.completion %></td>
      <td class="actions">
       <%= link_to "Show", portfolio, :class => "btn btn-primary btn-xs" %>
-      <%= link_to "Edit", edit_portfolio_path(portfolio), :class => "btn btn-default btn-xs" %>
-      <%= link_to "Delete", portfolio, method: 'delete', data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %>
+      <% if user_signed_in? and (policy(portfolio).update?) %>
+       <%= link_to "Edit", edit_portfolio_path(portfolio), :class => "btn btn-default btn-xs" %>
+      <% end %>
+      <% if user_signed_in? and (policy(portfolio).destroy?) %>
+       <%= link_to "Delete", portfolio, method: 'delete', data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %>
+      <% end %>
       </td>
      </tr>
    <% end %>
