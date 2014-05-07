@@ -116,7 +116,11 @@ GEM
       daemon_controller (>= 1.2.0)
       rack
       rake (>= 0.8.1)
+    pdf-core (0.2.5)
     polyglot (0.3.4)
+    prawn (1.0.0)
+      pdf-core (~> 0.2.2)
+      ttfunk (~> 1.1.1)
     pundit (0.2.3)
       activesupport (>= 3.0.0)
     rack (1.5.2)
@@ -182,6 +186,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.1.1)
     turbolinks (2.2.2)
       coffee-rails
     tzinfo (1.1.0)
@@ -219,6 +224,7 @@ DEPENDENCIES
   mysql2
   paperclip (~> 4.1)
   passenger (~> 4.0.41)
+  prawn
   pundit
   rails (= 4.1.0)
   rspec-rails (~> 2.14.0)

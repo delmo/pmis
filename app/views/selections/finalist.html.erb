@@ -1,8 +1,15 @@
 <% @page_title = "Selected Portfolio of Projects" %>
 
-<div id="pads">
+<div class="row-fluid" id="pads">
+ <div class="col-lg-12">
+  <div class="pull-right">
+   <div class="">
+    <%= link_to(" Print", print_aip_path(:format => 'pdf'), :class => "glyphicon glyphicon-print btn btn-default") %>
+   </div>
+ </div>
+ </div>
 </div>
-
+<br/><br/>
 <div class="panel panel-primary">
  <div class="panel-heading">
   The total budget for <%= Time.now.year+1 %> is <%= number_to_currency(@total_amount, :precision => 2, :unit => "Php", :format => "%u %n") %> 

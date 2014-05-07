@@ -1,9 +1,23 @@
 <% @page_title = "Reports" %>
 
-<div id="pads">
- <%= link_to("Add New Report", new_portfolio_report_path, :class => 'btn btn-success btn-sm') %>
- <%= link_to("Back", report_portfolios_path, :class => "btn btn-default btn-sm") %>
+<div class="row-fluid">
+ <div class="col-md-6">
+  <div class="pull-left">
+   <% if user_signed_in? %>
+    <%= link_to("Add New Report", new_portfolio_report_path, :class => 'btn btn-success btn-md') %>
+    <%= link_to("Back", report_portfolios_path, :class => "btn btn-default btn-md") %>
+   <% end %>
+  </div>
+ </div>
+ <div class="col-md-6">
+  <div class="pull-right">
+   <div class="">
+    <%= link_to(" Print", print_accomplishment_path(:id => @ppa.id, :format => 'pdf'), :class => "glyphicon glyphicon-print btn btn-default btn-md") %>
+   </div>
+ </div>
+ </div>
 </div>
+<br/><br/>
 
 <div class="panel panel-primary">
  <div class="panel-heading">

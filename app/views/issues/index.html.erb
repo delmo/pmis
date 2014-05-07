@@ -1,11 +1,22 @@
 <% @page_title = "Issues" %>
 
-
-<div id="pads">
- <% if user_signed_in? %>
-  <%= link_to("Add New Issue", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
- <% end %>
+<div class="row-fluid">
+ <div class="col-md-6">
+  <div class="pull-left">
+   <% if user_signed_in? %>
+    <%= link_to("Add New Issue", {:action => 'new'}, :class => 'btn btn-success btn-md') %>
+   <% end %>
+  </div>
+ </div>
+ <div class="col-md-6">
+  <div class="pull-right">
+   <div class="">
+    <%= link_to(" Print", print_issues_path(:format => 'pdf'), :class => "glyphicon glyphicon-print btn btn-default btn-md") %>
+   </div>
+ </div>
+ </div>
 </div>
+<br/><br/>
 
 <div class="panel panel-primary">
  <div class="panel-heading">

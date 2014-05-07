@@ -2,6 +2,10 @@ Pmis::Application.routes.draw do
  
 
 
+  get 'print/aip'
+  get 'print/issues'
+  get 'print/accomplishment'
+
  get "monitors/general"
  get "monitors/ongoing"
 
