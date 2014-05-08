@@ -1,0 +1,55 @@
+<%= error_messages_for(@user) %>
+
+<div  class="form-horizontal">
+
+ <div class="form-group">
+  <%= f.label(:department_id, "Department", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:department_id, @departments.map {|d| [d.name, d.id]}, {}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:first_name, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:first_name, :class => "form-control", :placeholder => "Enter name") %> 
+  </div>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label(:last_name, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:last_name, :class => "form-control", :placeholder => "Enter surname") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:username, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:username, :class => "form-control", :placeholder => "Enter username") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:email, :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.text_field(:email, :class => "form-control", :placeholder => "Email") %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+  <%= f.label(:role, "Role", :class => "col-sm-2 control-label") %> 
+  <div class="col-sm-10">
+   <%= f.select(:role, @roles.map {|r| r[0]}, {}, {:class => "form-control"}) %> 
+  </div>
+ </div>
+
+ <div class="form-group">
+ <div class="col-sm-2"></div>
+ <div class="col-sm-10">
+   <%= f.check_box :is_active %>
+   <%= f.label("Activate the account", class: "control-label") %>
+  </div>
+ </div>
+
+</div>

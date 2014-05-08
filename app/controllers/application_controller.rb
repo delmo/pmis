@@ -7,13 +7,22 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
+  before_filter :check_user
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   after_action :verify_authorized, :except => [:index], unless: :devise_controller? #skip devise controller checks
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
+
+  #sign out if the user is disabled
+  def check_user
+   if current_user && current_user.disabled?
+     sign_out current_user 
+     redirect_to root_path
+     flash[:alert] = "Your account is not activated yet. Please contact the administrator."
+   end
+  end
 
   def user_not_authorized
    flash[:alert] = "Access denied. You are not authorized to perform this action."

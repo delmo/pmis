@@ -31,8 +31,10 @@ class AccomplishmentPdf < Prawn::Document
   move_down 30
   text "Location:", :style => :bold
   move_down 10
-  text "#{@locations.first.address}"
-  move_down 5
+  if @locations.count > 0
+   text "#{@locations.first.address}"
+   move_down 5
+  end
  end
 
  def report_section

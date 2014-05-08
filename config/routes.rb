@@ -2,12 +2,19 @@ Pmis::Application.routes.draw do
  
 
 
+  get 'users/index'
+  get 'users/show'
+  get 'users/modify'
+  post 'users/update'
+
   get 'print/aip'
   get 'print/issues'
   get 'print/accomplishment'
+  get 'print/risks'
 
  get "monitors/general"
  get "monitors/ongoing"
+ get "monitors/email_manager"
 
  get "schedules/index"
 

@@ -1,31 +1,49 @@
-<h1>Listing rank_criteria</h1>
+<% @page_title = "Ranking Criteria" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Criteria</th>
-      <th>Description</th>
-      <th>Weight</th>
-      <th></th>
-      <th></th>
-      <th></th>
+<div id="pads">
+ <% if RankCriterium.all.sum(:weight) < 1.00 %>
+  <%= link_to("Add New Criterium", {:action => 'new'}, :class => 'btn btn-success btn-sm') %>
+ <% end %>
+</div>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+ <% if RankCriterium.all.sum(:weight) < 1.00 %>
+  The total weight is <%= RankCriterium.all.sum(:weight) %>.
+ <% else %>
+  The max total weight is already reached. Please edit or delete other category if you want to add another criterium. 
+ <% end %>
+ </div>
+ <div class="panel-body">
+
+  <div class="badge">
+   <%= @rank_criteria.size %> 
+  </div>
+   <%= @rank_criteria.size > 1 ? " rank_criteria found" : " rank_criterium found" %>
+
+  <div class="table-responsive">
+   <table class="table table-striped table-hover" summary="rank_criterium list">
+    <tr class="header">
+     <th>Criterium</th>
+     <th>Description</th>
+     <th>Weight</th>
+     <th>Actions</th>
     </tr>
-  </thead>
 
-  <tbody>
     <% @rank_criteria.each do |rank_criterium| %>
-      <tr>
-        <td><%= rank_criterium.criteria %></td>
-        <td><%= rank_criterium.description %></td>
-        <td><%= rank_criterium.weight %></td>
-        <td><%= link_to 'Show', rank_criterium %></td>
-        <td><%= link_to 'Edit', edit_rank_criterium_path(rank_criterium) %></td>
-        <td><%= link_to 'Destroy', rank_criterium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+     <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= rank_criterium.criteria %></td>
+      <td><%= rank_criterium.description %></td>
+      <td><%= rank_criterium.weight %></td>
+      <td class="actions">
+      <%= link_to "Show", rank_criterium, :class => 'btn btn-primary btn-xs' %>
+      <%= link_to "Edit", edit_rank_criterium_path(rank_criterium), :class => 'btn btn-default btn-xs' %>
+      <%= link_to "Delete", rank_criterium, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs' %>
+
+       </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Rank criterium', new_rank_criterium_path %>
+   </table>
+  </div>
+ </div>
+</div>

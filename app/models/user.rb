@@ -8,12 +8,21 @@ class User < ActiveRecord::Base
   has_many :programs
   has_many :projects
 
+  #set the first user as admin and activate the account 
+  before_save :set_admin
+
   # Roles definition
   enum role: [:user, :manager, :admin, :ceo, :coordinator, :council]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
    self.role ||= :user
+  end
+
+  # check the record if the user is disabled in db
+  # and call it in ApplicationController
+  def disabled?
+   is_active == false
   end
 
   
@@ -45,5 +54,13 @@ class User < ActiveRecord::Base
   def sector
    department.sector
   end
+
+  private
+   def set_admin
+    if User.nil?
+     self.role = 2
+     self.is_active = true
+    end
+   end
 
 end

@@ -6,6 +6,10 @@ class PortfolioPolicy
   @portfolio = portfolio
  end
 
+ def email_manager?
+  user.admin? or user.ceo? or user.coordinator?
+ end
+
  def edit?
   user.admin? or portfolio.user_id == user.id
  end

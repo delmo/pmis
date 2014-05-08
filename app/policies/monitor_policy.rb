@@ -6,5 +6,8 @@ class MonitorPolicy
   @portfolio = portfolio
  end
  
+ def email_manager?
+  user.admin? or user.ceo? or user.coordinator?
+ end
 
 end

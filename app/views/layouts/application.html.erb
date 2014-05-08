@@ -33,7 +33,7 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About Us", about_docus_path %></li>
          <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio Menu <b class="caret"></b></a>
            <ul class="dropdown-menu">
             <li><%= link_to "Issues", issues_path %></li>
             <li><%= link_to "Approved", current_portfolios_path(year: Time.now.year) %></li>
@@ -81,8 +81,9 @@
               <li class="divider"></li>
               <li><%= link_to 'Manage Sectors', sectors_path %></li>
               <li><%= link_to 'Manage Departments', departments_path %></li>
-              <li><a href="#">Manage Users</a></li>
-              <li><%= link_to 'LGU details', cities_path %></li>
+              <li><%= link_to 'Manage Users', users_index_path %></li>
+              <li><%= link_to 'LGU Details', cities_path %></li>
+              <li><%= link_to 'Ranking Criteria', rank_criteria_path %></li>
              <% end %>
             </ul>
           </li>

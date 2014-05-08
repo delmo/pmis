@@ -1,7 +1,9 @@
 class PortfoliosController < ApplicationController
- before_filter :authenticate_user!, except: [:index, :show]
+ before_filter :authenticate_user!, except: [:current, :current_show, :index, :show]
  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
  after_action :verify_authorized, :except => [:current, :report, :index, :show, :appeal, :submit_appeal, :calendar, :calendar_show, :current_show]
+
+
 
   def current
    if params[:year]

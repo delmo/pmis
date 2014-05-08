@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = "Criterium" %>
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
 
-<p>
-  <strong>Criteria:</strong>
-  <%= @rank_criterium.criteria %>
-</p>
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show Criterium
+ </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @rank_criterium.description %>
-</p>
+ <table class="table" summary="criterium detail view">
+  <tr>
+   <th>Criteria</th>
+   <td><%= @rank_criterium.criteria %></td>
+  </tr>
+  <tr>
+   <th>Description</th>
+   <td><%= @rank_criterium.description %></td>
+  </tr>
+  <tr>
+   <th>Weight</th>
+   <td><%= @rank_criterium.weight %></td>
+  </tr>
+ </table>
+</div>
 
-<p>
-  <strong>Weight:</strong>
-  <%= @rank_criterium.weight %>
-</p>
-
-<%= link_to 'Edit', edit_rank_criterium_path(@rank_criterium) %> |
-<%= link_to 'Back', rank_criteria_path %>

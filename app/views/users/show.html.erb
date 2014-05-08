@@ -1,0 +1,42 @@
+<% @page_title = "User" %>
+
+<div id="pads"> 
+ <%= link_to("Back to list", {:action => "index"}, :class => "btn btn-primary") %>
+</div>
+
+<div class="panel panel-default">
+ <div class="panel-heading">
+  Show User
+ </div>
+
+ <table class="table" summary="user detail view">
+  <tr>
+   <th>First Name</th>
+   <td><%= @user.first_name %></td>
+  </tr>
+  <tr>
+   <th>Last Name</th>
+   <td><%= @user.last_name %></td>
+  </tr>
+  <tr>
+   <th>Username</th>
+   <td><%= @user.username %></td>
+  </tr>
+  <tr>
+   <th>Email</th>
+   <td><%= @user.email %></td>
+  </tr>
+  <tr>
+   <th>Role</th>
+   <td><%= @user.role %></td>
+  </tr>
+  <tr>
+   <th>Is account active?</th>
+   <td><%= @user.is_active %></td>
+  </tr>
+  <tr>
+   <th>Last sign-in on</th>
+   <td><%= @user.last_sign_in_at.strftime("%B %d, %Y") %></td>
+  </tr>
+ </table>
+</div>

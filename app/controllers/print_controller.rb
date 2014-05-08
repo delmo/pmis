@@ -1,6 +1,21 @@
 class PrintController < ApplicationController
- after_action :verify_authorized, :except => [:issues, :aip, :accomplishment]
+ after_action :verify_authorized, :except => [:risks, :issues, :aip, :accomplishment]
  before_action :load_data, :only => [:issues, :aip]
+
+ def risks
+  @ppa = Portfolio.find(params[:id])
+  @city = City.first
+  @risks = @ppa.risks
+   respond_to do |format|
+    format.html
+    format.pdf do
+     pdf = RisksPdf.new(@city, @ppa,  @risks, view_context) 
+     send_data pdf.render, filename: "risks.pdf",
+      type: "application/pdf",
+      disposition: "inline"
+    end
+   end
+ end
 
   def issues
    respond_to do |format|

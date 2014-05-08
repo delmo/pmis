@@ -74,6 +74,9 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     ffi (1.9.3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     geocoder (1.2.0)
     groupdate (2.1.0)
       activerecord (>= 3.0.0)
@@ -102,7 +105,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.3)
     minitest (5.3.3)
-    multi_json (1.9.3)
+    multi_json (1.10.0)
     mysql2 (0.3.15)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -112,7 +115,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    passenger (4.0.41)
+    passenger (4.0.42)
       daemon_controller (>= 1.2.0)
       rack
       rake (>= 0.8.1)
@@ -213,6 +216,7 @@ DEPENDENCIES
   devise
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.1.2)
+  figaro
   geocoder
   groupdate
   jbuilder (~> 1.2)

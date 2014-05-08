@@ -1,66 +1,51 @@
 class RankCriteriaController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_rank_criterium, only: [:show, :edit, :update, :destroy]
+ before_action :set_rank_criterium, only: [:show, :edit, :update, :destroy]
+ #before_action :check_weight, only: [:create, :update]
+ after_action :verify_authorized, except:  [:index, :show]
 
-  # GET /rank_criteria
-  # GET /rank_criteria.json
   def index
     @rank_criteria = RankCriterium.all
   end
 
-  # GET /rank_criteria/1
-  # GET /rank_criteria/1.json
   def show
   end
 
-  # GET /rank_criteria/new
   def new
     @rank_criterium = RankCriterium.new
+    authorize @rank_criterium
   end
 
-  # GET /rank_criteria/1/edit
   def edit
+    authorize @rank_criterium
   end
 
-  # POST /rank_criteria
-  # POST /rank_criteria.json
   def create
     @rank_criterium = RankCriterium.new(rank_criterium_params)
+    authorize @rank_criterium
     @rank_criterium.user = current_user
-
-    respond_to do |format|
-      if @rank_criterium.save
-        format.html { redirect_to @rank_criterium, notice: 'Rank criterium was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @rank_criterium }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @rank_criterium.errors, status: :unprocessable_entity }
-      end
-    end
+     if @rank_criterium.save
+       redirect_to @rank_criterium, notice: 'Rank criterium was successfully created.' 
+       render action: 'show', status: :created, location: @rank_criterium 
+     else
+       render action: 'new' 
+     end
   end
 
-  # PATCH/PUT /rank_criteria/1
-  # PATCH/PUT /rank_criteria/1.json
   def update
-    respond_to do |format|
-      if @rank_criterium.update(rank_criterium_params)
-        format.html { redirect_to @rank_criterium, notice: 'Rank criterium was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @rank_criterium.errors, status: :unprocessable_entity }
-      end
-    end
+    authorize @rank_criterium
+     if @rank_criterium.update(rank_criterium_params)
+       redirect_to @rank_criterium, notice: 'Rank criterium was successfully updated.' 
+     else
+       render action: 'edit' 
+     end
   end
 
-  # DELETE /rank_criteria/1
-  # DELETE /rank_criteria/1.json
   def destroy
+    authorize @rank_criterium
     @rank_criterium.destroy
-    respond_to do |format|
-      format.html { redirect_to rank_criteria_url }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Criterium destroyed successfully."
+    redirect_to rank_criteria_url 
   end
 
   private
@@ -72,5 +57,11 @@ class RankCriteriaController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def rank_criterium_params
       params.require(:rank_criterium).permit(:criteria, :description, :weight)
+    end
+
+    def check_weight
+     if @rank_criterium.weight.to_f > RankCriterium.check_free
+      flash[:alert] = "Creation denied. The maximum weight you can put is #{RankCriterium.check_free}."
+     end
     end
 end

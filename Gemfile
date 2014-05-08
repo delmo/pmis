@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
@@ -38,6 +39,9 @@ gem 'jbuilder', '~> 1.2'
 
 # Passanger rather then webrick
 gem 'passenger', '~> 4.0.41'
+
+# Figaro configuration management
+gem 'figaro'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
