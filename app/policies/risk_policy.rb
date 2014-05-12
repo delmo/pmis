@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Risk records
+#
+##############################
 class RiskPolicy
  attr_reader :user, :risk
 

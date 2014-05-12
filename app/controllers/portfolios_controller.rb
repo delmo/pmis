@@ -1,10 +1,14 @@
+#########################################################
+# Controller for accessing Program, Project and Activity
+# ######################################################
+#
 class PortfoliosController < ApplicationController
  before_filter :authenticate_user!, except: [:current, :current_show, :index, :show]
  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
  after_action :verify_authorized, :except => [:current, :report, :index, :show, :appeal, :submit_appeal, :calendar, :calendar_show, :current_show]
 
 
-
+ # Show list of current portfolio this year
   def current
    if params[:year]
     @portfolios = Portfolio.search_portfolio(params[:year]).page(params[:page]).per(10)
@@ -16,27 +20,33 @@ class PortfoliosController < ApplicationController
    @years = Portfolio.years
   end
 
+  # show individual portfolio this year
   def current_show
    @portfolio = Portfolio.find(params[:id])
   end
 
+  # Portfolio of projects that needs reporting
   def report
    @ppas = Portfolio.report_search(params[:search]).page(params[:page]).per(10)
   end
 
+  # list of project for next calendar year
   def index
    #ppas = Portfolio.search(params[:search])
    @portfolios = Portfolio.next_year_search(params[:search]).page(params[:page]).per(10)
   end
 
+  # show individual project for next year
   def show
    @portfolio = Portfolio.find(params[:id])
   end
 
+  # show project in calendar mode
   def calendar_show
    @portfolio = Portfolio.find(params[:id])
   end
 
+  # create new project
   def new
    @portfolio = Portfolio.new
    authorize @portfolio
@@ -46,6 +56,7 @@ class PortfoliosController < ApplicationController
    @issues = Issue.order("title ASC")
   end
 
+  # edit existing project
   def edit
    @portfolio = Portfolio.find(params[:id])
    authorize @portfolio
@@ -55,6 +66,7 @@ class PortfoliosController < ApplicationController
    @portfolio_types = Portfolio::PORTFOLIO_TYPES
   end
 
+  # save new project
   def create
    @portfolio = Portfolio.new(portfolio_params)
    authorize @portfolio
@@ -75,6 +87,7 @@ class PortfoliosController < ApplicationController
    end
   end
 
+  # update existing project
   def update
    @portfolio = Portfolio.find(params[:id])
    authorize @portfolio # policy for update
@@ -91,6 +104,7 @@ class PortfoliosController < ApplicationController
    end
   end
 
+  # delete existing record of a project
   def destroy
    authorize @portfolio # policy for delete
     portfolio = Portfolio.find(params[:id]).destroy
@@ -98,24 +112,29 @@ class PortfoliosController < ApplicationController
     redirect_to(:action => 'index')
   end
 
+  # projects on appeal
   def appeal
    @portfolios = Portfolio.next_year_portfolio.where("is_risky = true or not_in_line = true or not_related = true or not_pest = true").where("appeal = false")
   end
 
+  # projects on review
   def review
    @portfolios = Portfolio.next_year_portfolio.where("appeal = true")
    authorize @portfolios
   end
 
+  # submit a project on appeal
   def submit_appeal
    @portfolio = Portfolio.find(params[:id])
   end
 
+  # submit decision to the project on appeal
   def decision
    @portfolio = Portfolio.find(params[:id])
    authorize @portfolio
   end
 
+  # show portfolio in the calendar
   def calendar
    @ppas = Portfolio.where("approved = true")
    @ppas_by_date = @ppas.group_by(&:start)

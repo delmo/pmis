@@ -1,3 +1,9 @@
+##############################################
+# Criteria for ranking a project
+# If the project is in line with City's
+# Vision and Mission and have Resources
+# ###########################################
+#
 class InLinesController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  before_filter :load_achievable

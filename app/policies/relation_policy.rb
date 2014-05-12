@@ -1,3 +1,9 @@
+##############################
+#
+# Policy for  Relation records
+#
+##############################
+
 class RelationPolicy
  attr_reader :user, :relation
 

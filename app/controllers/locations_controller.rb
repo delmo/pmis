@@ -1,3 +1,8 @@
+#################################################
+# Controller for creating location map
+# Only produce Google static map
+# ##############################################
+#
 class LocationsController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  before_action :set_location, only: [:show, :edit, :update, :destroy]

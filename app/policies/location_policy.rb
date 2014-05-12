@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Location records
+#
+##############################
 class LocationPolicy
  attr_reader :user, :location
 

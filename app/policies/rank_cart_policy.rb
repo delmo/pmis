@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Rank records
+#
+##############################
 class RankCartPolicy
 
  def initialize(user, portfolio)

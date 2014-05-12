@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  City records
+#
+##############################
 class CityPolicy
  attr_reader :user, :city
 

@@ -1,3 +1,8 @@
+##############################
+#
+# DEFAULT POLICY FOR THE SYSTEM
+#
+##############################
 class ApplicationPolicy
   attr_reader :user, :record
 

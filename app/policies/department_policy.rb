@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Department records
+#
+##############################
 class DepartmentPolicy
  attr_reader :user, :department
 

@@ -1,3 +1,9 @@
+############################################
+# Cotroller for ranking criteria
+# If the project align with
+# Political, Economic, Social and Technology
+# #########################################
+#
 class PestsController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  before_filter :load_feasible

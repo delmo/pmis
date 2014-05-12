@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Issue records
+#
+##############################
 class IssuePolicy
  attr_reader :user, :issue
 

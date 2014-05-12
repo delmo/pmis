@@ -1,3 +1,8 @@
+###############################################
+# Controller for criteria on Ranking projects
+# See if project sounds politically or socially feasible
+# #################################################
+#
 class RelationsController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  before_filter :load_linkable

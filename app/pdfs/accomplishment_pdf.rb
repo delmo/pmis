@@ -1,3 +1,7 @@
+# Generate pdf
+# using Prawn
+# Below aare details of how to draw
+# 
 class AccomplishmentPdf < Prawn::Document
 
  def initialize(city, ppa, reports, locations)

@@ -1,3 +1,9 @@
+# Print copy of all risks
+#
+#
+#
+#
+#
 class RisksPdf < Prawn::Document
 
  def initialize(city, ppa, risks, view)

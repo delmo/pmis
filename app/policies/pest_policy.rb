@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  PEST records
+#
+##############################
 class PestPolicy
  attr_reader :user, :pest
 

@@ -1,3 +1,7 @@
+#################################################
+#Controller for project selection
+###############################################
+#
 class SelectionsController < ApplicationController
  before_filter :authenticate_user!, except: [:index]
  before_action :load_ppa
@@ -6,10 +10,12 @@ class SelectionsController < ApplicationController
   def index
   end
 
+  # show all approved projects
   def finalist
    budget_needed
   end
 
+  # approve a project
   def select
    @ppa = Portfolio.find(params[:id])
    authorize @ppa
@@ -19,6 +25,7 @@ class SelectionsController < ApplicationController
    end
   end
 
+  # rejet the project
   def unselect
    @ppa = Portfolio.find(params[:id])
    authorize @ppa
@@ -28,6 +35,7 @@ class SelectionsController < ApplicationController
    end
   end
 
+  # list of all projects for general sector
   def general
    @counter = 0
    authorize @ppas
@@ -38,6 +46,7 @@ class SelectionsController < ApplicationController
    }
   end
 
+  # list of all projects for social sector
   def social
    @counter = 0
    authorize @ppas
@@ -48,6 +57,7 @@ class SelectionsController < ApplicationController
    }
   end
 
+  # list of all projects for Economis sector
   def economic
    @counter = 0
    authorize @ppas
@@ -58,6 +68,7 @@ class SelectionsController < ApplicationController
    }
   end
 
+  # Other sector
   def other
    @counter = 0
    authorize @ppas

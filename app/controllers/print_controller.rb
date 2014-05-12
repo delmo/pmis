@@ -1,7 +1,12 @@
+#############################################
+# Contorller for printing
+# ##########################################
+#
 class PrintController < ApplicationController
  after_action :verify_authorized, :except => [:risks, :issues, :aip, :accomplishment]
  before_action :load_data, :only => [:issues, :aip]
 
+ # print all risks
  def risks
   @ppa = Portfolio.find(params[:id])
   @city = City.first
@@ -17,6 +22,7 @@ class PrintController < ApplicationController
    end
  end
 
+ # print all issues
   def issues
    respond_to do |format|
     format.html
@@ -29,6 +35,7 @@ class PrintController < ApplicationController
    end
   end
 
+  # print all projects for next year
   def aip
    respond_to do |format|
     format.html
@@ -42,6 +49,7 @@ class PrintController < ApplicationController
    end
   end
 
+  # print all reports in a particular project
   def accomplishment
    @city = City.first
    @ppa = Portfolio.find(params[:id])

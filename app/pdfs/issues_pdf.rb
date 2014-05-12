@@ -1,3 +1,8 @@
+# print pdf copy of issues
+#
+#
+#
+#
 class IssuesPdf < Prawn::Document
 
  def initialize(city, issues)

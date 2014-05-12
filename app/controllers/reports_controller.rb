@@ -1,3 +1,8 @@
+###############################################
+# Controller for reporting accomplishement of 
+# a given project
+# ###########################################
+#
 class ReportsController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  before_action :set_report, only: [:show, :edit, :update, :destroy]

@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Sector records
+#
+##############################
 class SectorPolicy
  attr_reader :user, :sector
 

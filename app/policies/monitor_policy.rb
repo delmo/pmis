@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  monitoring PPA records
+#
+##############################
 class MonitorPolicy
  attr_reader :user, :portfolio
 

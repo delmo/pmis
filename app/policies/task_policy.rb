@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Task  records
+#
+##############################
 class TaskPolicy
  attr_reader :user, :task
 

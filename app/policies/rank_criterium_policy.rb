@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Criteria records
+#
+##############################
 class RankCriteriumPolicy
  attr_reader :user, :rank_criterium
 

@@ -1,3 +1,7 @@
+##########################################
+# Controller for project risks
+# ##########################################
+#
 class RisksController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  before_filter :load_riskiness

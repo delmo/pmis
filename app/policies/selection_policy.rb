@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Selection records
+#
+##############################
 class SelectionPolicy
  attr_reader :user, :selection
 

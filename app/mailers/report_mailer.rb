@@ -1,3 +1,5 @@
+# Mailer controller
+#
 class ReportMailer < ActionMailer::Base
   default from: "donotreply.pmis@gmail.com"
 

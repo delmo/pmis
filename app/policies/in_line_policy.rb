@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  InLine records
+#
+##############################
 class InLinePolicy
  attr_reader :user, :in_line
 

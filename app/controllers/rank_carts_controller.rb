@@ -1,14 +1,20 @@
+################################################
+# Controller for editing multiple criteria
+# #############################################
+#
 class RankCartsController < ApplicationController
  before_filter :authenticate_user!, except: [:show]
  before_action :set_rank_cart, only: [:show, :edit_multiple]
  after_action :verify_authorized, except:  [:show, :update_multiple]
 
+ # show all rank criteria for a given project
   def show
    @portfolio = Portfolio.find_by(id: @rank_cart.portfolio_id)
    @sector = find_action(@portfolio)
    @rank_items = RankItem.where("rank_cart_id = #{@rank_cart.id}")
   end
 
+  # edit all criteria for the given project
   def edit_multiple
    @portfolio = Portfolio.find_by(id: @rank_cart.portfolio_id)
    authorize @portfolio
@@ -20,6 +26,7 @@ class RankCartsController < ApplicationController
    end
   end
 
+  # update all criteria for the given project
   def update_multiple
    RankItem.update(params[:rank_items].keys, params[:rank_items].values)
    flash[:success] = "Score updated successfully."

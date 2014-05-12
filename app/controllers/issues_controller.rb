@@ -1,3 +1,9 @@
+#############################################
+# Controller for Issues and Concerns
+# Program, Project and Actitivy are based
+# on a given issue.
+# ##########################################
+#
 class IssuesController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  after_action :verify_authorized, except:  [:index, :show]

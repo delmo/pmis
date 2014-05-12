@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  PPA records
+#
+##############################
 class PortfolioPolicy
  attr_reader :user, :portfolio
 

@@ -1,3 +1,7 @@
+###########################################
+# Controller for Task
+# ########################################
+#
 class TasksController < ApplicationController
  before_filter :authenticate_user!, except: [:index, :show]
  before_action :set_task, only: [:show, :edit, :update, :destroy]

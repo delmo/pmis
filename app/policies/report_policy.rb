@@ -1,3 +1,8 @@
+##############################
+#
+# Policy for  Report records
+#
+##############################
 class ReportPolicy
  attr_reader :user, :report
 

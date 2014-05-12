@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
   before_filter :check_user
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -24,11 +23,14 @@ class ApplicationController < ActionController::Base
    end
   end
 
+  # check is user is not authorized
   def user_not_authorized
    flash[:alert] = "Access denied. You are not authorized to perform this action."
    redirect_to (request.referrer || root_path)
   end
 
+  # allow only permitted parameter to avoid SQL injection
+  # and other form attacks
   def configure_permitted_parameters
    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:department_id, :first_name, :last_name, :username, :email, :password, :password_confirmation, :remember_me) }
    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
