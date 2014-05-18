@@ -4,7 +4,7 @@
  <div class="form-group">
   <%= f.label(:issue_id, "Issue", :class => "col-sm-2 control-label") %> 
   <div class="col-sm-10">
-   <%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}, {include_blank: "No Program"}, {:class => "form-control"}) %> 
+   <%= f.select(:issue_id, @issues.map {|i| [i.title, i.id]}, {include_blank: "No Issue"}, {:class => "form-control"}) %> 
   </div>
  </div>
 
